@@ -4,7 +4,7 @@
 
 To set up the frontend project "provider-access-platform-frontend" using Vite, React, and JavaScript, follow these steps:
 
-### 1. Create a New Vite Project
+__1. Create a New Vite Project:__
 
 Open your terminal and run the following command to create a new Vite project with the React template:
 
@@ -12,19 +12,19 @@ Open your terminal and run the following command to create a new Vite project wi
 npm create vite@latest provider-access-platform-frontend -- --template react
 ```
 
-### 2. Navigate to your project directory:
+__2. Navigate to your project directory:__
 
 ```bash
 cd provider-access-platform-frontend
 ```
 
-### 3. Install the necessary dependencies:
+__3. Install the necessary dependencies:__
 
 ```bash
 npm install
 ```
 
-### 4. Start the development server:
+__4. Start the development server:__
 
 ```bash
 npm run dev
@@ -32,7 +32,7 @@ npm run dev
 
 Your React application will now be running on http://localhost:5173
 
-### Vite Configuration Changes
+__Vite Configuration Changes__
 
 We replaced the default `vite.config.js` with the following customizations for the following reasons:
 
