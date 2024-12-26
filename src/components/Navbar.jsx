@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/pam_logo.png'; // Adjust the path to your logo
+import logo from '/pam_logo.png'; // Adjust the path to your logo
 
 const Navbar = () => {
   return (
