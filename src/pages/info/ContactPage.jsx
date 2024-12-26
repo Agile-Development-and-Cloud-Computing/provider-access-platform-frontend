@@ -14,7 +14,7 @@ const ContactPage = () => {
         <p>
           <strong>Email:</strong> support@providerplatform.com
           <br />
-          <strong>Phone:</strong> +123 456 7890
+          <strong>Phone:</strong> +49 17684942784
         </p>
         <form>
           <label>
