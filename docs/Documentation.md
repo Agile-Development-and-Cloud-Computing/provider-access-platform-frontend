@@ -48,3 +48,15 @@ The directory structure of this project has undergone multiple reorganizations t
 - Scalability
 - Maintainability
 
+
+
+## Bootstrap
+
+- Install Bootstrap: This adds Bootstrap to your dependencies in package.json
+- Import Bootstrap into the Project
+- Use Bootstrap's pre-defined classes directly in your React components.
+- Customize Bootstrap (optional)
+
+
+
+

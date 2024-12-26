@@ -1,0 +1,30 @@
+/* App.css */
+
+/* Ensure the entire page fills the viewport */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  /* Welcome Section takes up the remaining space */
+  .welcome-section {
+    flex: 1; /* Makes the Welcome Section grow to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #1e293b; /* Matches the background color */
+    color: #f8fafc;
+    padding: 2rem;
+  }
+  
+  .footer {
+    background-color: #1e293b; /* Matches Navbar for consistency */
+    color: #f8fafc;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
