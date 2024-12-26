@@ -5,10 +5,12 @@ const Footer = () => {
   return (
     <footer className="footer bg-dark text-white text-center py-3">
       <div className="container">
-        <p>&copy; 2024 Provider Access Platform. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Provider Access Platform. All rights reserved.</p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
+

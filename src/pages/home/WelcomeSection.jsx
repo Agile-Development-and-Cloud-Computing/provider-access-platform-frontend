@@ -2,7 +2,7 @@ import React from 'react';
 
 const WelcomeSection = () => {
   return (
-    <div className="welcome-section">
+    <div className="home-container">
       <img
         src="/cloud-image.png" // Ensure this is in your public folder
         alt="Cloud"

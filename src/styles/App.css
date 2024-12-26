@@ -2,29 +2,113 @@
 
 /* Ensure the entire page fills the viewport */
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full viewport height */
-  }
-  
-  /* Welcome Section takes up the remaining space */
-  .welcome-section {
-    flex: 1; /* Makes the Welcome Section grow to fill available space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #1e293b; /* Matches the background color */
-    color: #f8fafc;
-    padding: 2rem;
-  }
-  
-  .footer {
-    background-color: #1e293b; /* Matches Navbar for consistency */
-    color: #f8fafc;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.9rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Footer styling */
+.footer {
+  background-color: #1e293b; /* Matches Navbar for consistency */
+  color: #f8fafc;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+/* Home Page Container */
+.home-container {
+  flex: 1; /* Fills available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 2rem;
+}
+
+/* About Page Container */
+.about-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #64748b; /* Slightly lighter background for distinction */
+  color: #f8fafc;
+  padding: 2rem;
+}
+
+/* Contact Page Container */
+.contact-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #334155; /* A unique shade for Contact Us */
+  color: #f8fafc;
+  padding: 2rem;
+}
+
+/* Login Page Container */
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f8fafc; /* Light background for forms */
+  color: #1e293b;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Register Page Container */
+.register-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f1f5f9; /* Subtle light gray for distinction */
+  color: #1e293b;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Teams Page Container */
+.team-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #6a8aaa; 
+  color: #1e293b;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Not Found Page Container */
+.notfound-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #5f7ea7; 
+  color: #f8fafc;
+  padding: 2rem;
+}
