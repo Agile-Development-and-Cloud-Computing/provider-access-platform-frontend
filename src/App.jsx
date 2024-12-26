@@ -1,16 +1,16 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import WelcomeSection from './components/WelcomeSection';
-import Footer from './components/Footer';
-import './styles/App.css'; // Global styles
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import './styles/App.css'; // Import the CSS file
 
 function App() {
   return (
-    <div className="app-container">
-      <Navbar />
-      <WelcomeSection />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* Add other routes here */}
+      </Routes>
+    </Router>
   );
 }
 
