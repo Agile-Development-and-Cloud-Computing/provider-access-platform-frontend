@@ -8,6 +8,8 @@ import ContactPage from './pages/info/ContactPage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import NotFoundPage from './pages/error/NotFoundPage';
+import UserDashboard from './pages/dashboard/UserDashboard'; // Adjust path as necessary
+
 import './styles/App.css'; // Import the CSS file
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          
+          {/* Dashboard Page */}
+          <Route path="/dashboard" element={<UserDashboard />} />
 
           {/* 404 Page (Catch-All Route) */}
           <Route path="*" element={<NotFoundPage />} />

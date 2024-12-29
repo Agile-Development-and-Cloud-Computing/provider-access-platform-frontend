@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { api } from '../../mock-api'; // Import mock API
@@ -7,6 +8,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +27,7 @@ const LoginPage = () => {
       const response = await api.login(formData); // Use simulated API
       console.log('Login successful:', response.data);
       alert(response.data.message);
+      navigate('/dashboard'); 
     } catch (err) {
       console.error('Login failed:', err);
       setError(err.error || 'An error occurred. Please try again.');
