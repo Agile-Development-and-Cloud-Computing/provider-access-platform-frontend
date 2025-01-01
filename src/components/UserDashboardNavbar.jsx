@@ -2,19 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import logo from '/pam_logo.png'; // Adjust the path to your logo
 
-const UserDashboardNavbar = () => {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+const UserDashboardNavbar = ({ onSelectSection }) => {
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear any user session data if needed (e.g., remove tokens, user info)
-    localStorage.removeItem('userToken'); // Example: Remove token from localStorage
+    localStorage.removeItem('userToken'); // Remove session token
     navigate('/login'); // Redirect to login page
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        {/* Brand Logo and Name */}
+        {/* Brand Logo */}
         <a className="navbar-brand d-flex align-items-center" href="/dashboard">
           <img
             src={logo}
@@ -41,13 +40,28 @@ const UserDashboardNavbar = () => {
         <div className="collapse navbar-collapse" id="userNavbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard/home">Home</a>
+              <button
+                className="btn btn-link nav-link"
+                onClick={() => onSelectSection('userManagement')}
+              >
+                User Management
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard/profile">Profile</a>
+              <button
+                className="btn btn-link nav-link"
+                onClick={() => onSelectSection('serviceAgreements')}
+              >
+                Service Agreements
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard/settings">Settings</a>
+              <button
+                className="btn btn-link nav-link"
+                onClick={() => onSelectSection('masterAgreement')}
+              >
+                Master Agreement
+              </button>
             </li>
           </ul>
           <ul className="navbar-nav">
