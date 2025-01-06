@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { api } from '../../mock-api'; // Import mock API
+import axios from 'axios'; // Use axios for making HTTP requests
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +24,25 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await api.login(formData); // Use simulated API
-      console.log('Login successful:', response.data);
-      alert(response.data.message);
-      navigate('/dashboard'); 
+      const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
+      
+      if (response.data.success) {
+        console.log('Login successful:', response.data);
+        alert(response.data.message);
+        
+        navigate('/dashboard');
+        // Navigate to dashboard based on userType
+        //if (response.data.data.userType === 'Admin') {
+        //  navigate('/dashboard'); // Admin dashboard
+        //} else {
+        //    navigate('/dashboard/user'); // User dashboard
+        //} 
+      } else {
+        setError('Login failed. Please check your credentials.');
+      }
     } catch (err) {
       console.error('Login failed:', err);
-      setError(err.error || 'An error occurred. Please try again.');
+      setError('An error occurred while logging in. Please try again.');
     } finally {
       setIsLoading(false);
     }
