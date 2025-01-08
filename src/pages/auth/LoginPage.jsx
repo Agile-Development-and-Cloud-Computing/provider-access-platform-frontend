@@ -25,7 +25,8 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
-      
+      //const response = await axios.post('https://cors-anywhere.herokuapp.com/http://access-platform.azurewebsites.net/api/login', formData);
+
       if (response.data.success) {
         console.log('Login successful:', response.data);
         alert(response.data.message);
@@ -33,7 +34,7 @@ const LoginPage = () => {
         navigate('/dashboard');
         // Navigate to dashboard based on userType
         //if (response.data.data.userType === 'Admin') {
-        //  navigate('/dashboard'); // Admin dashboard
+        //  navigate('/dashboard/admin'); // Admin dashboard
         //} else {
         //    navigate('/dashboard/user'); // User dashboard
         //} 
