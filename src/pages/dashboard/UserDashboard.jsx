@@ -1,73 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import UserDashboardNavbar from '../../components/UserDashboardNavbar';
 import Footer from '../../components/Footer';
-import axios from 'axios';
 import '../../styles/dashboard.css';
 
-
-
 const Dashboard = () => {
-  const [selectedSection, setSelectedSection] = useState(null);
-  const [data, setData] = useState([]);
+  const [selectedSection, setSelectedSection] = useState('userManagement');
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [expanded, setExpanded] = useState({}); // Track which items are expanded
 
-  // Define API endpoints
-  const endpoints = {
-    userManagement: {
-      endpoint: 'https://access-platform.azurewebsites.net/api/employees/101',
-      title: 'User Management',
-    },
-    serviceAgreements: {
-      endpoint: 'https://api.example.com/service-agreements',
-      title: 'Service Agreements',
-    },
-    masterAgreement: {
-      endpoint: 'https://access-platform.azurewebsites.net/api/provider/master-agreements',
-      title: 'Master Agreements',
-    },
-  };
-
-  // Fetch data when a section is selected
-  const fetchData = async (section) => {
-    setSelectedSection(section);
+  const fetchData = async (endpoint) => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await axios.get(endpoints[section].endpoint);
-      setData(response.data.data); // Assuming API returns data under `data.data`
+      const response = await axios.get(endpoint);
+      setData(response.data.data);
     } catch (err) {
-      setError('Failed to fetch data. Please try again.');
+      setError('Failed to fetch data');
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <>
-      <UserDashboardNavbar onSelectSection={fetchData} />
-      <div className="dashboard-container">
-        <h1>Welcome to Your Dashboard</h1>
-        {selectedSection && (
-          <>
-            <h2>{endpoints[selectedSection].title}</h2>
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {!loading && !error && data.length > 0 && (
-              <div className="data-container">
-                {data.map((item, index) => (
-                  <div key={index} className="data-box">
-                    <pre>{JSON.stringify(item, null, 2)}</pre>
-                  </div>
-                ))}
+  useEffect(() => {
+    if (selectedSection === 'userManagement') {
+      fetchData('https://api.example.com/user-management');
+    } else if (selectedSection === 'serviceAgreements') {
+      fetchData('https://api.example.com/service-agreements');
+    } else if (selectedSection === 'masterAgreement') {
+      fetchData('https://access-platform.azurewebsites.net/api/provider/master-agreements');
+    }
+  }, [selectedSection]);
+
+  const toggleDetails = (index) => {
+    setExpanded((prev) => ({
+      ...prev,
+      [index]: !prev[index], // Toggle expanded state
+    }));
+  };
+
+  const renderContent = () => {
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p style={{ color: 'red' }}>{error}</p>;
+    if (!data) return <p>Select a section to view its contents.</p>;
+
+    return (
+      <div className="data-container">
+        {data.map((item, index) => (
+          <div key={index} className="data-summary-box">
+            <h4>{item.masterAgreementTypeName}</h4>
+            <p><strong>Valid Until:</strong> {item.validUntil}</p>
+            <button onClick={() => toggleDetails(index)}>
+              {expanded[index] ? 'Hide Details' : 'Show Details'}
+            </button>
+            {expanded[index] && (
+              <div className="data-details">
+                <p><strong>Role Name:</strong> {item.roleName}</p>
+                <p><strong>Experience Level:</strong> {item.experienceLevel}</p>
+                <p><strong>Technologies:</strong> {item.technologiesCatalog}</p>
+                <p><strong>Domain:</strong> {item.domainName}</p>
+                <p><strong>Offer Cycle:</strong> {item.offerCycle}</p>
+                <p><strong>Provider:</strong> {item.provider}</p>
+                <p><strong>Quote Price:</strong> ${item.quotePrice}</p>
+                <p><strong>Is Accepted:</strong> {item.isAccepted ? 'Yes' : 'No'}</p>
               </div>
             )}
-          </>
-        )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="dashboard-wrapper">
+      <UserDashboardNavbar onSelectSection={setSelectedSection} />
+      <div className="dashboard-container">
+        <h1>Welcome to Your Dashboard</h1>
+        {renderContent()}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
