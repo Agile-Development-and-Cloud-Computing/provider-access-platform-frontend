@@ -1,0 +1,141 @@
+    {
+    "agreements": [
+      {
+        "masterAgreementTypeId": 101,
+        "masterAgreementTypeName": "Master Agreement A",
+        "validFrom": "2024-01-01",
+        "validUntil": "2024-12-31",
+        "status": "open",
+        "createdAt": "2025-01-06",
+        "domains": [
+          {
+            "domainId": 1,
+            "domainName": "IT",
+            "roleOffer": [
+              {
+                "roleName": "Developer",
+                "experienceLevel": "Senior",
+                "technologiesCatalog": "Java, Spring Boot",
+                "quotePrice": 600,
+                "offerCycle": null,
+                "providerName": null
+              }
+            ]
+          },
+          {
+            "domainId": 2,
+            "domainName": "Finance",
+            "roleOffer": [
+              {
+                "roleName": "Data Analyst",
+                "experienceLevel": "Mid-Level",
+                "technologiesCatalog": "SQL, Python, Tableau",
+                "quotePrice": 600,
+                "providerName": null,
+                "offerCycle": null
+              },
+              {
+                "roleName": "Financial Consultant",
+                "experienceLevel": "Senior",
+                "technologiesCatalog": "Finance Modelling, Excel, R",
+                "quotePrice": 600,
+                "providerName": null,
+                "offerCycle": null
+              }
+            ]
+          },
+          {
+            "domainId": 3,
+            "domainName": "Healthcare",
+            "roleOffer": [
+              {
+                "roleName": "Medical Software Engineer",
+                "experienceLevel": "Junior",
+                "technologiesCatalog": "C++, JavaScript, HL7",
+                "providerName": null,
+                "quotePrice": 600,
+                "offerCycle": null
+              },
+              {
+                "roleName": "Healthcare Analyst",
+                "experienceLevel": "Mid-Level",
+                "technologiesCatalog": "Python, SAS, Clinical Data",
+                "providerName": null,
+                "quotePrice": 600,
+                "offerCycle": null
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "masterAgreementTypeId": 102,
+        "masterAgreementTypeName": "Master Agreement B",
+        "validFrom": "2024-01-01",
+        "validUntil": "2024-12-31",
+        "status": "open",
+        "createdAt": "2025-01-06",
+        "domains": [
+          {
+            "domainId": 1,
+            "domainName": "IT",
+            "roleOffer": [
+              {
+                "roleName": "Developer",
+                "experienceLevel": "Senior",
+                "technologiesCatalog": "Java, Spring Boot",
+                "quotePrice": 600,
+                "offerCycle": null,
+                "providerName": null
+              }
+            ]
+          },
+          {
+            "domainId": 2,
+            "domainName": "Finance",
+            "roleOffer": [
+              {
+                "roleName": "Data Analyst",
+                "experienceLevel": "Mid-Level",
+                "technologiesCatalog": "SQL, Python, Tableau",
+                "quotePrice": 600,
+                "providerName": null,
+                "offerCycle": null
+              },
+              {
+                "roleName": "Financial Consultant",
+                "experienceLevel": "Senior",
+                "technologiesCatalog": "Finance Modelling, Excel, R",
+                "quotePrice": 600,
+                "providerName": null,
+                "offerCycle": null
+              }
+            ]
+          },
+          {
+            "domainId": 3,
+            "domainName": "Healthcare",
+            "roleOffer": [
+              {
+                "roleName": "Medical Software Engineer",
+                "experienceLevel": "Junior",
+                "technologiesCatalog": "C++, JavaScript, HL7",
+                "providerName": null,
+                "quotePrice": 600,
+                "offerCycle": null
+              },
+              {
+                "roleName": "Healthcare Analyst",
+                "experienceLevel": "Mid-Level",
+                "technologiesCatalog": "Python, SAS, Clinical Data",
+                "providerName": null,
+                "quotePrice": 600,
+                "offerCycle": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
