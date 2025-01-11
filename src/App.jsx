@@ -7,6 +7,9 @@ import TeamPage from './pages/info/TeamPage';
 import ContactPage from './pages/info/ContactPage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
+import LogoutPage from './pages/auth/LogoutPage';
+import ProviderAdminDashboard from './pages/dashboard/ProviderAdminDashboard';
+import UserDashboard from './pages/dashboard/UserDashboard';
 import NotFoundPage from './pages/error/NotFoundPage';
 import './styles/App.css'; // Import the CSS file
 
@@ -24,6 +27,11 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
+
+          {/* Dashboards */}
+          <Route path="/dashboard/admin" element={<ProviderAdminDashboard />} />
+          <Route path="/dashboard/user" element={<UserDashboard />} />
 
           {/* 404 Page (Catch-All Route) */}
           <Route path="*" element={<NotFoundPage />} />
