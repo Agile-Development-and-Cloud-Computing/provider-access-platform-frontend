@@ -1,0 +1,81 @@
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content */
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600; /* Slightly bolder for better readability */
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
+  gap: 20px; /* Space between the cards */
+  width: 100%; /* Ensures the grid spans the container's width */
+}
+
+.dashboard-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column; /* Ensures uniform spacing for content */
+  justify-content: space-between;
+  height: 100%; /* Makes all cards the same height */
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.dashboard-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #007bff; /* Blue theme for headings */
+  font-weight: 500; /* Semi-bold for better emphasis */
+}
+
+.dashboard-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5; /* Improves readability */
+}
+
+.dashboard-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dashboard-card button:hover {
+  background-color: #0056b3; /* Slightly darker blue for hover state */
+}
+
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Switch to one column on smaller screens */
+  }
+  .dashboard-card {
+    margin: 0 auto; /* Centers the card on small screens */
+  }
+}
