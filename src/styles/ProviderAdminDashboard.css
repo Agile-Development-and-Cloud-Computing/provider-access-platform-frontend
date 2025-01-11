@@ -13,7 +13,7 @@
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  grid-template-columns: repeat(3, 1fr); /* Two equal columns */
   gap: 20px; /* Space between the cards */
 }
 
@@ -60,6 +60,39 @@
 
 .dashboard-card button:hover {
   background-color: #218838; /* Darker green on hover */
+}
+
+/*Key Performance Indicators (KPIs) for Dashboards*/
+.kpi-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.kpi-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.kpi-card h2 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.kpi-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff; /* Adjust color for User Dashboard */
+}
+
+.kpi-card:nth-child(2) p {
+  color: #28a745; /* Adjust color for Provider Admin Dashboard */
 }
 
 /* Responsive Design for Smaller Screens */
