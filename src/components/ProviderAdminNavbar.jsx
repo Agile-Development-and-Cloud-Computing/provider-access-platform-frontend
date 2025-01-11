@@ -20,7 +20,7 @@ const ProviderAdminNavbar = () => {
             alt="Logo"
             style={{ width: '40px', height: 'auto', marginRight: '10px' }}
           />
-          Admin Portal
+          Access Provider Platform
         </a>
 
         {/* Hamburger Button for Mobile View */}
@@ -46,7 +46,10 @@ const ProviderAdminNavbar = () => {
               <a className="nav-link" href="/manage-providers">Manage Providers</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/view-reports">Reports</a>
+              <a className="nav-link" href="/user-management">User Management</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/performance-metrics">Performance Metrics</a>
             </li>
           </ul>
           <ul className="navbar-nav">

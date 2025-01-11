@@ -19,7 +19,7 @@ const UserNavbar = () => {
             alt="Logo"
             style={{ width: '40px', height: 'auto', marginRight: '10px' }}
           />
-          User Portal
+          Access Provider Platform
         </a>
         <button
           className="navbar-toggler"
