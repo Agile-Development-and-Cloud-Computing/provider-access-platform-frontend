@@ -8,41 +8,45 @@ const ProviderAdminDashboard = () => {
     <>
       <ProviderAdminNavbar />
       <div className="dashboard-container">
-        <h1 className="dashboard-title">Admin Dashboard</h1>
+        <h1 className="dashboard-title">Provider Admin Dashboard</h1>
+
+        {/* KPI Section */}
+        <div className="kpi-container">
+          <div className="kpi-card">
+            <h2>Total Employees</h2>
+            <p>50</p>
+          </div>
+          <div className="kpi-card">
+            <h2>Active Contracts</h2>
+            <p>10</p>
+          </div>
+          <div className="kpi-card">
+            <h2>Open Service Requests</h2>
+            <p>7</p>
+          </div>
+        </div>
+
+        {/* Actionable Links */}
         <div className="dashboard-grid">
-          {/* Manage Providers */}
           <div className="dashboard-card">
             <h2>Manage Providers</h2>
-            <p>View, add, and manage provider accounts and credentials.</p>
+            <p>Edit provider credentials such as name, address, and validity period.</p>
             <button onClick={() => window.location.href = '/manage-providers'}>
               Manage Providers
             </button>
           </div>
-
-          {/* User Management */}
           <div className="dashboard-card">
             <h2>User Management</h2>
-            <p>Configure and manage user accounts for the provider.</p>
-            <button onClick={() => window.location.href = '/manage-users'}>
+            <p>Create, edit, and delete up to 2 user accounts for your provider.</p>
+            <button onClick={() => window.location.href = '/user-management'}>
               Manage Users
             </button>
           </div>
-
-          {/* View Reports */}
           <div className="dashboard-card">
-            <h2>View Reports</h2>
-            <p>Access detailed reports on provider performance and SLA metrics.</p>
-            <button onClick={() => window.location.href = '/view-reports'}>
-              View Reports
-            </button>
-          </div>
-
-          {/* Dashboard Statistics */}
-          <div className="dashboard-card">
-            <h2>Dashboard Statistics</h2>
-            <p>View key metrics and statistics related to your provider's performance.</p>
-            <button onClick={() => window.location.href = '/dashboard-statistics'}>
-              View Statistics
+            <h2>Performance Metrics</h2>
+            <p>Analyze activity metrics such as employees, offers, and requests.</p>
+            <button onClick={() => window.location.href = '/performance-metrics'}>
+              View Metrics
             </button>
           </div>
         </div>
