@@ -1,8 +1,8 @@
     {
     "agreements": [
       {
-        "masterAgreementTypeId": 101,
-        "masterAgreementTypeName": "Master Agreement A",
+        "masterAgreementTypeId": 104,
+        "masterAgreementTypeName": "Agreement B",
         "validFrom": "2024-01-01",
         "validUntil": "2024-12-31",
         "status": "open",
@@ -70,8 +70,8 @@
       },
 
       {
-        "masterAgreementTypeId": 102,
-        "masterAgreementTypeName": "Master Agreement B",
+        "masterAgreementTypeId": 109,
+        "masterAgreementTypeName": "Agreement A",
         "validFrom": "2024-01-01",
         "validUntil": "2024-12-31",
         "status": "open",
