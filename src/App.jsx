@@ -11,6 +11,8 @@ import LogoutPage from './pages/auth/LogoutPage';
 import ProviderAdminDashboard from './pages/dashboard/ProviderAdminDashboard';
 import UserDashboard from './pages/dashboard/UserDashboard';
 import NotFoundPage from './pages/error/NotFoundPage';
+
+import MasterAgreementPage from './pages/admin/MasterAgreementPage';
 import './styles/App.css'; // Import the CSS file
 
 function App() {
@@ -33,6 +35,9 @@ function App() {
           <Route path="/dashboard/admin" element={<ProviderAdminDashboard />} />
           <Route path="/dashboard/user" element={<UserDashboard />} />
 
+          {/* Master-agreement Routes */}
+          <Route path="/admin/master-agreements" element={<MasterAgreementPage />} />
+
           {/* 404 Page (Catch-All Route) */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -42,3 +47,4 @@ function App() {
 }
 
 export default App;
+

@@ -4,6 +4,11 @@ import Footer from '../../components/Footer';
 import '../../styles/ProviderAdminDashboard.css'; // Import the custom CSS file for styling
 
 const ProviderAdminDashboard = () => {
+  const navigateToMasterAgreements = () => {
+    // Navigate to the Master Agreement Page
+    window.location.href = '/admin/master-agreements';
+  };
+
   return (
     <>
       <ProviderAdminNavbar />
@@ -28,6 +33,11 @@ const ProviderAdminDashboard = () => {
 
         {/* Actionable Links */}
         <div className="dashboard-grid">
+        <div className="dashboard-card">
+            <h2>Master Agreements</h2>
+            <p>Fetch and view master agreements saved in the database.</p>
+            <button onClick={navigateToMasterAgreements}>View Agreements</button>
+          </div>
           <div className="dashboard-card">
             <h2>Manage Providers</h2>
             <p>Edit provider credentials such as name, address, and validity period.</p>
