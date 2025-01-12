@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import axios from 'axios';
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' }); // Updated to 'email'
+  const [formData, setFormData] = useState({ identifier: '', password: '' }); // Unified field for email/username
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -28,8 +28,8 @@ const LoginPage = () => {
       // const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
       console.log('Login successful:', response.data);
 
-      // Save the logged-in user's email to localStorage
-      localStorage.setItem('loggedInUser', formData.email);
+      // Save the logged-in user's identifier to localStorage
+      localStorage.setItem('loggedInUser', formData.identifier);
 
       // Redirect based on user role
       const { userType } = response.data.data;
@@ -53,16 +53,16 @@ const LoginPage = () => {
       <Navbar />
       <div className="login-container">
         <h1>Login</h1>
-        <p>Access your provider account by logging in below:</p>
+        <p>Access your provider account:</p>
         <form onSubmit={handleSubmit}>
           <label>
-            Email:
+            Username:
             <input
-              type="email" // Changed input type to 'email' for validation
-              name="email"
-              value={formData.email}
+              type="text" // Accepts both email and username
+              name="identifier"
+              value={formData.identifier}
               onChange={handleInputChange}
-              placeholder="Enter your email"
+              placeholder="Enter email or username"
               required
             />
           </label>
@@ -73,6 +73,7 @@ const LoginPage = () => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
+               placeholder="Enter password"
               required
             />
           </label>
