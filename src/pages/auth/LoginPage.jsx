@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import axios from 'axios';
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ email: '', password: '' }); // Updated to 'email'
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -25,11 +25,11 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post('http://localhost:5000/api/login', formData);
-      //const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
+      // const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
       console.log('Login successful:', response.data);
 
-      // Save the logged-in user's name to localStorage
-      localStorage.setItem('loggedInUser', formData.username);
+      // Save the logged-in user's email to localStorage
+      localStorage.setItem('loggedInUser', formData.email);
 
       // Redirect based on user role
       const { userType } = response.data.data;
@@ -56,12 +56,13 @@ const LoginPage = () => {
         <p>Access your provider account by logging in below:</p>
         <form onSubmit={handleSubmit}>
           <label>
-            Username:
+            Email:
             <input
-              type="text"
-              name="username"
-              value={formData.username}
+              type="email" // Changed input type to 'email' for validation
+              name="email"
+              value={formData.email}
               onChange={handleInputChange}
+              placeholder="Enter your email"
               required
             />
           </label>
