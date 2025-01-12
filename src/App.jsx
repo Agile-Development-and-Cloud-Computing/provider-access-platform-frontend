@@ -1,18 +1,35 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/home/HomePage';
-import AboutPage from './pages/info/AboutPage';
-import TeamPage from './pages/info/TeamPage';
-import ContactPage from './pages/info/ContactPage';
+
+// Shared Pages
+import HomePage from './pages/shared/HomePage';
+import AboutPage from './pages/shared/AboutPage';
+import TeamPage from './pages/shared/TeamPage';
+import ContactPage from './pages/shared/ContactPage';
+import NotFoundPage from './pages/shared/NotFoundPage';
+
+// Authentication Pages
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import LogoutPage from './pages/auth/LogoutPage';
+
+// Dashboard Pages
 import ProviderAdminDashboard from './pages/dashboard/ProviderAdminDashboard';
 import UserDashboard from './pages/dashboard/UserDashboard';
-import NotFoundPage from './pages/error/NotFoundPage';
 
+// Admin Pages
 import MasterAgreementPage from './pages/admin/MasterAgreementPage';
+//import ManageProviders from './pages/admin/ManageProviders';
+//import UserManagement from './pages/admin/UserManagement';
+//import PerformanceMetrics from './pages/admin/PerformanceMetrics';
+
+
+// User Pages
+//import ViewOffers from './pages/user/ViewOffers';
+//import ServiceRequests from './pages/user/ServiceRequests';
+//import EmployeeManagement from './pages/user/EmployeeManagement';
+
 import './styles/App.css'; // Import the CSS file
 
 function App() {
