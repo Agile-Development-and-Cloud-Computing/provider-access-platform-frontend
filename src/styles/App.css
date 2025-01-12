@@ -73,56 +73,138 @@
 }
 
 
-/* Form-Based Containers (Login, Register, Contact) */
+/* ===== Form Containers (Login, Register, Contact) ===== */
 .login-container,
 .register-container,
 .contact-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #f8fafc; /* Light background for forms */
-  color: #1e293b;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  justify-content: center; /* Center form content vertically */
+  align-items: center; /* Center form content horizontally */
+  background-color: #ffffff; /* Bright white background */
+  color: #1e293b; /* Dark text for readability */
+  padding: 1.5rem; /* Compact padding */
+  border-radius: 12px; /* Smooth corners for modern look */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Subtle shadow effect */
+  max-width: 500px; /* Adjust max width */
   margin: 2rem auto;
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
-.login-container input,
-.register-container input,
-.contact-container input,
+/* ===== Input Fields (Uniform Sizes) ===== */
+.login-container input[type="text"],
+.login-container input[type="password"],
+.register-container input[type="text"],
+.register-container input[type="password"],
+.contact-container input[type="text"],
+.contact-container input[type="email"],
 .contact-container textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
+  width: 100%; /* Full container width */
+  padding: 1rem; /* Uniform padding for all fields */
+  margin: 0.5rem 0; /* Equal spacing between fields */
+  border: 2px solid #e5e7eb; /* Subtle border for consistency */
+  border-radius: 8px; /* Smooth rounded corners */
+  font-size: 1rem; /* Uniform font size */
+  background-color: #f8fafc; /* Light gray background for readability */
+  box-sizing: border-box; /* Include padding and border in size */
+  height: 48px; /* Fixed height for input fields */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus transition */
 }
 
+/* ===== Textarea (Message Box for Contact Page) ===== */
+.contact-container textarea {
+  height: 150px; /* Taller textarea for messages */
+  resize: vertical; /* Allow resizing vertically */
+}
+
+/* ===== Focus State for All Inputs ===== */
+.login-container input:focus,
+.register-container input:focus,
+.contact-container input:focus,
+.contact-container textarea:focus {
+  border-color: #2563eb; /* Bright blue border on focus */
+  box-shadow: 0px 0px 8px rgba(37, 99, 235, 0.4); /* Soft glow effect */
+  outline: none; /* Remove default browser outline */
+}
+
+/* ===== Buttons (Uniform Styles) ===== */
 .login-container button,
 .register-container button,
 .contact-container button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #1e293b;
-  color: #f8fafc;
+  width: 100%; /* Full-width buttons */
+  padding: 1rem;
+  background-color: #2563eb; /* Bright blue background */
+  color: #ffffff; /* White text for contrast */
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 1.1rem; /* Slightly larger font for buttons */
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
 }
 
 .login-container button:hover,
 .register-container button:hover,
 .contact-container button:hover {
-  background-color: #334155;
+  background-color: #1e40af; /* Darker blue on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
 }
+
+/* ===== Form Headings ===== */
+.login-container h1,
+.register-container h1,
+.contact-container h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark text for headings */
+  margin-bottom: 1rem;
+}
+
+.login-container p,
+.register-container p,
+.contact-container p {
+  font-size: 1rem;
+  color: #4b5563; /* Muted text for descriptions */
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .login-container,
+  .register-container,
+  .contact-container {
+    padding: 1rem; /* Reduced padding for smaller screens */
+    margin: 1rem auto; /* Compact margin */
+  }
+
+  .login-container h1,
+  .register-container h1,
+  .contact-container h1 {
+    font-size: 1.6rem; /* Slightly smaller headings */
+  }
+
+  .login-container button,
+  .register-container button,
+  .contact-container button {
+    font-size: 1rem; /* Adjust button font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container,
+  .register-container,
+  .contact-container {
+    padding: 0.8rem; /* Further reduce padding for very small screens */
+    max-width: 90%; /* Limit form width on small devices */
+  }
+
+  .login-container h1,
+  .register-container h1,
+  .contact-container h1 {
+    font-size: 1.4rem; /* Smaller headings */
+  }
+}
+
 
 /* Contact Page Specific Styles */
 .contact-container {
