@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserNavbar from '../../components/UserNavbar';
 import Footer from '../../components/Footer';
-import EmployeeManagementPage from '../user/EmployeeManagementPage'; // Import Employee Management
+import EmployeeManagementPage from '../management/EmployeeManagementPage'; // Import Employee Management
 import '../../styles/UserDashboard.css';
 
 const UserDashboard = () => {

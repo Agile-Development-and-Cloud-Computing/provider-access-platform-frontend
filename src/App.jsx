@@ -19,16 +19,16 @@ import ProviderAdminDashboard from './pages/dashboard/ProviderAdminDashboard';
 import UserDashboard from './pages/dashboard/UserDashboard';
 
 // Admin Pages
-import MasterAgreementPage from './pages/admin/MasterAgreementPage';
-//import ManageProviders from './pages/admin/ManageProviders';
-//import UserManagement from './pages/admin/UserManagement';
-//import PerformanceMetrics from './pages/admin/PerformanceMetrics';
+import MasterAgreementPage from './pages/management/MasterAgreementPage';
+//import ManageProviders from './pages/management/ManageProviders';
+//import UserManagement from './pages/management/UserManagement';
+//import PerformanceMetrics from './pages/management/PerformanceMetrics';
 
 
 // User Pages
-//import ViewOffers from './pages/user/ViewOffers';
-//import ServiceRequests from './pages/user/ServiceRequests';
-import EmployeeManagementPage from './pages/user/EmployeeManagementPage'; 
+//import ViewOffers from './pages/management/ViewOffers';
+//import ServiceRequests from './pages/management/ServiceRequests';
+import EmployeeManagementPage from './pages/management/EmployeeManagementPage'; 
 
 
 import './styles/App.css'; // Import the CSS file
