@@ -1,48 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import ProviderAdminNavbar from '../../components/ProviderAdminNavbar';
+import React, { useState, useEffect } from 'react';
+import DataTable from 'react-data-table-component';
+import axios from 'axios';
+import ProviderAdminNavbar from '../../components/ProviderAdminNavbar'; // Import ProviderAdminNavbar
 import Footer from '../../components/Footer';
+import { Modal, Button } from 'react-bootstrap';
 import '../../styles/MasterAgreementPage.css';
 
 const MasterAgreementPage = () => {
-  const [masterAgreements, setMasterAgreements] = useState([]);
-  const [error, setError] = useState(null);
+  const [agreements, setAgreements] = useState([]);
+  const [selectedAgreement, setSelectedAgreement] = useState(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   useEffect(() => {
-    const fetchMasterAgreements = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/master-agreements'); // Mock server API
-        if (!response.ok) throw new Error('Failed to fetch Master Agreements');
-        const data = await response.json();
-        setMasterAgreements(data);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
     fetchMasterAgreements();
   }, []);
 
+  const fetchMasterAgreements = async () => {
+    try {
+      const response = await axios.get('http://localhost:5001/api/master-agreements');
+      setAgreements(response.data);
+    } catch (error) {
+      console.error('Error fetching master agreements:', error);
+    }
+  };
+
+  const handleShowDetails = (agreement) => {
+    setSelectedAgreement(agreement);
+    setShowDetailsModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowDetailsModal(false);
+    setSelectedAgreement(null);
+  };
+
+  const columns = [
+    { name: 'ID', selector: (row) => row.masterAgreementID, sortable: true },
+    { name: 'Name', selector: (row) => row.name, sortable: true },
+    { name: 'Provider', selector: (row) => row.provider.providerName, sortable: true },
+    { name: 'Domain', selector: (row) => row.domain, sortable: true },
+    { name: 'Status', selector: (row) => row.status, sortable: true },
+    {
+      name: 'Actions',
+      cell: (row) => (
+        <Button variant="info" onClick={() => handleShowDetails(row)}>
+          Details
+        </Button>
+      ),
+    },
+  ];
+
   return (
     <>
-      <ProviderAdminNavbar />
+      <ProviderAdminNavbar /> {/* Use ProviderAdminNavbar */}
       <div className="master-agreement-container">
         <h1>Master Agreements</h1>
-        {error && <p className="error-message">{error}</p>}
-        <div className="agreements-list">
-          {masterAgreements.length > 0 ? (
-            masterAgreements.map((agreement) => (
-              <div key={agreement.id} className="agreement-card">
-                <h2>{agreement.title}</h2>
-                <p>{agreement.description}</p>
-                <p>
-                  <strong>Validity:</strong> {agreement.validity}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p>No agreements available.</p>
-          )}
+        <div className="table-container">
+          <DataTable columns={columns} data={agreements} pagination highlightOnHover />
         </div>
+
+        {/* Details Modal */}
+        {selectedAgreement && (
+          <Modal show={showDetailsModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Master Agreement Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p><strong>ID:</strong> {selectedAgreement.masterAgreementID}</p>
+              <p><strong>Name:</strong> {selectedAgreement.name}</p>
+              <p><strong>Provider:</strong> {selectedAgreement.provider.providerName}</p>
+              <p><strong>Valid From:</strong> {selectedAgreement.validFrom}</p>
+              <p><strong>Valid Until:</strong> {selectedAgreement.validUntil}</p>
+              <p><strong>Domain:</strong> {selectedAgreement.domain}</p>
+              <p><strong>Roles:</strong> {selectedAgreement.roles.join(', ')}</p>
+              <p><strong>Experience Level:</strong> {selectedAgreement.experienceLevel}</p>
+              <p><strong>Man-Days:</strong> {selectedAgreement.manDays}</p>
+              <p><strong>Daily Rate:</strong> {selectedAgreement.dailyRate}</p>
+              <p><strong>Total Budget:</strong> {selectedAgreement.totalBudget}</p>
+              <p><strong>Status:</strong> {selectedAgreement.status}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )}
       </div>
       <Footer />
     </>

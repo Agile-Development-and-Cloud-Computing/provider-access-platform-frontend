@@ -28,7 +28,8 @@ import MasterAgreementPage from './pages/admin/MasterAgreementPage';
 // User Pages
 //import ViewOffers from './pages/user/ViewOffers';
 //import ServiceRequests from './pages/user/ServiceRequests';
-//import EmployeeManagement from './pages/user/EmployeeManagement';
+import EmployeeManagementPage from './pages/user/EmployeeManagementPage'; 
+
 
 import './styles/App.css'; // Import the CSS file
 
@@ -51,9 +52,11 @@ function App() {
           {/* Dashboards */}
           <Route path="/dashboard/admin" element={<ProviderAdminDashboard />} />
           <Route path="/dashboard/user" element={<UserDashboard />} />
-
-          {/* Master-agreement Routes */}
           <Route path="/admin/master-agreements" element={<MasterAgreementPage />} />
+
+          {/* Admin Routes */}
+          <Route path="/employee-management" element={<EmployeeManagementPage />} />
+          <Route path="/master-agreements" element={<MasterAgreementPage />} />
 
           {/* 404 Page (Catch-All Route) */}
           <Route path="*" element={<NotFoundPage />} />

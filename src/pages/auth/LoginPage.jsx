@@ -24,7 +24,7 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', formData);
+      const response = await axios.post('http://localhost:5001/api/login', formData);
       // const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
       console.log('Login successful:', response.data);
 

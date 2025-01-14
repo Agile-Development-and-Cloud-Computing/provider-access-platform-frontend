@@ -43,6 +43,9 @@ const ProviderAdminNavbar = () => {
               <a className="nav-link" href="/dashboard/admin">Dashboard</a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/admin/master-agreements">Master Agreements</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/manage-providers">Manage Providers</a>
             </li>
             <li className="nav-item">
