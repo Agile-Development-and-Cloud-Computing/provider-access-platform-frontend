@@ -15,86 +15,52 @@ const Dashboard = () => {
   const [formError, setFormError] = useState('');
 
 
-  
-// Mapping function
-const mapApiResponseToDesiredFormat = (apiResponse) => {
-  console.log("API Response -->", apiResponse);  // Log the raw API response to check structure
-  
-  // Adjust the mapping based on the provided format:
-  return apiResponse.map((agreement) => ({
-    masterAgreementTypeId: agreement.agreementId,  // Mapping directly from the response
-    masterAgreementTypeName: agreement.name,       // Mapping directly from the response
-    validFrom: agreement.validFrom.split('T')[0],   // Date-only format for validFrom
-    validUntil: agreement.validUntil.split('T')[0], // Date-only format for validUntil
-    status: agreement.status,
-    createdAt: agreement.createdAt.split('T')[0],   // Date-only format for createdAt
-    domains: agreement.agreementDetails.map((detail) => ({
-      domainId: detail.domainId,
-      domainName: detail.domainName,
-      roleOffer: detail.roleDetails.map((role) => ({
-        roleName: role.role,
-        experienceLevel: role.level,
-        technologiesCatalog: role.technologyLevel,
-        quotePrice: parseFloat(role.price),
-    
-      })),
-    })),
-  }));
-};
-
 
   const fetchData = async (endpoint) => {
     setLoading(true);
     setError(null);
-
-    try {
-      const response = await axios.get(endpoint);
-  
-      console.log("API Response from Fetch Data Function"+response.data);
-      // Check if response.data contains "agreements"
-      /*
-      if (Array.isArray(response.data)) {
-        setData(response.data); // Set data directly to the array of agreements
-      }
-      */
-      if (selectedSection === 'masterAgreement') {
-        const transformedData = mapApiResponseToDesiredFormat(response.data);
-        setData(transformedData);
-
-
-        // After mapping the data, call the POST API to insert the data into your tables
-        insertMappedData(transformedData);
-
-      } else {
-        setError('Data format is incorrect. Expected an array.');
-      }
-    } catch (err) {
-      setError('Failed to fetch data');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const insertMappedData = async (mappedData) => {
 	try {
-	  console.log(mappedData);
-	  // Send the mapped data to your POST API
-	  // If the backend expects a single agreement, we send each one separately
-	  for (const agreement of mappedData) {
-		const response = await axios.post('http://localhost:8080/api/provider/create-offer', agreement);
-		console.log("Insert API Response: ", response.data);
+		const response = await axios.get(endpoint);
+		console.log("API Response from Fetch Data Function:", response.data);
   
-		if (response.data.success) {
-		  alert('Data successfully inserted into your table!');
+		// Process response for masterAgreement section
+		if (selectedSection === "masterAgreement") {
+		  if (response.data && response.data.data && Array.isArray(response.data.data)) {
+			// Iterate and map the data to the desired format
+			const transformedData = response.data.data.map((agreement) => ({
+			  masterAgreementTypeId: agreement.masterAgreementTypeId,
+			  masterAgreementTypeName: agreement.masterAgreementTypeName,
+			  validFrom: agreement.validFrom,
+			  validUntil: agreement.validUntil,
+			  status: agreement.status,
+			  domains: agreement.domains.map((domain) => ({
+				domainId: domain.domainId,
+				domainName: domain.domainName,
+				roleOffer: domain.roleOffer.map((role) => ({
+					roleId:role.roleId,
+				  roleName: role.roleName,
+				  experienceLevel: role.experienceLevel,
+				  technologiesCatalog: role.technologiesCatalog,
+				  quotePrice: role.quotePrice,
+				})),
+			  })),
+			}));
+  
+			setData(transformedData);
+		  } else {
+			setError("Data format is incorrect. Expected a valid 'data' array.");
+		  }
 		} else {
-		  alert('Failed to insert data: ' + response.data.message);
+		  setError("Selected section is not supported.");
 		}
+	  } catch (err) {
+		console.error("Error fetching data:", err);
+		setError("Failed to fetch data.");
+	  } finally {
+		setLoading(false);
 	  }
-	} catch (err) {
-	  console.error('Error while inserting data:', err);
-	  alert('An error occurred while inserting data.');
-	}
   };
+
 
   useEffect(() => {
     if (selectedSection === 'userManagement') {
@@ -102,7 +68,7 @@ const mapApiResponseToDesiredFormat = (apiResponse) => {
     } else if (selectedSection === 'serviceAgreements') {
       fetchData('https://api.example.com/service-agreements');
     } else if (selectedSection === 'masterAgreement') {
-      fetchData('https://agiledev-contractandprovidermana-production.up.railway.app/master-agreements/all-open-agreements');
+      fetchData('http://localhost:8080/api/provider/master-agreements');
     }
   }, [selectedSection]);
 
@@ -141,8 +107,10 @@ const mapApiResponseToDesiredFormat = (apiResponse) => {
       // API call to submit bid
       const response = await axios.post('http://localhost:8080/api/provider/bid', {
         domainId :bidForm.domain.domainId,
-        domainName: bidForm.domain.domainName,  
-        roleName: bidForm.role.roleName,
+        domainName: bidForm.domain.domainName, 
+		roleId : bidForm.role.roleId,
+        role: bidForm.role.roleName,
+		level:bidForm.role.experienceLevel,
         masterAgreementTypeId: bidForm.agreement.masterAgreementTypeId,
         masterAgreementTypeName: bidForm.agreement.masterAgreementTypeName,
         provider: providerName,
@@ -173,48 +141,52 @@ const mapApiResponseToDesiredFormat = (apiResponse) => {
     if (error) return <p style={{ color: 'red' }}>{error}</p>;
     if (!data ) return <p>Select a section to view its contents.</p>;   
 
-    return (
-      <div className="data-container">
-        {data.map((agreement, index) => (
-          <div key={index} className="data-summary-box">
-            <h2 className="agreement-heading">{agreement.masterAgreementTypeName}</h2>
-            <p className="valid-until"><strong>Valid Until:</strong> {agreement.validUntil}</p>
-            <button onClick={() => toggleDetails(index)} className="toggle-details-button">
-              {expanded[index] ? 'Hide Details' : 'Show Details'}
-            </button>
-
-            {expanded[index] && (
-              <div className="data-details">
-                {agreement.domains.map((domain, domainIndex) => (
-                  <div key={domainIndex} className="domain-section">
-                    <h3 className="domain-heading">{domain.domainName} Opportunities</h3>
-                    <div className="roles-container">
-                      {domain.roleOffer.map((role, roleIndex) => (
-                        <div key={roleIndex} className="role-card">
-                          <h4 className="role-name">{role.roleName}</h4>
-                          <p><strong>Experience Level:</strong> {role.experienceLevel}</p>
-                          <p><strong>Technologies:</strong> {role.technologiesCatalog}</p>
-                          <p><strong>Quote Price:</strong> ${role.quotePrice}</p>
-                          <button 
-                            className="bid-button"
-                            onClick={() => handleBidClick(role, domain, agreement)}
-                          >
-                            Place Your Bid
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    );
     
-
-};
+    return (
+		<div className="data-container">
+		  {loading && <p>Loading...</p>}
+		  {error && <p style={{ color: 'red' }}>{error}</p>}
+		  
+		  {data.map((agreement, index) => (
+			<div key={index} className="data-summary-box">
+			  <h2 className="agreement-heading">{agreement.masterAgreementTypeName}</h2>
+			  <p className="valid-until">
+				<strong>Valid Until:</strong> {agreement.validUntil}
+			  </p>
+			  <button onClick={() => toggleDetails(index)} className="toggle-details-button">
+				{expanded[index] ? 'Hide Details' : 'Show Details'}
+			  </button>
+	
+			  {expanded[index] && (
+				<div className="data-details">
+				  {agreement.domains.map((domain, domainIndex) => (
+					<div key={domainIndex} className="domain-section">
+					  <h3 className="domain-heading">{domain.domainName} Opportunities</h3>
+					  <div className="roles-container">
+						{domain.roleOffer.map((role, roleIndex) => (
+						  <div key={roleIndex} className="role-card">
+							<h4 className="role-name">{role.roleName} (Role ID: {role.roleId})</h4>
+							<p><strong>Experience Level:</strong> {role.experienceLevel}</p>
+							<p><strong>Technologies:</strong> {role.technologiesCatalog}</p>
+							<p><strong>Quote Price:</strong> ${role.quotePrice}</p>
+							<button 
+							  className="bid-button"
+							  onClick={() => handleBidClick(role, domain, agreement)}
+							>
+							  Place Your Bid
+							</button>
+						  </div>
+						))}
+					  </div>
+					</div>
+				  ))}
+				</div>
+			  )}
+			</div>
+		  ))}
+		</div>
+	  );
+	};
 
   return (
     <div className="dashboard-wrapper">
