@@ -17,10 +17,6 @@ const ProviderAdminDashboard = () => {
     window.location.href = '/admin/user-management'; // Ensure the route matches your UserManagementPage route
   };
 
-  const navigateToPerformanceMetrics = () => {
-    window.location.href = '/admin/performance-metrics'; // Ensure the route matches your PerformanceMetricsPage route
-  };
-
   return (
     <>
       <AdminDashboardNavbar />
@@ -62,13 +58,6 @@ const ProviderAdminDashboard = () => {
             <p>Create, edit, and delete up to 2 user accounts for your provider.</p>
             <button onClick={navigateToUserManagement}>
               Manage Users
-            </button>
-          </div>
-          <div className="dashboard-card">
-            <h2>Performance Metrics</h2>
-            <p>Analyze activity metrics such as employees, offers, and requests.</p>
-            <button onClick={navigateToPerformanceMetrics}>
-              View Metrics
             </button>
           </div>
         </div>
