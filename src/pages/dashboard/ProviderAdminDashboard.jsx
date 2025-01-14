@@ -5,8 +5,20 @@ import '../../styles/ProviderAdminDashboard.css'; // Import the custom CSS file 
 
 const ProviderAdminDashboard = () => {
   const navigateToMasterAgreements = () => {
-    // Navigate to the Master Agreement Page
-    window.location.href = '/admin/master-agreements';
+    // Navigate to the Master Agreements Page
+    window.location.href = '/admin/master-agreements'; // Ensure the route matches your MasterAgreementPage route
+  };
+
+  const navigateToManageProviders = () => {
+    window.location.href = '/admin/manage-providers'; // Ensure the route matches your ManageProvidersPage route
+  };
+
+  const navigateToUserManagement = () => {
+    window.location.href = '/admin/user-management'; // Ensure the route matches your UserManagementPage route
+  };
+
+  const navigateToPerformanceMetrics = () => {
+    window.location.href = '/admin/performance-metrics'; // Ensure the route matches your PerformanceMetricsPage route
   };
 
   return (
@@ -33,7 +45,7 @@ const ProviderAdminDashboard = () => {
 
         {/* Actionable Links */}
         <div className="dashboard-grid">
-        <div className="dashboard-card">
+          <div className="dashboard-card">
             <h2>Master Agreements</h2>
             <p>Fetch and view master agreements saved in the database.</p>
             <button onClick={navigateToMasterAgreements}>View Agreements</button>
@@ -41,21 +53,21 @@ const ProviderAdminDashboard = () => {
           <div className="dashboard-card">
             <h2>Manage Providers</h2>
             <p>Edit provider credentials such as name, address, and validity period.</p>
-            <button onClick={() => window.location.href = '/manage-providers'}>
+            <button onClick={navigateToManageProviders}>
               Manage Providers
             </button>
           </div>
           <div className="dashboard-card">
             <h2>User Management</h2>
             <p>Create, edit, and delete up to 2 user accounts for your provider.</p>
-            <button onClick={() => window.location.href = '/user-management'}>
+            <button onClick={navigateToUserManagement}>
               Manage Users
             </button>
           </div>
           <div className="dashboard-card">
             <h2>Performance Metrics</h2>
             <p>Analyze activity metrics such as employees, offers, and requests.</p>
-            <button onClick={() => window.location.href = '/performance-metrics'}>
+            <button onClick={navigateToPerformanceMetrics}>
               View Metrics
             </button>
           </div>
