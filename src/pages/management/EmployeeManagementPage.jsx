@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import Navbar from '../../components/UserDashboardNavbar';
+import UserDashboardNavbar from '../../components/UserDashboardNavbar';
 import Footer from '../../components/Footer';
 import employeeService from '../../services/employeeService';
 
@@ -25,7 +25,7 @@ const EmployeeManagementPage = () => {
 
   return (
     <div>
-      <Navbar />
+      <UserDashboardNavbar />
       <div className="employee-management-container">
         <h1>Employee Management</h1>
         <DataTable columns={columns} data={employees} pagination />

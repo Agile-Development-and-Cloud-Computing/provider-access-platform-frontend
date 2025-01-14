@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProviderAdminNavbar from '../../components/ProviderAdminNavbar';
+import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
 import Footer from '../../components/Footer';
 import '../../styles/UserManagement.css'; // Add styles for this component
 
@@ -73,7 +73,7 @@ const UserManagement = () => {
 
   return (
     <>
-      <ProviderAdminNavbar />
+      <AdminDashboardNavbar />
       <div className="user-management-container">
         <h1>User Management</h1>
         {error && <p className="error-message">{error}</p>}

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import UserDashboardNavbar from '../../components/UserDashboardNavbar';
+import Footer from '../../components/Footer';
 import requestService from '../../services/requestService';
+import '../../styles/ServiceRequestsPage.css';
 
 const ServiceRequestsPage = () => {
   const [requests, setRequests] = useState([]);
@@ -20,15 +23,21 @@ const ServiceRequestsPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Service Requests</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul>
-        {requests.map((request) => (
-          <li key={request.id}>{request.title}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <UserDashboardNavbar />
+      <div className="service-requests-container">
+        <h1>Service Requests</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <ul className="service-requests-list">
+          {requests.map((request) => (
+            <li key={request.id} className="service-request-item">
+              {request.title}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -1,7 +1,9 @@
 // src/pages/management/ViewOffersPage.jsx
-
 import React, { useState, useEffect } from 'react';
+import UserDashboardNavbar from '../../components/UserDashboardNavbar';
+import Footer from '../../components/Footer';
 import offerService from '../../services/offerService';
+import '../../styles/ViewOffersPage.css';
 
 const ViewOffersPage = () => {
   const [offers, setOffers] = useState([]);
@@ -15,6 +17,7 @@ const ViewOffersPage = () => {
         setOffers(data);
       } catch (err) {
         setError('Failed to fetch offers.');
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -23,23 +26,27 @@ const ViewOffersPage = () => {
     fetchOffers();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+  if (loading) return <p className="loading">Loading...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
-    <div>
-      <h1>View Offers</h1>
-      <ul>
-        {offers.map((offer) => (
-          <li key={offer.id}>
-            <h3>{offer.title}</h3>
-            <p>{offer.description}</p>
-            <p><strong>Max Bid:</strong> ${offer.maxBid}</p>
-            <p><strong>Deadline:</strong> {offer.deadline}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <UserDashboardNavbar />
+      <div className="view-offers-container">
+        <h1>View Offers</h1>
+        <ul className="offers-list">
+          {offers.map((offer) => (
+            <li key={offer.id} className="offer-item">
+              <h3>{offer.title}</h3>
+              <p>{offer.description}</p>
+              <p><strong>Max Bid:</strong> ${offer.maxBid}</p>
+              <p><strong>Deadline:</strong> {offer.deadline}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Footer />
+    </>
   );
 };
 

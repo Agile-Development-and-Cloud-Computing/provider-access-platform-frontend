@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import ProviderAdminNavbar from '../../components/AdminDashboardNavbar'; // Import ProviderAdminNavbar
+import AdminDashboardNavbar from '../../components/AdminDashboardNavbar'; // Import ProviderAdminNavbar
 import Footer from '../../components/Footer';
 import { Modal, Button } from 'react-bootstrap';
 import '../../styles/MasterAgreementPage.css';
@@ -52,7 +52,7 @@ const MasterAgreementPage = () => {
 
   return (
     <>
-      <ProviderAdminNavbar /> {/* Use ProviderAdminNavbar */}
+      <AdminDashboardNavbar /> {/* Use AdminDashboardNavbar */}
       <div className="master-agreement-container">
         <h1>Master Agreements</h1>
         <div className="table-container">
