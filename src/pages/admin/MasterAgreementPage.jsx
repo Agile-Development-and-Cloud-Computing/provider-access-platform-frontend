@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import axios from 'axios';
 import ProviderAdminNavbar from '../../components/ProviderAdminNavbar'; // Import ProviderAdminNavbar
 import Footer from '../../components/Footer';
 import { Modal, Button } from 'react-bootstrap';
 import '../../styles/MasterAgreementPage.css';
+import masterAgreementService from '../../services/masterAgreementService'; // Import centralized service
 
 const MasterAgreementPage = () => {
   const [agreements, setAgreements] = useState([]);
@@ -17,7 +17,7 @@ const MasterAgreementPage = () => {
 
   const fetchMasterAgreements = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/master-agreements');
+      const response = await masterAgreementService.getMasterAgreements(); // Fetch agreements via service
       setAgreements(response.data);
     } catch (error) {
       console.error('Error fetching master agreements:', error);
