@@ -3,15 +3,25 @@ import DataTable from 'react-data-table-component';
 import axios from 'axios';
 import Navbar from '../../components/UserNavbar';
 import Footer from '../../components/Footer';
-import { Modal, Button } from 'react-bootstrap';
-import '../../styles/EmployeeManagementPage.css'; // Import custom styles
+import { Modal, Button, Form } from 'react-bootstrap';
+import '../../styles/EmployeeManagementPage.css';
 
 const EmployeeManagementPage = () => {
   const [employees, setEmployees] = useState([]);
-  const [selectedEmployee, setSelectedEmployee] = useState(null); // Selected employee for details modal
-  const [showModal, setShowModal] = useState(false); // Modal state
+  const [selectedEmployee, setSelectedEmployee] = useState(null); // For "Details"
+  const [showDetailsModal, setShowDetailsModal] = useState(false); // Details modal state
+  const [showFormModal, setShowFormModal] = useState(false); // Add/Edit modal state
+  const [formData, setFormData] = useState({
+    employeeName: '',
+    role: '',
+    experienceLevel: '',
+    skills: '',
+    providerId: '',
+    serviceRequestId: '',
+    resumeUrl: '',
+  }); // Form data
+  const [isEditing, setIsEditing] = useState(false); // Track editing state
 
-  // Fetch employees from the backend
   useEffect(() => {
     fetchEmployees();
   }, []);
@@ -25,20 +35,78 @@ const EmployeeManagementPage = () => {
     }
   };
 
-  // Open modal to show employee details
   const handleShowDetails = (employeeId) => {
     const employee = employees.find((e) => e.employeeId === employeeId);
     setSelectedEmployee(employee);
-    setShowModal(true);
+    setShowDetailsModal(true);
   };
 
-  // Close modal
+  const handleShowForm = (employee = null) => {
+    if (employee) {
+      setIsEditing(true);
+      setFormData({
+        ...employee,
+        skills: employee.skills.join(', '), // Convert array to string
+      });
+    } else {
+      setIsEditing(false);
+      setFormData({
+        employeeName: '',
+        role: '',
+        experienceLevel: '',
+        skills: '',
+        providerId: '',
+        serviceRequestId: '',
+        resumeUrl: '',
+      });
+    }
+    setShowFormModal(true);
+  };
+
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowDetailsModal(false);
+    setShowFormModal(false);
     setSelectedEmployee(null);
+    setIsEditing(false);
   };
 
-  // Define table columns
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (isEditing) {
+        await axios.put(`http://localhost:5001/api/employees/${formData.employeeId}`, {
+          ...formData,
+          skills: formData.skills, // Already in string format
+        });
+      } else {
+        await axios.post('http://localhost:5001/api/employees', {
+          ...formData,
+          skills: formData.skills, // Already in string format
+        });
+      }
+      fetchEmployees(); // Refresh data
+      handleCloseModal(); // Close modal
+    } catch (error) {
+      console.error('Error saving employee:', error);
+    }
+  };
+
+  const handleDelete = async (employeeId) => {
+    if (window.confirm('Are you sure you want to delete this employee?')) {
+      try {
+        await axios.delete(`http://localhost:5001/api/employees/${employeeId}`);
+        fetchEmployees(); // Refresh data
+      } catch (error) {
+        console.error('Error deleting employee:', error);
+      }
+    }
+  };
+
   const columns = [
     { name: 'ID', selector: (row) => row.employeeId, sortable: true },
     { name: 'Name', selector: (row) => row.employeeName, sortable: true },
@@ -47,9 +115,25 @@ const EmployeeManagementPage = () => {
     {
       name: 'Actions',
       cell: (row) => (
-        <Button variant="info" onClick={() => handleShowDetails(row.employeeId)}>
-          Details
-        </Button>
+        <>
+          <Button variant="info" onClick={() => handleShowDetails(row.employeeId)} className="action-button">
+            Details
+          </Button>
+          <Button
+            variant="warning"
+            onClick={() => handleShowForm(row)}
+            className="action-button"
+          >
+            Edit
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => handleDelete(row.employeeId)}
+            className="action-button"
+          >
+            Delete
+          </Button>
+        </>
       ),
     },
   ];
@@ -59,11 +143,20 @@ const EmployeeManagementPage = () => {
       <Navbar />
       <div className="employee-management-container">
         <h1>Employee Management</h1>
-        <DataTable columns={columns} data={employees} pagination />
+        <Button variant="primary" onClick={() => handleShowForm()}>
+          Add Employee
+        </Button>
+        <div className="table-container">
+          <DataTable
+            columns={columns}
+            data={employees}
+            pagination
+            highlightOnHover
+          />
+        </div>
 
-        {/* Employee Details Modal */}
         {selectedEmployee && (
-          <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal show={showDetailsModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
               <Modal.Title>Employee Details</Modal.Title>
             </Modal.Header>
@@ -89,6 +182,47 @@ const EmployeeManagementPage = () => {
             </Modal.Footer>
           </Modal>
         )}
+
+        <Modal show={showFormModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>{isEditing ? 'Edit Employee' : 'Add Employee'}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" name="employeeName" value={formData.employeeName} onChange={handleInputChange} required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Role</Form.Label>
+                <Form.Control type="text" name="role" value={formData.role} onChange={handleInputChange} required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Experience Level</Form.Label>
+                <Form.Control type="text" name="experienceLevel" value={formData.experienceLevel} onChange={handleInputChange} required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Skills</Form.Label>
+                <Form.Control type="text" name="skills" value={formData.skills} onChange={handleInputChange} placeholder="Comma-separated (e.g., React, JavaScript)" />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Provider ID</Form.Label>
+                <Form.Control type="text" name="providerId" value={formData.providerId} onChange={handleInputChange} required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Service Request ID</Form.Label>
+                <Form.Control type="text" name="serviceRequestId" value={formData.serviceRequestId} onChange={handleInputChange} required />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Resume URL</Form.Label>
+                <Form.Control type="text" name="resumeUrl" value={formData.resumeUrl} onChange={handleInputChange} />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                {isEditing ? 'Update Employee' : 'Add Employee'}
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
       </div>
       <Footer />
     </>

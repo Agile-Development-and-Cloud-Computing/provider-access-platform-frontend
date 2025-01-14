@@ -1,42 +1,101 @@
+/* Container for employee management */
 .employee-management-container {
     padding: 20px;
   }
   
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
   }
   
-  form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders to reduce gaps */
+    table-layout: fixed; /* Fix column widths */
   }
   
-  form button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  /* Header cells */
+  thead th {
+    text-align: left;
+    padding: 6px 10px; /* Reduce padding for compact spacing */
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    font-size: 14px; /* Adjust font size */
   }
   
-  form button:hover {
-    background-color: #0056b3;
+  /* Body cells */
+  tbody td {
+    padding: 6px 10px; /* Reduce padding for compact spacing */
+    border: 1px solid #ddd;
+    font-size: 13px; /* Smaller font size */
+    white-space: nowrap; /* Prevent wrapping of text */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Handle long text with ellipsis */
   }
   
-  button {
-    padding: 5px 10px;
-    margin: 2px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  /* Define specific column widths */
+  thead th:first-child,
+  tbody td:first-child {
+    width: 5%; /* ID column */
   }
   
-  button:hover {
-    opacity: 0.8;
+  thead th:nth-child(2),
+  tbody td:nth-child(2) {
+    width: 20%; /* Name column */
+  }
+  
+  thead th:nth-child(3),
+  tbody td:nth-child(3) {
+    width: 20%; /* Role column */
+  }
+  
+  thead th:nth-child(4),
+  tbody td:nth-child(4) {
+    width: 15%; /* Experience Level column */
+  }
+  
+  thead th:last-child,
+  tbody td:last-child {
+    width: 20%; /* Actions column */
+  }
+  
+  /* Button styles for the Actions column */
+  .table-actions button {
+    padding: 4px 8px; /* Compact button size */
+    font-size: 12px; /* Smaller button font size */
+    margin: 2px; /* Minimal spacing between buttons */
+  }
+  
+  /* Responsive design: Small screens */
+  @media (max-width: 768px) {
+    table {
+      font-size: 12px; /* Reduce overall font size */
+    }
+  
+    thead th,
+    tbody td {
+      padding: 4px 6px; /* Reduce padding further */
+    }
+  
+    .table-actions button {
+      padding: 2px 6px; /* Compact button size */
+      font-size: 10px; /* Fit action buttons on small screens */
+    }
+  }
+  
+  /* Responsive design: Very small screens */
+  @media (max-width: 480px) {
+    table {
+      font-size: 11px; /* Smallest font size for very narrow screens */
+    }
+  
+    thead th,
+    tbody td {
+      padding: 3px 5px; /* Minimal padding for tiny screens */
+    }
+  
+    .table-actions button {
+      padding: 2px 4px;
+      font-size: 10px; /* Further reduce button size */
+    }
   }
   
