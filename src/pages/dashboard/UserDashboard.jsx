@@ -5,16 +5,17 @@ import "../../styles/UserDashboard.css"; // Import the custom CSS file for styli
 
 const UserDashboard = () => {
   const navigateToViewOffers = () => {
-    window.location.href = "/view-offers"; // Ensure the route matches your ViewOffersPage route
+    window.location.href = "/user/view-offers"; // Ensure the route matches your ViewOffersPage route
   };
-
+  
   const navigateToServiceRequests = () => {
-    window.location.href = "/service-requests"; // Ensure the route matches your ServiceRequestsPage route
+    window.location.href = "/user/service-requests"; // Ensure the route matches your ServiceRequestsPage route
+  };
+  
+  const navigateToEmployeeManagement = () => {
+    window.location.href = "/user/employee-management"; // Ensure the route matches your ViewOffersPage route
   };
 
-  const navigateToEmployeeManagement = () => {
-    window.location.href = "/employee-management"; // Ensure the route matches your EmployeeManagementPage route
-  };
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import ProviderAdminNavbar from '../../components/ProviderAdminNavbar'; // Import ProviderAdminNavbar
+import ProviderAdminNavbar from '../../components/AdminDashboardNavbar'; // Import ProviderAdminNavbar
 import Footer from '../../components/Footer';
 import { Modal, Button } from 'react-bootstrap';
 import '../../styles/MasterAgreementPage.css';

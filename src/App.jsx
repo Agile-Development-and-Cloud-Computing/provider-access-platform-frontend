@@ -20,16 +20,12 @@ import UserDashboard from './pages/dashboard/UserDashboard';
 
 // Admin Pages
 import MasterAgreementPage from './pages/management/MasterAgreementPage';
-//import ManageProviders from './pages/management/ManageProviders';
-//import UserManagement from './pages/management/UserManagement';
-//import PerformanceMetrics from './pages/management/PerformanceMetrics';
 
 
 // User Pages
-//import ViewOffers from './pages/management/ViewOffers';
-//import ServiceRequests from './pages/management/ServiceRequests';
+import ViewOffersPage from "./pages/management/ViewOffersPage";
+import ServiceRequestsPage from "./pages/management/ServiceRequestsPage";
 import EmployeeManagementPage from './pages/management/EmployeeManagementPage'; 
-
 
 import './styles/App.css'; // Import the CSS file
 
@@ -52,11 +48,14 @@ function App() {
           {/* Dashboards */}
           <Route path="/dashboard/admin" element={<ProviderAdminDashboard />} />
           <Route path="/dashboard/user" element={<UserDashboard />} />
-          <Route path="/admin/master-agreements" element={<MasterAgreementPage />} />
 
           {/* Admin Routes */}
-          <Route path="/employee-management" element={<EmployeeManagementPage />} />
-          <Route path="/master-agreements" element={<MasterAgreementPage />} />
+          <Route path="/admin/master-agreements" element={<MasterAgreementPage />} />
+
+           {/* User Routes */}
+          <Route path="/user/view-offers" element={<ViewOffersPage />} />
+          <Route path="/user/service-requests" element={<ServiceRequestsPage />} />
+          <Route path="/user/employee-management" element={<EmployeeManagementPage />} />
 
           {/* 404 Page (Catch-All Route) */}
           <Route path="*" element={<NotFoundPage />} />
@@ -67,4 +66,5 @@ function App() {
 }
 
 export default App;
+
 
