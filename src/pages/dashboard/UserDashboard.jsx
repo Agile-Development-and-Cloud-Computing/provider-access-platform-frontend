@@ -1,77 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import UserNavbar from '../../components/UserNavbar';
-import Footer from '../../components/Footer';
-import EmployeeManagementPage from '../management/EmployeeManagementPage'; // Import Employee Management
-import '../../styles/UserDashboard.css';
+import React from "react";
+import UserDashboardNavbar from "../../components/UserDashboardNavbar";
+import Footer from "../../components/Footer";
+import "../../styles/UserDashboard.css"; // Import the custom CSS file for styling
 
 const UserDashboard = () => {
-  const [employeeCount, setEmployeeCount] = useState(0);
-  const [error, setError] = useState(null);
-  const [showEmployeeManagement, setShowEmployeeManagement] = useState(false); // Toggle state
+  const navigateToViewOffers = () => {
+    window.location.href = "/view-offers"; // Ensure the route matches your ViewOffersPage route
+  };
 
-  useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const response = await axios.get('http://localhost:5001/api/employees');
-        setEmployeeCount(response.data.length);
-      } catch (err) {
-        console.error('Error fetching employees:', err);
-        setError('Failed to load employee data.');
-      }
-    };
+  const navigateToServiceRequests = () => {
+    window.location.href = "/service-requests"; // Ensure the route matches your ServiceRequestsPage route
+  };
 
-    fetchEmployees();
-  }, []);
-
-  if (showEmployeeManagement) {
-    return <EmployeeManagementPage />; // Render EmployeeManagementPage if toggled
-  }
+  const navigateToEmployeeManagement = () => {
+    window.location.href = "/employee-management"; // Ensure the route matches your EmployeeManagementPage route
+  };
 
   return (
     <>
-      <UserNavbar />
+      <UserDashboardNavbar />
       <div className="dashboard-container">
         <h1 className="dashboard-title">User Dashboard</h1>
 
+        {/* KPI Section */}
         <div className="kpi-container">
           <div className="kpi-card">
             <h2>Active Service Requests</h2>
-            <p>5</p>
+            <p>5</p> {/* Replace with dynamic data if available */}
           </div>
           <div className="kpi-card">
             <h2>Submitted Bids</h2>
-            <p>8</p>
+            <p>8</p> {/* Replace with dynamic data if available */}
           </div>
           <div className="kpi-card">
             <h2>Employees Assigned</h2>
-            <p>{employeeCount}</p>
+            <p>3</p> {/* Replace with dynamic data if available */}
           </div>
         </div>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-
+        {/* Actionable Links */}
         <div className="dashboard-grid">
           <div className="dashboard-card">
             <h2>View Offers</h2>
             <p>Browse and bid on active offers for master agreements.</p>
-            <button onClick={() => window.location.href = '/view-offers'}>
-              View Offers
-            </button>
+            <button onClick={navigateToViewOffers}>View Offers</button>
           </div>
           <div className="dashboard-card">
             <h2>Service Requests</h2>
             <p>Track active and completed service requests. Assign employees to requests.</p>
-            <button onClick={() => window.location.href = '/service-requests'}>
-              View Service Requests
-            </button>
+            <button onClick={navigateToServiceRequests}>View Service Requests</button>
           </div>
           <div className="dashboard-card">
             <h2>Employee Management</h2>
             <p>Manage employee profiles and assign them to offers or service requests.</p>
-            <button onClick={() => setShowEmployeeManagement(true)}> {/* Toggle Employee Management */}
-              Manage Employees
-            </button>
+            <button onClick={navigateToEmployeeManagement}>Manage Employees</button>
           </div>
         </div>
       </div>

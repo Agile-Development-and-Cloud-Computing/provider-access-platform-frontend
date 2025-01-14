@@ -1,5 +1,5 @@
 import React from 'react';
-import ProviderAdminNavbar from '../../components/ProviderAdminNavbar';
+import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
 import Footer from '../../components/Footer';
 import '../../styles/ProviderAdminDashboard.css'; // Import the custom CSS file for styling
 
@@ -23,7 +23,7 @@ const ProviderAdminDashboard = () => {
 
   return (
     <>
-      <ProviderAdminNavbar />
+      <AdminDashboardNavbar />
       <div className="dashboard-container">
         <h1 className="dashboard-title">Provider Admin Dashboard</h1>
 
