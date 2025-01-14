@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import axios from 'axios';
+import authService from '../../pages/services/authService'; // Import centralized API service
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ identifier: '', password: '' }); // Unified field for email/username
@@ -24,8 +24,8 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/login', formData);
-      // const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
+      // Use authService for login
+      const response = await authService.login(formData);
       console.log('Login successful:', response.data);
 
       // Save the logged-in user's identifier to localStorage
@@ -56,9 +56,9 @@ const LoginPage = () => {
         <p>Access your provider account:</p>
         <form onSubmit={handleSubmit}>
           <label>
-            Username:
+            Username or Email:
             <input
-              type="text" // Accepts both email and username
+              type="text"
               name="identifier"
               value={formData.identifier}
               onChange={handleInputChange}
@@ -73,7 +73,7 @@ const LoginPage = () => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-               placeholder="Enter password"
+              placeholder="Enter password"
               required
             />
           </label>
