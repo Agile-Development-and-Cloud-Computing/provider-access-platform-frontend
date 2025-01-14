@@ -1,0 +1,32 @@
+.view-offers-container {
+    padding: 20px;
+  }
+  
+  .offers-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .offer-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .offer-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .offer-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .offer-item p {
+    margin: 5px 0;
+  }
+  
