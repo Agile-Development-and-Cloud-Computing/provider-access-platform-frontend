@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import authService from '../../pages/services/authService'; // Import centralized API service
+import authService from '../../services/authService'; // Import centralized API service
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ identifier: '', password: '' }); // Unified field for email/username
