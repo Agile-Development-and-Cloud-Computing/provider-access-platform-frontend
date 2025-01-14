@@ -38,13 +38,13 @@ const UserNavbar = () => {
               <a className="nav-link" href="/dashboard/user">Dashboard</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/view-offers">View Offers</a>
+              <a className="nav-link" href="/user/view-offers">View Offers</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/service-requests">Service Requests</a>
+              <a className="nav-link" href="/user/service-requests">Service Requests</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/employee-management">Manage Employees</a>
+              <a className="nav-link" href="/user/employee-management">Manage Employees</a>
             </li>
           </ul>
           <ul className="navbar-nav">

@@ -46,13 +46,10 @@ const ProviderAdminNavbar = () => {
               <a className="nav-link" href="/admin/master-agreements">Master Agreements</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/manage-providers">Manage Providers</a>
+              <a className="nav-link" href="/admin/manage-providers">Manage Providers</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/user-management">User Management</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/performance-metrics">Performance Metrics</a>
+              <a className="nav-link" href="/admin/user-management">User Management</a>
             </li>
           </ul>
           <ul className="navbar-nav">
