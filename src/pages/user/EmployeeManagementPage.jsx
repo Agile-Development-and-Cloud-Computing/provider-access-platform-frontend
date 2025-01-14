@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
-import axios from 'axios';
 import Navbar from '../../components/UserNavbar';
 import Footer from '../../components/Footer';
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../../styles/EmployeeManagementPage.css';
+import employeeService from '../../services/employeeService'; // Import the centralized service
 
 const EmployeeManagementPage = () => {
   const [employees, setEmployees] = useState([]);
@@ -28,7 +28,7 @@ const EmployeeManagementPage = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/employees');
+      const response = await employeeService.getEmployees(); // Fetch employees via service
       setEmployees(response.data);
     } catch (error) {
       console.error('Error fetching employees:', error);
@@ -79,12 +79,12 @@ const EmployeeManagementPage = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5001/api/employees/${formData.employeeId}`, {
+        await employeeService.updateEmployee(formData.employeeId, {
           ...formData,
           skills: formData.skills, // Already in string format
         });
       } else {
-        await axios.post('http://localhost:5001/api/employees', {
+        await employeeService.addEmployee({
           ...formData,
           skills: formData.skills, // Already in string format
         });
@@ -99,7 +99,7 @@ const EmployeeManagementPage = () => {
   const handleDelete = async (employeeId) => {
     if (window.confirm('Are you sure you want to delete this employee?')) {
       try {
-        await axios.delete(`http://localhost:5001/api/employees/${employeeId}`);
+        await employeeService.deleteEmployee(employeeId); // Delete via service
         fetchEmployees(); // Refresh data
       } catch (error) {
         console.error('Error deleting employee:', error);
