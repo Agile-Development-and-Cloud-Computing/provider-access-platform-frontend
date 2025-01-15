@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import masterAgreementService from '../../services/masterAgreementService';
 import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
 import Footer from '../../components/Footer';
 import '../../styles/MasterAgreementPage.css';
+import axios from 'axios';
 
 const MasterAgreementPage = () => {
   const [data, setData] = useState(null);
@@ -13,25 +13,43 @@ const MasterAgreementPage = () => {
   const [formData, setFormData] = useState({ providerName: '', bidPrice: '' });
   const [formError, setFormError] = useState('');
 
-  const fetchMasterAgreements = async () => {
+  const fetchData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const agreements = await masterAgreementService.getMasterAgreements();
-      if (Array.isArray(agreements.data)) {
-        setData(agreements.data);
+      const response = await axios.get('http://localhost:8080/api/provider/master-agreements');
+      if (response.data && Array.isArray(response.data.data)) {
+        const transformedData = response.data.data.map((agreement) => ({
+          masterAgreementTypeId: agreement.masterAgreementTypeId,
+          masterAgreementTypeName: agreement.masterAgreementTypeName,
+          validFrom: agreement.validFrom,
+          validUntil: agreement.validUntil,
+          status: agreement.status,
+          domains: agreement.domains.map((domain) => ({
+            domainId: domain.domainId,
+            domainName: domain.domainName,
+            roleOffer: domain.roleOffer.map((role) => ({
+              roleId: role.roleId,
+              roleName: role.roleName,
+              experienceLevel: role.experienceLevel,
+              technologiesCatalog: role.technologiesCatalog,
+              quotePrice: role.quotePrice,
+            })),
+          })),
+        }));
+        setData(transformedData);
       } else {
         setError('Invalid data format.');
       }
     } catch (err) {
-      setError('Failed to fetch agreements.');
+      setError('Failed to fetch data.');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchMasterAgreements();
+    fetchData();
   }, []);
 
   const toggleDetails = (index) => {
@@ -66,7 +84,7 @@ const MasterAgreementPage = () => {
     }
 
     try {
-      const bidData = {
+      const response = await axios.post('http://localhost:8080/api/provider/bid', {
         domainId: bidForm.domain.domainId,
         domainName: bidForm.domain.domainName,
         roleId: bidForm.role.roleId,
@@ -76,12 +94,10 @@ const MasterAgreementPage = () => {
         masterAgreementTypeName: bidForm.agreement.masterAgreementTypeName,
         provider: providerName,
         bidPrice: parseFloat(bidPrice),
-      };
+      });
 
-      const response = await masterAgreementService.placeBid(bidData);
-
-      if (!response.success) {
-        setFormError(response.message || 'Failed to place bid.');
+      if (response.data.success === false) {
+        setFormError(response.data.message || 'Failed to place bid. Please contact admin.');
         return;
       }
 
@@ -114,11 +130,9 @@ const MasterAgreementPage = () => {
                     <div key={roleIndex} className="role-card">
                       <h4 className="role-name">{role.roleName}</h4>
                       <p>Experience Level: {role.experienceLevel}</p>
+                      <p>Technologies: {role.technologiesCatalog}</p>
                       <p>Quote Price: ${role.quotePrice}</p>
-                      <button
-                        className="bid-button"
-                        onClick={() => handleBidClick(role, domain, agreement)}
-                      >
+                      <button className="bid-button" onClick={() => handleBidClick(role, domain, agreement)}>
                         Place Your Bid
                       </button>
                     </div>
@@ -136,7 +150,7 @@ const MasterAgreementPage = () => {
     <div className="master-agreement-wrapper">
       <AdminDashboardNavbar />
       <div className="master-agreement-container">
-        <h1>Master Agreements</h1>
+        <h1 className="agreement-heading">Master Agreements</h1>
         {renderContent()}
       </div>
       {bidForm.visible && (
@@ -150,6 +164,7 @@ const MasterAgreementPage = () => {
                 name="providerName"
                 value={formData.providerName}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -159,10 +174,13 @@ const MasterAgreementPage = () => {
                 name="bidPrice"
                 value={formData.bidPrice}
                 onChange={handleInputChange}
+                required
               />
             </div>
             {formError && <p className="form-error">{formError}</p>}
-            <button type="submit" className="submit-button">Submit</button>
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
             <button
               type="button"
               className="cancel-button"

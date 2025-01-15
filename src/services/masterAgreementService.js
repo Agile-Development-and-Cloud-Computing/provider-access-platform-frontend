@@ -1,14 +1,17 @@
-import apiClient from './apiClient'; // Shared Axios instance
+// src/services/masterAgreementService.js
+import apiClient from './apiClient';
 
-const getMasterAgreements = () => {
-  return apiClient.get('/provider/master-agreements');
+const getMasterAgreements = async () => {
+  const response = await apiClient.get('/provider/master-agreements');
+  return response.data;
 };
 
-const getMasterAgreementById = (id) => {
-  return apiClient.get(`/provider/master-agreements/${id}`);
+const placeBid = async (bidData) => {
+  const response = await apiClient.post('/provider/bid', bidData);
+  return response.data;
 };
 
 export default {
   getMasterAgreements,
-  getMasterAgreementById,
+  placeBid,
 };

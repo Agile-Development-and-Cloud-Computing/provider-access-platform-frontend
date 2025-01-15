@@ -1,7 +1,23 @@
+/* Main Wrapper for Flexbox Layout */
+.master-agreement-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
 .master-agreement-container {
+  flex: 1; /* Makes content area flexible to push the footer down */
   padding: 20px;
 }
 
+footer {
+  background-color: #f4f4f4;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+/* Table Styling */
 .table-container {
   overflow-x: auto;
   margin-top: 20px;
@@ -24,6 +40,7 @@ tbody td {
   border: 1px solid #ddd;
 }
 
+/* Data Container and Summary Boxes */
 .data-container {
   display: flex;
   flex-direction: column;
@@ -70,7 +87,7 @@ tbody td {
   border-radius: 3px;
 }
 
-
+/* Headings and Buttons */
 .agreement-heading {
   font-size: 24px;
   color: #333;
@@ -102,6 +119,7 @@ tbody td {
   background-color: #45a049;
 }
 
+/* Domain Section Styling */
 .domain-section {
   margin-top: 24px;
 }
@@ -119,6 +137,7 @@ tbody td {
   margin-top: 4px;
 }
 
+/* Roles and Cards */
 .roles-container {
   display: flex;
   flex-wrap: wrap;
@@ -162,7 +181,7 @@ tbody td {
   background-color: #0056b3;
 }
 
-
+/* Modal Styling */
 .bid-form-modal {
   position: fixed;
   top: 0;
@@ -199,7 +218,8 @@ tbody td {
   margin-bottom: 16px;
 }
 
-.submit-button, .cancel-button {
+.submit-button,
+.cancel-button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;

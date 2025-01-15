@@ -33,7 +33,7 @@ const LoginPage = () => {
 
       // Redirect based on user role
       const { userType } = response.data.data;
-      if (userType === 'ProviderAdmin') {
+      if (userType === 'Admin') {
         navigate('/dashboard/admin');
       } else if (userType === 'User') {
         navigate('/dashboard/user');
