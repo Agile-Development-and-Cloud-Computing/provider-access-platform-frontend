@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from '/pam_logo.png'; // Adjust the path to your logo
 
-const UserNavbar = () => {
+const ProviderAdminNavbar = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
@@ -11,9 +11,10 @@ const UserNavbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="/dashboard/user">
+        {/* Logo and Branding */}
+        <a className="navbar-brand d-flex align-items-center" href="/dashboard/admin">
           <img
             src={logo}
             alt="Logo"
@@ -21,30 +22,34 @@ const UserNavbar = () => {
           />
           Access Provider Platform
         </a>
+
+        {/* Hamburger Button for Mobile View */}
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#userNavbarNav"
-          aria-controls="userNavbarNav"
+          data-bs-target="#adminNavbarNav"
+          aria-controls="adminNavbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="userNavbarNav">
+
+        {/* Navbar Links */}
+        <div className="collapse navbar-collapse" id="adminNavbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/dashboard/user">Dashboard</a>
+              <a className="nav-link" href="/dashboard/admin">Dashboard</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/user/view-offers">View Offers</a>
+              <a className="nav-link" href="/admin/master-agreements">Master Agreements</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/user/service-requests">Service Requests</a>
+              <a className="nav-link" href="/admin/manage-providers">Manage Providers</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/user/employee-management">Manage Employees</a>
+              <a className="nav-link" href="/admin/user-management">User Management</a>
             </li>
           </ul>
           <ul className="navbar-nav">
@@ -64,4 +69,4 @@ const UserNavbar = () => {
   );
 };
 
-export default UserNavbar;
+export default ProviderAdminNavbar;

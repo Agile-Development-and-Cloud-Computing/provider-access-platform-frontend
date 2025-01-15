@@ -1,24 +1,41 @@
-/* App.css */
-
-/* Ensure the entire page fills the viewport */
+/* ===== Global Layout Styles ===== */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Full viewport height */
 }
 
-/* Footer styling */
+.main-content {
+  flex: 1; /* Grows to fill the space between header and footer */
+}
+
 .footer {
   background-color: #1e293b; /* Matches Navbar for consistency */
   color: #f8fafc;
   text-align: center;
   padding: 1rem 0;
   font-size: 0.9rem;
+  margin-top: auto; /* Ensures the footer sticks to the bottom */
 }
 
-/* Home Page Container */
+/* ===== Page-Specific Containers ===== */
+
+/* General Page Containers */
+.page-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  text-align: center;
+  background-color: #e5eaf3; /* Neutral light background */
+  color: #000000;
+  padding: 2rem;
+}
+
 .home-container {
-  flex: 1; /* Fills available space */
+  /* Inherit styles from .page-container by reusing the class */
+  flex: 1; /* Maintain full page height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +46,6 @@
   padding: 2rem;
 }
 
-/* About Page Container */
 .about-container {
   flex: 1;
   display: flex;
@@ -42,7 +58,6 @@
   padding: 2rem;
 }
 
-/* Teams Page Container */
 .team-container {
   flex: 1;
   display: flex;
@@ -57,38 +72,145 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Contact Page Container */
+
+/* ===== Form Containers (Login, Register, Contact) ===== */
+.login-container,
+.register-container,
 .contact-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #e5eaf3;
-  color: #000000;
-  padding: 2rem;
+  justify-content: center; /* Center form content vertically */
+  align-items: center; /* Center form content horizontally */
+  background-color: #ffffff; /* Bright white background */
+  color: #1e293b; /* Dark text for readability */
+  padding: 1.5rem; /* Compact padding */
+  border-radius: 12px; /* Smooth corners for modern look */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Subtle shadow effect */
+  max-width: 500px; /* Adjust max width */
+  margin: 2rem auto;
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
-/**/
-/* Contact Page Container */
+/* ===== Input Fields (Uniform Sizes) ===== */
+.login-container input[type="text"],
+.login-container input[type="password"],
+.register-container input[type="text"],
+.register-container input[type="password"],
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+  width: 100%; /* Full container width */
+  padding: 1rem; /* Uniform padding for all fields */
+  margin: 0.5rem 0; /* Equal spacing between fields */
+  border: 2px solid #e5e7eb; /* Subtle border for consistency */
+  border-radius: 8px; /* Smooth rounded corners */
+  font-size: 1rem; /* Uniform font size */
+  background-color: #f8fafc; /* Light gray background for readability */
+  box-sizing: border-box; /* Include padding and border in size */
+  height: 48px; /* Fixed height for input fields */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus transition */
+}
+
+/* ===== Textarea (Message Box for Contact Page) ===== */
+.contact-container textarea {
+  height: 150px; /* Taller textarea for messages */
+  resize: vertical; /* Allow resizing vertically */
+}
+
+/* ===== Focus State for All Inputs ===== */
+.login-container input:focus,
+.register-container input:focus,
+.contact-container input:focus,
+.contact-container textarea:focus {
+  border-color: #2563eb; /* Bright blue border on focus */
+  box-shadow: 0px 0px 8px rgba(37, 99, 235, 0.4); /* Soft glow effect */
+  outline: none; /* Remove default browser outline */
+}
+
+/* ===== Buttons (Uniform Styles) ===== */
+.login-container button,
+.register-container button,
+.contact-container button {
+  width: 100%; /* Full-width buttons */
+  padding: 1rem;
+  background-color: #2563eb; /* Bright blue background */
+  color: #ffffff; /* White text for contrast */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 1.1rem; /* Slightly larger font for buttons */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
+}
+
+.login-container button:hover,
+.register-container button:hover,
+.contact-container button:hover {
+  background-color: #1e40af; /* Darker blue on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* ===== Form Headings ===== */
+.login-container h1,
+.register-container h1,
+.contact-container h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1e293b; /* Dark text for headings */
+  margin-bottom: 1rem;
+}
+
+.login-container p,
+.register-container p,
+.contact-container p {
+  font-size: 1rem;
+  color: #4b5563; /* Muted text for descriptions */
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .login-container,
+  .register-container,
+  .contact-container {
+    padding: 1rem; /* Reduced padding for smaller screens */
+    margin: 1rem auto; /* Compact margin */
+  }
+
+  .login-container h1,
+  .register-container h1,
+  .contact-container h1 {
+    font-size: 1.6rem; /* Slightly smaller headings */
+  }
+
+  .login-container button,
+  .register-container button,
+  .contact-container button {
+    font-size: 1rem; /* Adjust button font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container,
+  .register-container,
+  .contact-container {
+    padding: 0.8rem; /* Further reduce padding for very small screens */
+    max-width: 90%; /* Limit form width on small devices */
+  }
+
+  .login-container h1,
+  .register-container h1,
+  .contact-container h1 {
+    font-size: 1.4rem; /* Smaller headings */
+  }
+}
+
+
+/* Contact Page Specific Styles */
 .contact-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #e5eaf3; /* Light, neutral background */
-  color: #000000; /* Dark text for readability */
-  padding: 2rem;
-  border-radius: 12px; /* Smooth rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
-  max-width: 800px; /* Restrict width for better readability */
-  margin: 2rem auto; /* Center the container on the page */
+  max-width: 800px; /* Wider container for the contact page */
 }
 
-/* Contact Page Heading */
 .contact-container h1 {
   margin-bottom: 1rem;
   font-size: 2.5rem;
@@ -96,7 +218,6 @@
   color: #1e293b; /* Darker shade for better contrast */
 }
 
-/* Contact Details Paragraphs */
 .contact-container p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
@@ -104,75 +225,22 @@
   color: #4b5563; /* Slightly muted text color */
 }
 
-/* Contact Form */
-.contact-container form {
+/* Special Pages (404/Not Found) */
+.notfound-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 600px; /* Limit form width */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #5f7ea7;
+  color: #f8fafc;
+  padding: 2rem;
 }
 
-/* Labels */
-.contact-container label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1e293b;
-}
-
-/* Input Fields and Text Area */
-.contact-container input,
-.contact-container textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.5rem;
-  border: 1px solid #cbd5e1; /* Light gray border */
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: #ffffff; /* Clean white background */
-  color: #1e293b; /* Dark text for readability */
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* Input Focus State */
-.contact-container input:focus,
-.contact-container textarea:focus {
-  border-color: #3b82f6; /* Blue focus color */
-  outline: none;
-  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Subtle blue glow */
-}
-
-/* Text Area */
-.contact-container textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Submit Button */
-.contact-container button {
-  padding: 0.75rem;
-  margin-top: 1rem;
-  background-color: #3b82f6; /* Primary blue color */
-  color: #ffffff;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Button Hover State */
-.contact-container button:hover {
-  background-color: #2563eb; /* Darker blue */
-  transform: translateY(-2px); /* Subtle lift effect */
-}
-
-/* Responsive Design for Smaller Screens */
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+  .page-container,
   .contact-container {
     padding: 1.5rem;
     margin: 1rem auto;
@@ -185,135 +253,4 @@
   .contact-container form {
     max-width: 100%;
   }
-}
-
-/*=============================================================*/
-
-/* Login Page Container */
-.login-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #f8fafc; /* Light background for forms */
-  color: #1e293b;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Register Page Container */
-.register-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #f1f5f9; /* Subtle light gray for distinction */
-  color: #1e293b;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* Login Page Container */
-.login-container {
-  background-color: #ffffff; /* Clean white for forms */
-  color: #1e293b;
-  border-radius: 8px;
-  padding: 2rem 3rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* More subtle shadow */
-  max-width: 400px;
-  width: 100%;
-  margin: 2rem auto;
-}
-
-.login-container input {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.login-container input:focus {
-  border-color: #1e293b;
-  outline: none;
-}
-
-.login-container button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #1e293b;
-  color: #f8fafc;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-container button:hover {
-  background-color: #334155;
-}
-
-/* Register Page Container */
-.register-container {
-  background-color: #ffffff; /* Clean white for forms */
-  color: #1e293b;
-  border-radius: 8px;
-  padding: 2rem 3rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* More subtle shadow */
-  max-width: 400px;
-  width: 100%;
-  margin: 2rem auto;
-}
-
-.register-container input {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.register-container input:focus {
-  border-color: #1e293b;
-  outline: none;
-}
-
-.register-container button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #1e293b;
-  color: #f8fafc;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.register-container button:hover {
-  background-color: #334155;
-}
-
-/*==============================*/
-/* Not Found Page Container */
-.notfound-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #5f7ea7; 
-  color: #f8fafc;
-  padding: 2rem;
 }

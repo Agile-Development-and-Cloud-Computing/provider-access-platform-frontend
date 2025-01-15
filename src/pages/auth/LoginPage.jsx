@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import axios from 'axios'; // Use axios for making HTTP requests
+import authService from '../../services/authService'; // Import centralized API service
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ identifier: '', password: '' }); // Unified field for email/username
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,26 +24,25 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://access-platform.azurewebsites.net/api/login', formData);
-      //const response = await axios.post('https://cors-anywhere.herokuapp.com/http://access-platform.azurewebsites.net/api/login', formData);
+      // Use authService for login
+      const response = await authService.login(formData);
+      console.log('Login successful:', response.data);
 
-      if (response.data.success) {
-        console.log('Login successful:', response.data);
-        alert(response.data.message);
-        
-        navigate('/dashboard');
-        // Navigate to dashboard based on userType
-        //if (response.data.data.userType === 'Admin') {
-        //  navigate('/dashboard/admin'); // Admin dashboard
-        //} else {
-        //    navigate('/dashboard/user'); // User dashboard
-        //} 
+      // Save the logged-in user's identifier to localStorage
+      localStorage.setItem('loggedInUser', formData.identifier);
+
+      // Redirect based on user role
+      const { userType } = response.data.data;
+      if (userType === 'ProviderAdmin') {
+        navigate('/dashboard/admin');
+      } else if (userType === 'User') {
+        navigate('/dashboard/user');
       } else {
-        setError('Login failed. Please check your credentials.');
+        setError('Invalid user role.');
       }
     } catch (err) {
       console.error('Login failed:', err);
-      setError('An error occurred while logging in. Please try again.');
+      setError(err.response?.data?.message || 'An error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -54,15 +53,16 @@ const LoginPage = () => {
       <Navbar />
       <div className="login-container">
         <h1>Login</h1>
-        <p>Access your provider account by logging in below:</p>
+        <p>Access your provider account:</p>
         <form onSubmit={handleSubmit}>
           <label>
-            Username:
+            Username or Email:
             <input
               type="text"
-              name="username"
-              value={formData.username}
+              name="identifier"
+              value={formData.identifier}
               onChange={handleInputChange}
+              placeholder="Enter email or username"
               required
             />
           </label>
@@ -73,6 +73,7 @@ const LoginPage = () => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
+              placeholder="Enter password"
               required
             />
           </label>
