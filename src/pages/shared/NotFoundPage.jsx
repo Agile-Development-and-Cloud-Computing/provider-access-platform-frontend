@@ -1,19 +1,26 @@
-import React from 'react';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/NotFoundPage.css"; // Optional CSS for styling
 
 const NotFoundPage = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   return (
-    <>
-      <Navbar />
-      <div className="notfound-container">
-        <h1>404 - Page Not Found</h1>
-        <p>Oops! The page you are looking for doesn't exist.</p>
-        <a href="/">Return to Home</a>
+    <div className="not-found-container">
+      <h1>404 - Page Not Found</h1>
+      <p>The page you're looking for doesn't exist or may have been moved.</p>
+      <div className="not-found-buttons">
+        <button className="btn btn-primary" onClick={goBack}>
+          Go Back
+        </button>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 
 export default NotFoundPage;
+

@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import authService from '../../services/authService'; // Import centralized API service
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ identifier: '', password: '' }); // Unified field for email/username
+  const [formData, setFormData] = useState({ username: '', password: '' }); // Unified field for email/username
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,11 +29,11 @@ const LoginPage = () => {
       console.log('Login successful:', response.data);
 
       // Save the logged-in user's identifier to localStorage
-      localStorage.setItem('loggedInUser', formData.identifier);
+      localStorage.setItem('loggedInUser', formData.username);
 
       // Redirect based on user role
       const { userType } = response.data.data;
-      if (userType === 'ProviderAdmin') {
+      if (userType === 'Admin') {
         navigate('/dashboard/admin');
       } else if (userType === 'User') {
         navigate('/dashboard/user');
@@ -59,8 +59,8 @@ const LoginPage = () => {
             Username or Email:
             <input
               type="text"
-              name="identifier"
-              value={formData.identifier}
+              name="username"
+              value={formData.username}
               onChange={handleInputChange}
               placeholder="Enter email or username"
               required
