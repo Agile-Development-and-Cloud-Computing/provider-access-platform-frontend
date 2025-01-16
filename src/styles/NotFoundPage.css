@@ -1,0 +1,30 @@
+.not-found-container {
+    text-align: center;
+    margin: 100px auto;
+    padding: 20px;
+    max-width: 600px;
+  }
+  
+  .not-found-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ff4d4d;
+  }
+  
+  .not-found-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  .not-found-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .not-found-buttons .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
