@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
 import Footer from '../../components/Footer';
-//import '../../styles/Dashboard.css';
 import '../../styles/MasterAgreementPage.css';
+import masterAgreementService from '../../services/masterAgreementService';
 
 const MasterAgreementPage = () => {
   const [selectedSection, setSelectedSection] = useState('userManagement');
@@ -15,15 +14,16 @@ const MasterAgreementPage = () => {
   const [formData, setFormData] = useState({ providerName: '', bidPrice: '' });
   const [formError, setFormError] = useState('');
 
-  const fetchData = async (endpoint) => {
+  const fetchData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(endpoint);
-      console.log("API Response from Fetch Data Function:", response.data);
+      const response = await masterAgreementService.getMasterAgreements();
+      console.log("API Response:", response);
   
-      if (response.data && response.data.data && Array.isArray(response.data.data)) {
-        const transformedData = response.data.data.map((agreement) => ({
+      // Check if the API response has the 'data' field
+      if (response && response.success && Array.isArray(response.data)) {
+        const transformedData = response.data.map((agreement) => ({
           masterAgreementTypeId: agreement.masterAgreementTypeId,
           masterAgreementTypeName: agreement.masterAgreementTypeName,
           validFrom: agreement.validFrom,
@@ -53,12 +53,11 @@ const MasterAgreementPage = () => {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
-    fetchData('http://access-platform.azurewebsites.net/api/provider/master-agreements');
+    fetchData();
   }, []);
-  
+
   const toggleDetails = (index) => {
     setExpanded((prev) => ({
       ...prev,
@@ -91,7 +90,7 @@ const MasterAgreementPage = () => {
     }
 
     try {
-      const response = await axios.post('http://access-platform.azurewebsites.net/api/provider/bid', {
+      const response = await masterAgreementService.placeBid({
         domainId: bidForm.domain.domainId,
         domainName: bidForm.domain.domainName,
         roleId: bidForm.role.roleId,
@@ -103,10 +102,10 @@ const MasterAgreementPage = () => {
         bidPrice: parseFloat(bidPrice),
       });
 
-      console.log("API Response: ", response.data);
+      console.log("API Response: ", response);
 
-      if (response.data.success === false) {
-        setFormError(response.data.message || 'Failed to place bid. Please contact admin.');
+      if (response.success === false) {
+        setFormError(response.message || 'Failed to place bid. Please contact admin.');
         return;
       }
 
