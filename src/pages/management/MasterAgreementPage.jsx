@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserDashboardNavbar from '../../components/UserDashboardNavbar';
+import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
 import Footer from '../../components/Footer';
 //import '../../styles/Dashboard.css';
 import '../../styles/MasterAgreementPage.css';
@@ -21,34 +21,30 @@ const MasterAgreementPage = () => {
     try {
       const response = await axios.get(endpoint);
       console.log("API Response from Fetch Data Function:", response.data);
-
-      if (selectedSection === "masterAgreement") {
-        if (response.data && response.data.data && Array.isArray(response.data.data)) {
-          const transformedData = response.data.data.map((agreement) => ({
-            masterAgreementTypeId: agreement.masterAgreementTypeId,
-            masterAgreementTypeName: agreement.masterAgreementTypeName,
-            validFrom: agreement.validFrom,
-            validUntil: agreement.validUntil,
-            status: agreement.status,
-            domains: agreement.domains.map((domain) => ({
-              domainId: domain.domainId,
-              domainName: domain.domainName,
-              roleOffer: domain.roleOffer.map((role) => ({
-                roleId: role.roleId,
-                roleName: role.roleName,
-                experienceLevel: role.experienceLevel,
-                technologiesCatalog: role.technologiesCatalog,
-                quotePrice: role.quotePrice,
-              })),
+  
+      if (response.data && response.data.data && Array.isArray(response.data.data)) {
+        const transformedData = response.data.data.map((agreement) => ({
+          masterAgreementTypeId: agreement.masterAgreementTypeId,
+          masterAgreementTypeName: agreement.masterAgreementTypeName,
+          validFrom: agreement.validFrom,
+          validUntil: agreement.validUntil,
+          status: agreement.status,
+          domains: agreement.domains.map((domain) => ({
+            domainId: domain.domainId,
+            domainName: domain.domainName,
+            roleOffer: domain.roleOffer.map((role) => ({
+              roleId: role.roleId,
+              roleName: role.roleName,
+              experienceLevel: role.experienceLevel,
+              technologiesCatalog: role.technologiesCatalog,
+              quotePrice: role.quotePrice,
             })),
-          }));
-
-          setData(transformedData);
-        } else {
-          setError("Data format is incorrect. Expected a valid 'data' array.");
-        }
+          })),
+        }));
+  
+        setData(transformedData);
       } else {
-        setError("Selected section is not supported.");
+        setError("Data format is incorrect. Expected a valid 'data' array.");
       }
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -57,17 +53,12 @@ const MasterAgreementPage = () => {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
-    if (selectedSection === 'userManagement') {
-      fetchData('https://api.example.com/user-management');
-    } else if (selectedSection === 'serviceAgreements') {
-      fetchData('https://api.example.com/service-agreements');
-    } else if (selectedSection === 'masterAgreement') {
-      fetchData('http://localhost:8080/api/provider/master-agreements');
-    }
-  }, [selectedSection]);
-
+    fetchData('http://access-platform.azurewebsites.net/api/provider/master-agreements');
+  }, []);
+  
   const toggleDetails = (index) => {
     setExpanded((prev) => ({
       ...prev,
@@ -100,7 +91,7 @@ const MasterAgreementPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/api/provider/bid', {
+      const response = await axios.post('http://access-platform.azurewebsites.net/api/provider/bid', {
         domainId: bidForm.domain.domainId,
         domainName: bidForm.domain.domainName,
         roleId: bidForm.role.roleId,
@@ -175,7 +166,7 @@ const MasterAgreementPage = () => {
 
   return (
     <div className="dashboard-wrapper">
-      <UserDashboardNavbar onSelectSection={setSelectedSection} />
+      <AdminDashboardNavbar onSelectSection={setSelectedSection} />
 
       <div className="dashboard-container">
         <h1>Master Agreements</h1>
