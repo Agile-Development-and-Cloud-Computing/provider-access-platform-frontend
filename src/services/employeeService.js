@@ -1,5 +1,5 @@
 // src/services/employeeService.js
-import apiClient from '@/services/apiClient'; 
+import { group3apiClient as apiClient } from '@/services/apiClient'; 
 
 const employeeService = {
   getEmployees: async () => {
