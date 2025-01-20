@@ -1,5 +1,6 @@
+// src/pages/components/UserDashboardNavbar.jsx
 import React, { useEffect, useState } from 'react';
-import logo from '/pam_logo.png'; // Adjust the path to your logo
+import logo from '/pam_logo.png'; 
 
 const UserNavbar = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);

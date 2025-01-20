@@ -1,4 +1,5 @@
-import apiClient from './apiClient'; // Import the shared API client
+// src/services/authService.js
+import apiClient from '@/services/apiClient'; 
 
 const login = (credentials) => {
   return apiClient.post('/login', credentials);

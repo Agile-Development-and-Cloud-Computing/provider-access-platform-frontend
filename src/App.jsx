@@ -3,8 +3,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from './routes/AppRoutes';
-import './styles/App.css'; // Import the CSS file
+import AppRoutes from '@/routes/AppRoutes'; 
+import '@/styles/App.css'; 
 
 function App() {
   return (
@@ -17,4 +17,3 @@ function App() {
 }
 
 export default App;
-

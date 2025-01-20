@@ -1,8 +1,9 @@
+// src/pages/management/MasterAgreementPage.jsx
 import React, { useState, useEffect } from 'react';
-import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
-import Footer from '../../components/Footer';
-import '../../styles/MasterAgreementPage.css';
-import masterAgreementService from '../../services/masterAgreementService';
+import AdminDashboardNavbar from '@/components/AdminDashboardNavbar';
+import Footer from '@/components/Footer';
+import '@/styles/MasterAgreementPage.css';
+import masterAgreementService from '@/services/masterAgreementService';
 
 const MasterAgreementPage = () => {
   const [selectedSection, setSelectedSection] = useState('userManagement');

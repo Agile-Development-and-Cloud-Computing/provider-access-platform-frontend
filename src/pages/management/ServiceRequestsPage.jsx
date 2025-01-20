@@ -1,8 +1,9 @@
+// src/pages/management/ServiceRequestsPage.jsx
 import React, { useEffect, useState } from 'react';
-import UserDashboardNavbar from '../../components/UserDashboardNavbar';
-import Footer from '../../components/Footer';
-import requestService from '../../services/requestService';
-import '../../styles/ServiceRequestsPage.css';
+import UserDashboardNavbar from '@/components/UserDashboardNavbar'; 
+import Footer from '@/components/Footer'; 
+import requestService from '@/services/requestService'; 
+import '@/styles/ServiceRequestsPage.css'; 
 
 const ServiceRequestsPage = () => {
   const [requests, setRequests] = useState([]);

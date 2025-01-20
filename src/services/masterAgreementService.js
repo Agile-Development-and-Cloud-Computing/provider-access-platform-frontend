@@ -1,5 +1,5 @@
 // src/services/masterAgreementService.js
-import apiClient from './apiClient';
+import apiClient from '@/services/apiClient';
 
 const getMasterAgreements = async () => {
   const response = await apiClient.get('/provider/master-agreements');

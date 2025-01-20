@@ -1,5 +1,6 @@
+// src/pages/components/Footer.jsx
 import React from 'react';
-//import '../styles/Footer.css'; // Custom styles if needed
+// import '@/styles/Footer.css'; 
 
 const Footer = () => {
   return (
@@ -12,5 +13,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-

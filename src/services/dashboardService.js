@@ -1,5 +1,5 @@
 // src/services/dashboardService.js
-import apiClient from "./apiClient";
+import apiClient from '@/services/apiClient'; 
 
 // Fetch Master Agreements
 export const fetchMasterAgreements = async () => {

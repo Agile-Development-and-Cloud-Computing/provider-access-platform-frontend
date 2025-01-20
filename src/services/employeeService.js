@@ -1,4 +1,5 @@
-import apiClient from './apiClient';
+// src/services/employeeService.js
+import apiClient from '@/services/apiClient'; 
 
 const employeeService = {
   getEmployees: async () => {

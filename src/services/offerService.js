@@ -1,6 +1,6 @@
 // src/services/offerService.js
 
-import apiClient from './apiClient';
+import apiClient from '@/services/apiClient';
 
 const getOffers = async () => {
   try {
@@ -13,3 +13,4 @@ const getOffers = async () => {
 };
 
 export default { getOffers };
+

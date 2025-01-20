@@ -1,7 +1,8 @@
+// src/pages/dashboard/UserDashboard.jsx
 import React from "react";
-import UserDashboardNavbar from "../../components/UserDashboardNavbar";
-import Footer from "../../components/Footer";
-import "../../styles/UserDashboard.css"; // Import the custom CSS file for styling
+import UserDashboardNavbar from '@/components/UserDashboardNavbar'; 
+import Footer from '@/components/Footer'; 
+import '@/styles/UserDashboard.css'; 
 
 const UserDashboard = () => {
   const navigateToViewOffers = () => {

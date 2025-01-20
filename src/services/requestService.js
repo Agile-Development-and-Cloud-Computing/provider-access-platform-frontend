@@ -1,6 +1,6 @@
 // src/services/requestService.js
 
-import apiClient from './apiClient';
+import apiClient from '@/services/apiClient';
 
 const getRequests = async () => {
   try {

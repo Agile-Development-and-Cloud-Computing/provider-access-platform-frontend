@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import Navbar from '@/components/Navbar'; 
+import Footer from '@/components/Footer'; 
 
 const TeamPage = () => {
   return (
@@ -11,7 +11,6 @@ const TeamPage = () => {
         <p>
           We will upload the profiles of our team here.
         </p>
-      
       </div>
       <Footer />
     </>
