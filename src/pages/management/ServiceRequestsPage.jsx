@@ -185,7 +185,7 @@ const ServiceRequestsPage = () => {
                   <strong>Task:</strong> {request.taskDescription}
                 </p>
                 <p>
-                  <strong>Location:</strong> {request.locationType}
+                  <strong>Location:</strong> {request.location}
                 </p>
                 <p>
                   <strong>Type:</strong> {request.type}
@@ -206,7 +206,9 @@ const ServiceRequestsPage = () => {
                 <p>
                   <strong>End Date:</strong> {request.end}
                 </p>
-
+                <p>
+                  <strong>Number of Offers:</strong> {request.numberOfOffers}
+                </p>
                 <button
                   onClick={() => toggleDetails(request.ServiceRequestId)}
                   className="view-details-btn"
@@ -233,7 +235,9 @@ const ServiceRequestsPage = () => {
                         <p>
                           <strong>Tech Level:</strong> {member.technologyLevel}
                         </p>
-
+                        <p>
+                          <strong>Employee needed:</strong> {member.numberOfEmployee}
+                        </p>
                         <button
                           className="attach-employee-btn"
                           onClick={() =>
@@ -266,7 +270,7 @@ const ServiceRequestsPage = () => {
                                   key={employee.employeeId}
                                   value={employee.employeeId}
                                 >
-                                  {employee.employeeName} - {employee.role}
+                                  {employee.employeeName} - {employee.level} - {employee.technology_level}
                                 </option>
                               ))}
                             </select>
