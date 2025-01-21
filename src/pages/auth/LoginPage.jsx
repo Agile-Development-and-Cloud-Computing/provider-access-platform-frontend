@@ -33,8 +33,20 @@ const LoginPage = () => {
       const response = await authService.login(formData);
       console.log('Login successful:', response.data);
 
-      // Store token or identifier securely (use cookies in production for sensitive data)
-      localStorage.setItem('authToken', response.data.token);
+      // Correctly extract data from response
+  const { token, providerId} = response.data.data;
+
+  if (!token || !providerId) {
+    throw new Error('Missing token or providerId in response.');
+  }
+
+  // Store token and providerId correctly
+  localStorage.setItem('authToken', token);
+  localStorage.setItem('providerId', providerId);
+
+  // Debugging stored values
+  console.log('Stored Token:', localStorage.getItem('authToken'));
+  console.log('Stored Provider ID:', localStorage.getItem('providerId'));
 
       // Redirect based on user role
       const { userType } = response.data.data;

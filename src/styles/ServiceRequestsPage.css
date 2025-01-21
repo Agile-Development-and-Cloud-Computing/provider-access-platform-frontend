@@ -21,3 +21,207 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
+  /* src/styles/ServiceRequestsPage.css */
+
+/* Container for the entire page */
+.service-requests-container {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Grid to display cards */
+.service-requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Individual service request card */
+.service-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card heading and basic info */
+.service-card h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.service-card p {
+  font-size: 1em;
+  margin: 5px 0;
+  color: #7f8c8d;
+}
+
+.service-card strong {
+  color: #2c3e50;
+}
+
+/* Button for publishing request */
+.submit-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Handling when there are no service requests */
+.service-requests-container p {
+  font-size: 1.2em;
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* CSS - ServiceRequestsPage.css */
+
+/* View Details Button */
+.view-details-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.view-details-btn:hover {
+  background-color: #45a049;
+}
+
+/* Member Cards */
+.members-details {
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.member-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.member-card h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.member-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.member-card strong {
+  color: #333;
+}
+
+
+/* CSS for ServiceRequestsPage.css */
+
+/* Attach Employee Button */
+.attach-employee-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.attach-employee-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Employee List Dropdown */
+.employee-list {
+  margin-top: 10px;
+}
+
+.employee-list select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+.remove-employee-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.remove-employee-btn:hover {
+  color: darkred;
+}
+
+.remove-employee-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.remove-employee-btn:hover {
+  color: darkred;
+}
+
+.employee-list {
+  margin-top: 10px;
+}
+
+.employee-list select {
+  width: 100%;
+  padding: 5px;
+}
+
+.attached-employees ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.attached-employees li {
+  margin: 5px 0;
+}

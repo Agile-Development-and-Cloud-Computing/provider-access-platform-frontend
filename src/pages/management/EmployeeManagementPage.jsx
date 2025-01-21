@@ -1,6 +1,6 @@
 // src/pages/management/EmployeeManagementPage.jsx
 import React, { useState, useEffect } from 'react';
-import DataTable from 'react-data-table-component';
+//import DataTable from 'react-data-table-component';
 import UserDashboardNavbar from '@/components/UserDashboardNavbar'; 
 import Footer from '@/components/Footer'; 
 import employeeService from '@/services/employeeService'; 

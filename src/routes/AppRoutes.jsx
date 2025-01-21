@@ -25,6 +25,7 @@ import MasterAgreementPage from '@/pages/management/MasterAgreementPage';
 // User Pages
 import ViewOffersPage from '@/pages/management/ViewOffersPage';
 import EmployeeManagementPage from '@/pages/management/EmployeeManagementPage';
+import ServiceRequestsPage from '../pages/management/ServiceRequestsPage';
 
 function AppRoutes() {
   return (
@@ -50,6 +51,8 @@ function AppRoutes() {
       {/* User Routes */}
       <Route path="/user/view-offers" element={<ViewOffersPage />} />
       <Route path="/user/employee-management" element={<EmployeeManagementPage />} />
+      <Route path="/user/service-requests" element={<ServiceRequestsPage />} />
+      
 
       {/* 404 Page (Catch-All Route) */}
       <Route path="*" element={<NotFoundPage />} />
