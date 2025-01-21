@@ -1,9 +1,9 @@
 // src/pages/management/ViewOffersPage.jsx
 import React, { useState, useEffect } from 'react';
-import UserDashboardNavbar from '../../components/UserDashboardNavbar';
-import Footer from '../../components/Footer';
-import offerService from '../../services/offerService';
-import '../../styles/ViewOffersPage.css';
+import UserDashboardNavbar from '@/components/UserDashboardNavbar';
+import Footer from '@/components/Footer';
+import offerService from '@/services/offerService';
+import '@/styles/ViewOffersPage.css';
 
 const ViewOffersPage = () => {
   const [offers, setOffers] = useState([]);

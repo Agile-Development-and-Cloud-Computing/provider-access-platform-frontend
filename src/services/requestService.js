@@ -1,10 +1,9 @@
 // src/services/requestService.js
-
-import apiClient from './apiClient';
+import { group2apiClient as apiClient } from '@/services/apiClient'; // Updated to use group2apiClient
 
 const getRequests = async () => {
   try {
-    const response = await apiClient.get('/requests');
+    const response = await apiClient.get('/service-requests/published'); 
     return response.data;
   } catch (error) {
     console.error('Error fetching service requests:', error);

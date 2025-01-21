@@ -1,7 +1,8 @@
+// src/pages/dashboard/ProviderAdminDashboard.jsx
 import React from 'react';
-import AdminDashboardNavbar from '../../components/AdminDashboardNavbar';
-import Footer from '../../components/Footer';
-import '../../styles/ProviderAdminDashboard.css'; // Import the custom CSS file for styling
+import AdminDashboardNavbar from '@/components/AdminDashboardNavbar'; 
+import Footer from '@/components/Footer'; 
+import '@/styles/ProviderAdminDashboard.css'; 
 
 const ProviderAdminDashboard = () => {
   const navigateToMasterAgreements = () => {

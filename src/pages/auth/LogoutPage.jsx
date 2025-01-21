@@ -1,3 +1,4 @@
+// src/pages/auth/LogoutPage.jsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,6 +1,5 @@
 // src/services/offerService.js
-
-import apiClient from './apiClient';
+import { group2apiClient as apiClient } from '@/services/apiClient'; 
 
 const getOffers = async () => {
   try {
@@ -13,3 +12,4 @@ const getOffers = async () => {
 };
 
 export default { getOffers };
+

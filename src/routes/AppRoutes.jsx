@@ -4,27 +4,27 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Shared Pages
-import HomePage from '../pages/shared/HomePage';
-import AboutPage from '../pages/shared/AboutPage';
-import TeamPage from '../pages/shared/TeamPage';
-import ContactPage from '../pages/shared/ContactPage';
-import NotFoundPage from '../pages/shared/NotFoundPage';
+import HomePage from '@/pages/shared/HomePage';
+import AboutPage from '@/pages/shared/AboutPage';
+import TeamPage from '@/pages/shared/TeamPage';
+import ContactPage from '@/pages/shared/ContactPage';
+import NotFoundPage from '@/pages/shared/NotFoundPage';
 
 // Authentication Pages
-import LoginPage from '../pages/auth/LoginPage';
-import RegisterPage from '../pages/auth/RegisterPage';
-import LogoutPage from '../pages/auth/LogoutPage';
+import LoginPage from '@/pages/auth/LoginPage';
+import RegisterPage from '@/pages/auth/RegisterPage';
+import LogoutPage from '@/pages/auth/LogoutPage';
 
 // Dashboard Pages
-import ProviderAdminDashboard from '../pages/dashboard/ProviderAdminDashboard';
-import UserDashboard from '../pages/dashboard/UserDashboard';
+import ProviderAdminDashboard from '@/pages/dashboard/ProviderAdminDashboard';
+import UserDashboard from '@/pages/dashboard/UserDashboard';
 
 // Admin Pages
-import MasterAgreementPage from '../pages/management/MasterAgreementPage';
+import MasterAgreementPage from '@/pages/management/MasterAgreementPage';
 
 // User Pages
-import ViewOffersPage from '../pages/management/ViewOffersPage';
-import EmployeeManagementPage from '../pages/management/EmployeeManagementPage';
+import ViewOffersPage from '@/pages/management/ViewOffersPage';
+import EmployeeManagementPage from '@/pages/management/EmployeeManagementPage';
 
 function AppRoutes() {
   return (
@@ -47,10 +47,9 @@ function AppRoutes() {
       {/* Admin Routes */}
       <Route path="/admin/master-agreements" element={<MasterAgreementPage />} />
 
-     
+      {/* User Routes */}
       <Route path="/user/view-offers" element={<ViewOffersPage />} />
       <Route path="/user/employee-management" element={<EmployeeManagementPage />} />
-
 
       {/* 404 Page (Catch-All Route) */}
       <Route path="*" element={<NotFoundPage />} />
