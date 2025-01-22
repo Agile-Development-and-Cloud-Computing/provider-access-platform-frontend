@@ -125,34 +125,79 @@ const ServiceRequestsPage = () => {
       [`${serviceRequestId}-${role}`]: true, // Use unique key per serviceRequest & role
     }));
   };
-  // Submit service request with employee-role assignments
-  const submitServiceRequest = async (serviceRequestId) => {
+  const submitServiceRequest = async (request) => {
     try {
-      if (!attachedEmployees[serviceRequestId]) {
-        alert("Please attach at least one employee before submitting.");
+      // Log out the requestData to debug date fields
+      console.log("Request Data before submission:", request);
+  
+      // Check if begin and end fields are missing or null
+      if (!request.begin || !request.end) {
+        console.error("Missing begin or end in the request data");
+        alert("Please ensure that both begin and end dates are selected.");
         return;
       }
+  
+      // Ensure date formatting is correct (ISO format: YYYY-MM-DD)
+      const formattedStartDate = new Date(request.begin).toISOString().split('T')[0];
+      const formattedEndDate = new Date(request.end).toISOString().split('T')[0];
 
+      // Update the requestData with formatted dates
       const requestData = {
-        serviceRequestId,
-        assignedEmployees: attachedEmployees[serviceRequestId], // Sending attached employees by role
+        requestID: request.ServiceRequestId,
+        masterAgreementID: request.agreementId, // Use correct field name if needed
+        masterAgreementName: request.agreementName,
+        taskDescription: request.taskDescription,
+        requestType: request.type,
+        project: request.project,
+        startDate: formattedStartDate, // Updated field name
+        endDate: formattedEndDate, // Updated field name
+        cycleStatus: request.cycleStatus,
+        numberOfSpecialists: request.numberOfSpecialists,
+        numberOfOffers: request.numberOfOffers,
+        isApproved: request.isApproved ? true : false,
+        serviceOffers: Object.entries(attachedEmployees[request.ServiceRequestId] || {}).map(
+          ([role, employeeIds]) => {
+            return employeeIds.map((empId) => {
+              const employee = employees.find((emp) => String(emp.employeeId) === String(empId));
+
+              // Check if selectedMembers exist and get the relevant member details
+              const selectedMember = request.selectedMembers?.find(member => member.role === role) || {};
+
+              return {
+                providerID: providerId,
+                providerName: "Mandar Kale", // Replace with actual provider name
+                employeeID: empId,
+                role: employee.role,
+                level: employee.level,
+                technologyLevel: employee.technology_level,
+                locationType: request.locationType,
+                domainId: selectedMember.domainId,
+                domainName: selectedMember.domainName,
+              };
+            });
+          }
+        ).flat(),
       };
+  
+      console.log("Submitting request:", requestData); // Debug the requestData before submitting
+      console.log("Request Payload:", JSON.stringify(requestData, null, 2));
 
-      console.log("Submitting request:", requestData);
-
+  
       const response = await axios.post(
-        "http://localhost:8080/api/service-request/published",
+        "http://localhost:8080/api/service-request/submit",
         requestData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            withCredentials: true,
+          },
+        },
       );
-
+  
       if (response.status === 200) {
-        alert(
-          `Service request with ID ${serviceRequestId} successfully submitted.`,
-        );
+        alert(`Service request with ID ${requestData.serviceRequestId} successfully submitted.`);
         setServiceRequests(
-          serviceRequests.filter(
-            (request) => request.ServiceRequestId !== serviceRequestId,
-          ),
+          serviceRequests.filter((serviceRequest) => serviceRequest.ServiceRequestId !== requestData.serviceRequestId)
         );
       }
     } catch (err) {
@@ -160,6 +205,8 @@ const ServiceRequestsPage = () => {
       alert("Failed to submit service request.");
     }
   };
+  
+  
 
   if (loading) {
     return <div>Loading service requests...</div>;
@@ -327,15 +374,8 @@ const ServiceRequestsPage = () => {
                 )}
 
                 <button
-                  onClick={() => submitServiceRequest(request.ServiceRequestId)}
+                  onClick={() => submitServiceRequest(request)}
                   className="submit-btn"
-                  disabled={
-                    !(
-                      attachedEmployees[request.ServiceRequestId] &&
-                      Object.keys(attachedEmployees[request.ServiceRequestId])
-                        .length > 0
-                    )
-                  }
                 >
                   Submit Request
                 </button>
