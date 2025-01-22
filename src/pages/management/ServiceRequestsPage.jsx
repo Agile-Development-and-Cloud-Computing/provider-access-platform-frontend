@@ -29,9 +29,11 @@ const ServiceRequestsPage = () => {
         setLoading(true);
         setError(null);
         const response = await axios.get(
-          `https://access-platform.azurewebsites.net/api/service-request/published/${providerId}`,
+          `http://localhost:8080/api/service-request/published/${providerId}`,
         );
         setServiceRequests(response.data || []);
+        console.log("Request Data before submission:", response.data);
+  
       } catch (err) {
         console.error("Error fetching service requests:", err);
         setError("Failed to load service requests.");
@@ -154,7 +156,8 @@ const ServiceRequestsPage = () => {
         cycleStatus: request.cycleStatus,
         numberOfSpecialists: request.numberOfSpecialists,
         numberOfOffers: request.numberOfOffers,
-        isApproved: request.isApproved ? true : false,
+        createdBy: request.createdBy,
+        isApproved: request.isApproved || false,
         serviceOffers: Object.entries(attachedEmployees[request.ServiceRequestId] || {}).map(
           ([role, employeeIds]) => {
             return employeeIds.map((empId) => {
@@ -173,6 +176,7 @@ const ServiceRequestsPage = () => {
                 locationType: request.locationType,
                 domainId: selectedMember.domainId,
                 domainName: selectedMember.domainName,
+                userId: selectedMember._id
               };
             });
           }
@@ -255,6 +259,9 @@ const ServiceRequestsPage = () => {
                 </p>
                 <p>
                   <strong>Number of Offers:</strong> {request.numberOfOffers}
+                </p>
+                <p>
+                  <strong>Created By:</strong> {request.createdBy ? request.createdBy : "Not Provided"}
                 </p>
                 <button
                   onClick={() => toggleDetails(request.ServiceRequestId)}
