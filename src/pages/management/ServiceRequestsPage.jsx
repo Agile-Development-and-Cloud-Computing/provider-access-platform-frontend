@@ -29,7 +29,7 @@ const ServiceRequestsPage = () => {
         setLoading(true);
         setError(null);
         const response = await axios.get(
-          `http://localhost:8080/api/service-request/published/${providerId}`,
+          `https://access-platform.azurewebsites.net/api/service-request/published/${providerId}`,
         );
         setServiceRequests(response.data || []);
       } catch (err) {
@@ -81,7 +81,7 @@ const ServiceRequestsPage = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/employees/${providerId}`,
+        `https://access-platform.azurewebsites.net/api/employees/${providerId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
