@@ -29,7 +29,7 @@ const ServiceRequestsPage = () => {
         setLoading(true);
         setError(null);
         const response = await axios.get(
-          `http://localhost:8080/api/service-request/published/${providerId}`,
+          `https://access-platform.azurewebsites.net/api/service-request/published/${providerId}`,
         );
         setServiceRequests(response.data || []);
         console.log("Request Data before submission:", response.data);
@@ -157,7 +157,6 @@ const ServiceRequestsPage = () => {
         numberOfSpecialists: request.numberOfSpecialists,
         numberOfOffers: request.numberOfOffers,
         createdBy: request.createdBy,
-        isApproved: request.isApproved || false,
         serviceOffers: Object.entries(attachedEmployees[request.ServiceRequestId] || {}).map(
           ([role, employeeIds]) => {
             return employeeIds.map((empId) => {
@@ -188,7 +187,7 @@ const ServiceRequestsPage = () => {
 
   
       const response = await axios.post(
-        "http://localhost:8080/api/service-request/submit",
+        "https://access-platform.azurewebsites.net/api/service-request/submit",
         requestData,
         {
           headers: {
@@ -262,7 +261,7 @@ const ServiceRequestsPage = () => {
                 </p>
                 <p>
                   <strong>Created By:</strong> {request.createdBy ? request.createdBy : "Not Provided"}
-                </p>
+              </p>
                 <button
                   onClick={() => toggleDetails(request.ServiceRequestId)}
                   className="view-details-btn"
