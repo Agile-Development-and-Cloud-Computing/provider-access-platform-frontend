@@ -6,52 +6,52 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
     color: #343a40;
     margin: 20px 0;
-  }
-  
-  .service-requests-container {
+}
+
+.service-requests-container {
     padding: 20px;
-  }
-  
-  /* Service Requests Grid */
-  .service-requests-grid {
+}
+
+/* Service Requests Grid */
+.service-requests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 10px;
-  }
-  
-  .service-card {
+}
+
+.service-card {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: transform 0.2s ease;
-  }
-  
-  .service-card:hover {
+}
+
+.service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .service-card h3 {
+}
+
+.service-card h3 {
     margin-top: 0;
     color: #007bff;
-  }
-  
-  .service-card p {
+}
+
+.service-card p {
     margin: 5px 0;
     color: #495057;
-  }
-  
-  /* Buttons */
-  button {
+}
+
+/* Buttons */
+button {
     display: inline-block;
     padding: 8px 16px;
     font-size: 14px;
@@ -59,114 +59,106 @@ body {
     border: none;
     cursor: pointer;
     margin-top: 10px;
-  }
-  
-  button.view-details-btn {
+}
+
+button.view-details-btn {
     background-color: #17a2b8;
     color: #ffffff;
     margin-right: 10px; /* Add spacing to the right */
-  }
-  
-  button.view-details-btn:hover {
+}
+
+button.view-details-btn:hover {
     background-color: #138496;
-  }
-  
-  button.attach-employee-btn {
+}
+
+button.attach-employee-btn {
     background-color: #28a745;
     color: #ffffff;
-  }
-  
-  button.attach-employee-btn:hover {
+}
+
+button.attach-employee-btn:hover {
     background-color: #218838;
-  }
-  
-  button.remove-employee-btn {
+}
+
+button.remove-employee-btn {
     background-color: #dc3545;
     color: #ffffff;
     font-size: 12px;
-  }
-  
-  button.remove-employee-btn:hover {
+}
+
+button.remove-employee-btn:hover {
     background-color: #c82333;
-  }
-  
-  button.submit-btn {
+}
+
+button.submit-btn {
     background-color: #007bff;
     color: #ffffff;
     margin-left: 10px; /* Add spacing to the left */
-  }
-  
-  button.submit-btn:hover {
+}
+
+button.submit-btn:hover {
     background-color: #0056b3;
-  }
-  
-  button:disabled {
+}
+
+button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
-  }
-  
-  /* Member Details */
-  .members-details {
+}
+
+/* Member Details */
+.members-details {
     margin-top: 15px;
     padding: 10px;
     background-color: #f1f1f1;
     border-radius: 8px;
-  }
-  
-  .member-card {
+}
+
+.member-card {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 8px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .member-card h4 {
+}
+
+.member-card h4 {
     margin: 0 0 5px 0;
     color: #343a40;
-  }
-  
-  /* Employee Dropdown */
-  .employee-list {
+}
+
+/* Employee Dropdown */
+.employee-list {
     margin-top: 10px;
-  }
-  
-  .employee-list select {
+}
+
+.employee-list select {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ced4da;
-  }
-  
-  .attached-employees {
+}
+
+.attached-employees {
     margin-top: 10px;
     background-color: #e9ecef;
     padding: 10px;
     border-radius: 5px;
-  }
-  
-  .employee-count-badge {
+}
+
+.employee-count-badge {
     background-color: #6c757d;
     color: #ffffff;
     border-radius: 50%;
     padding: 3px 8px;
     font-size: 12px;
-  }
-  
-  /* Footer */
-  footer {
+}
+
+/* Footer */
+footer {
     margin-top: 30px;
     text-align: center;
     padding: 10px;
     background-color: #343a40;
     color: #ffffff;
-  }
-  
-  /*spacing between butoon*/
-  button.view-details-btn {
-    background-color: #17a2b8;
-    color: #ffffff;
-    margin-right: 10px; /* Add spacing to the right */
-  }
-  
+}
