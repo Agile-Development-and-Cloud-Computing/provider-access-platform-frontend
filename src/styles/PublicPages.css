@@ -1,0 +1,248 @@
+/* ===== About Page Styles ===== */
+.about-container {
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9fafb;
+    text-align: center;
+    color: #1f2937;
+  }
+  
+  .about-header {
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #4f46e5, #6d28d9);
+    color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  .about-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-header p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .about-highlight {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-highlight h2 {
+    font-size: 1.8rem;
+    color: #4f46e5;
+    margin-bottom: 1rem;
+  }
+  
+  .about-highlight p {
+    font-size: 1.1rem;
+  }
+  
+  .about-features {
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-features h2 {
+    font-size: 1.8rem;
+    color: #4f46e5;
+    margin-bottom: 1rem;
+  }
+  
+  .about-features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-features li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .about-features li:before {
+    content: '✔';
+    color: #4f46e5;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+  
+  
+  
+  /* ===== Team Page Styles ===== */
+  .team-container {
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    text-align: center;
+    color: #333; /* Dark text */
+  }
+  
+  .team-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4f46e5; /* Blue for the heading */
+  }
+  
+  .team-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #6c757d; /* Muted gray for description */
+  }
+  
+  .team-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap; /* Ensures responsiveness */
+  }
+  
+  .team-card {
+    background: #ffffff; /* White background for cards */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center;
+    width: 18%; /* Adjust width to fit all 5 cards */
+    min-width: 200px; /* Ensure minimum size on smaller screens */
+  }
+  
+  .team-card h2 {
+    font-size: 1.2rem;
+    color: #333; /* Dark text for names */
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-card h3 {
+    font-size: 1rem;
+    color: #4f46e5; /* Blue for roles */
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-card p {
+    font-size: 0.9rem;
+    color: #6c757d; /* Muted gray for email */
+  }
+  
+  .team-card a {
+    color: #4f46e5; /* Blue for email links */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .team-card a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  
+  /* ===== Contact Page Styles ===== */
+  .contact-container {
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-info {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4f46e5; /* Blue heading */
+  }
+  
+  .contact-info p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .contact-info a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .contact-form-section {
+    background-color: #ffffff; /* White background for the form */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4f46e5; /* Blue subheading */
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #4f46e5;
+    outline: none;
+  }
+  
+  .submit-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4f46e5; /* Blue button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #3730a3; /* Darker blue on hover */
+  }
+  
