@@ -82,7 +82,7 @@ const EmployeeManagementPage = () => {
     try {
       console.log("Token Inside Try-->" +token)
       const response = await axios.put(
-        `http://localhost:8080/api/employees/update/${editEmployee.employeeId}/${providerId}`,
+        `https://access-platform.azurewebsites.net/api/employees/update/${editEmployee.employeeId}/${providerId}`,
         editEmployee,
         { headers: { "Authorization": `Bearer ${token}` } }
       );
