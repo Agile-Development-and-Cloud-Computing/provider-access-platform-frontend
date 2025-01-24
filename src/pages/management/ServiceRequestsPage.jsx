@@ -211,9 +211,13 @@ const ServiceRequestsPage = () => {
   };
   
   
-
   if (loading) {
-    return <div>Loading service requests...</div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Loading service requests...</p>
+      </div>
+    );
   }
 
   if (error) {
