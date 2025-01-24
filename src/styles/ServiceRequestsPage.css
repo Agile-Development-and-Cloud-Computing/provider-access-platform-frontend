@@ -162,3 +162,48 @@ footer {
     background-color: #343a40;
     color: #ffffff;
 }
+
+
+/* Loading Spinner Container */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  /* Spinner */
+  .spinner {
+    border: 8px solid #f3f3f3; /* Light background */
+    border-top: 8px solid #3498db; /* Blue color for spinner */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite; /* Spinner rotation */
+  }
+  
+  /* Animation for spinner */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Optional: Loading Text Style */
+  .loading-container p {
+    font-size: 18px;
+    color: #3498db;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

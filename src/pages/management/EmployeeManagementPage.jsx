@@ -72,21 +72,30 @@ const EmployeeManagementPage = () => {
   };
 
   const handleUpdateEmployee = async () => {
-    console.log("Token Inside Update-->" +token)
+    console.log("Token Inside Update-->" + token);
+  
     if (!editEmployee || !editEmployee.employeeId) {
       console.error("No employee selected for update");
       return;
     }
-
+  
     console.log("Before Hitting API", editEmployee);
+    
     try {
-      console.log("Token Inside Try-->" +token)
+      console.log("Token Inside Try-->" + token);
+  
       const response = await axios.put(
-        `https://access-platform.azurewebsites.net/api/employees/update/${editEmployee.employeeId}/${providerId}`,
+        `https://access-platform-test.azurewebsites.net/api/employees/update/${editEmployee.employeeId}/${providerId}`,
         editEmployee,
-        { headers: { "Authorization": `Bearer ${token}` } }
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        }
       );
-
+  
       if (response.data.success) {
         setEmployees(
           employees.map((emp) =>
