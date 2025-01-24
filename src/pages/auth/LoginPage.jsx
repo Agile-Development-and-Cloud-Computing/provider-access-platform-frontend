@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar'; 
 import Footer from '@/components/Footer'; 
 import authService from '@/services/authService'; 
+import "@/styles/LoginPage.css";
 
 const LoginPage = () => {
   // State to manage form inputs (username and password)
