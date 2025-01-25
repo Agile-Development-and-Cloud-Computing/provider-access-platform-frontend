@@ -9,13 +9,44 @@
   flex: 1; /* Grows to fill the space between header and footer */
 }
 
+/* Global styles */
+html, body {
+  height: 100%; /* Ensure the height of the body stretches fully */
+  margin: 0; /* Remove default margin */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Navbar stays at the top */
+header {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Footer stays at the bottom */
+footer {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Main content fills the remaining space */
+main {
+  flex: 1; /* Allow main content to grow and fill space */
+  padding: 20px; /* Add some padding for aesthetics */
+  background-color: #f5f5f5; /* Optional background for content */
+}
+
+
 .footer {
   background-color: #1e293b; /* Matches Navbar for consistency */
   color: #f8fafc;
   text-align: center;
   padding: 1rem 0;
   font-size: 0.9rem;
-  margin-top: auto; /* Ensures the footer sticks to the bottom */
+  /*margin-top: auto;  Ensures the footer sticks to the bottom */
+  flex-shrink: 0; /* Footer stays at the bottom */
 }
 
 /* ===== Page-Specific Containers ===== */
