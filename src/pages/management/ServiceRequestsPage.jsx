@@ -1,7 +1,5 @@
 // src/pages/management/ServiceRequestsPage.jsx
 import React, { useEffect, useState } from "react";
-import UserDashboardNavbar from "@/components/UserDashboardNavbar";
-import Footer from "@/components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "@/styles/ServiceRequestsPage.css";
@@ -226,7 +224,6 @@ const ServiceRequestsPage = () => {
 
   return (
     <div>
-      <UserDashboardNavbar />
       <div className="service-requests-container">
         <h1>Service Requests</h1>
         {serviceRequests.length === 0 ? (
@@ -395,7 +392,6 @@ const ServiceRequestsPage = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

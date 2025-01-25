@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import UserDashboardNavbar from '@/components/UserDashboardNavbar';
-import Footer from '@/components/Footer';
 import axios from 'axios';
 import '@/styles/EmployeeManagementPage.css';
 
@@ -140,7 +138,6 @@ const EmployeeManagementPage = () => {
 
   return (
     <div>
-      <UserDashboardNavbar />
       <div className="employee-management-container">
         <h1 className="page-title">Employee Management</h1>
 
@@ -252,7 +249,6 @@ const EmployeeManagementPage = () => {
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
