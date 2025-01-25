@@ -1,29 +1,16 @@
-// File: src/services/apiClient.js
+// src/services/apiClient.js
 import axios from 'axios';
-import API_CONFIG from '@/config/apiConfig';
 
-// Create Axios instances for different API groups
-const group1apiClient = axios.create({
-  baseURL: API_CONFIG.GROUP_1,
+/*
+ * The baseURL is dynamically set based on the environment.
+ * - During development (`npm run dev`), Vite uses `.env` for variables.
+ * - During production build (`npm run build`), Vite uses `.env.production`.
+ */
+const apiClient = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL, // Dynamically set base URL from environment variables
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json', 
   },
 });
 
-const group2apiClient = axios.create({
-  baseURL: API_CONFIG.GROUP_2,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-const group3apiClient = axios.create({
-  baseURL: API_CONFIG.GROUP_3,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// Export all clients as named exports
-export { group1apiClient, group2apiClient, group3apiClient };
-
+export default apiClient;

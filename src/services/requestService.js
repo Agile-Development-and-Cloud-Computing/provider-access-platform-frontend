@@ -1,56 +1,46 @@
-// src/services/requestService.js
-import { group2apiClient as apiClient } from '@/services/apiClient'; 
+// src/services/serviceRequest.js
+//import { group3apiClient as apiClient } from '@/services/apiClient'; 
+import apiClient from '@/services/apiClient';
 
-// Function to fetch service requests based on providerId
-const getRequests = async () => {
-  const token = localStorage.getItem('authToken');
-  const providerId = localStorage.getItem('providerId');
-
-  if (!token || !providerId) {
-    throw new Error('Unauthorized: Token or providerId not found');
-  }
-
+// Fetch service requests
+export const fetchServiceRequests = async (providerId) => {
   try {
-    const response = await apiClient.get('/published', {
+    const response = await apiClient.get(`/service-request/published/${providerId}`);
+    return response.data || [];
+  } catch (error) {
+    console.error("Error fetching service requests:", error);
+    throw error;
+  }
+};
+
+// Fetch employees
+export const fetchEmployees = async (providerId, token) => {
+  try {
+    const response = await apiClient.get(`/employees/${providerId}`, {
       headers: {
-        Authorization: `Bearer ${token}`,  
-      },
-      params: {
-        providerId, 
+        Authorization: `Bearer ${token}`,
+        withCredentials: true,
       },
     });
-
-    if (!response.data || !response.data.success) {
-      throw new Error('Invalid API response');
-    }
-
-    return response.data;
+    return response.data.data || [];
   } catch (error) {
-    console.error("API fetch error:", error);
-    throw new Error("Failed to fetch service requests");
+    console.error("Error fetching employees:", error);
+    throw error;
   }
 };
 
-// Function to accept/reject service requests
-const respondToRequest = async (requestId, isAccepted) => {
-  const token = localStorage.getItem('authToken');
-
-  if (!token) {
-    throw new Error('Unauthorized: Token not found');
+// Submit a service request
+export const submitServiceRequest = async (requestData, token) => {
+  try {
+    const response = await apiClient.post('/service-request/submit', requestData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        withCredentials: true,
+      },
+    });
+    return response.status === 200;
+  } catch (error) {
+    console.error("Error submitting service request:", error);
+    throw error;
   }
-
-  const response = await apiClient.post(`/request/${requestId}/response`, {
-    isAccepted,
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  return response.data;
-};
-
-export default {
-  getRequests,
-  respondToRequest,
 };

@@ -1,5 +1,7 @@
 // src/services/dashboardService.js
-import { group3apiClient as apiClient } from '@/services/apiClient'; 
+//import { group3apiClient as apiClient } from '@/services/apiClient'; 
+import apiClient from '@/services/apiClient';
+
 
 // Fetch Master Agreements
 export const fetchMasterAgreements = async () => {
