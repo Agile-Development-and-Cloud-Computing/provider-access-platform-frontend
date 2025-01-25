@@ -1,59 +1,20 @@
-// src/pages/components/Navbar.jsx
+// File: src/components/Navbar.jsx
 import React from 'react';
-import logo from '/pam_logo.png';
+import { useAuth } from '@/context/AuthContext';
+import ProviderAdminNavbar from './AdminDashboardNavbar';
+import UserNavbar from './UserDashboardNavbar';
+import PublicNavbar from './PublicNavbar';
 
 const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        {/* Brand Logo and Name */}
-        <a className="navbar-brand d-flex align-items-center" href="/">
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ width: '40px', height: 'auto', marginRight: '10px' }}
-          />
-          Access Provider Platform
-        </a>
+  const { user } = useAuth(); // Get user info from context
 
-        {/* Hamburger Button */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  // Render the correct navbar based on authentication state
+  if (!user) {
+    return <PublicNavbar />; // Render PublicNavbar for unauthenticated users
+  }
 
-        {/* Navbar Links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/about">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/team">Team</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contact">Contact</a>
-            </li>
-          </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link text-warning" href="/login">Login</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-success" href="/register">Register</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
+  return user.role === 'Admin' ? <ProviderAdminNavbar /> : <UserNavbar />;
 };
 
 export default Navbar;
+

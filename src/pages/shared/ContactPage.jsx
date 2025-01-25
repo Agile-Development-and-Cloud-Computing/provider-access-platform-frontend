@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
+//import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/styles/PublicPages.css';
 
 const ContactPage = () => {
   return (
     <>
-      <Navbar />
       <div className="contact-container">
         <section className="contact-info">
           <h1>Contact Us</h1>

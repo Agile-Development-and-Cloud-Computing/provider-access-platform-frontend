@@ -1,15 +1,17 @@
-// src/pages/components/UserDashboardNavbar.jsx
-import React, { useEffect, useState } from 'react';
-import logo from '/pam_logo.png'; 
+// File: src/components/UserDashboardNavbar.jsx
+import React from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import logo from '/pam_logo.png'; // Adjust path as needed
 
 const UserNavbar = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const { user, logout } = useAuth(); // Get user info and logout function from context
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Retrieve the logged-in user from localStorage
-    const user = localStorage.getItem('loggedInUser');
-    setLoggedInUser(user);
-  }, []);
+  const handleLogout = () => {
+    logout(); // Clear user state and localStorage
+    navigate('/login'); // Redirect to the login page
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -50,13 +52,21 @@ const UserNavbar = () => {
           </ul>
           <ul className="navbar-nav">
             {/* Display Logged-In User */}
-            {loggedInUser && (
+            {user && (
               <li className="nav-item">
-                <span className="nav-link text-light">Welcome, {loggedInUser}</span>
+                <span className="nav-link text-light">
+                  Welcome, {user.userName || 'User'}
+                </span>
               </li>
             )}
             <li className="nav-item">
-              <a className="nav-link text-danger" href="/logout">Logout</a>
+              {/* Replacing <a> with a button for proper logout */}
+              <button
+                className="btn btn-link nav-link text-danger"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>

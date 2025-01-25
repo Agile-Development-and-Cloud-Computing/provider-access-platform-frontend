@@ -1,5 +1,7 @@
+// File: src/pages/dashboard/UserDashboard.jsx
 import React from "react";
-import UserDashboardNavbar from '@/components/UserDashboardNavbar';
+//import UserDashboardNavbar from '@/components/UserDashboardNavbar';
+//import Navbar from '@/components/Navbar'; 
 import Footer from '@/components/Footer';
 import '@/styles/UserDashboard.css';
 
@@ -33,7 +35,7 @@ const UserDashboard = () => {
 
   return (
     <>
-      <UserDashboardNavbar />
+      {/*<UserDashboardNavbar /> */} 
       <div className="dashboard-container">
         <h1 className="dashboard-title">User Dashboard</h1>
 

@@ -1,11 +1,16 @@
-// src/services/authService.js
-//import { group3apiClient as apiClient } from '@/services/apiClient'; 
-import apiClient from '@/services/apiClient'; 
+import apiClient from '@/services/apiClient';
 
-const login = (credentials) => {
-  return apiClient.post('/login', credentials);
+const login = async (credentials) => {
+  const response = await apiClient.post('/login', credentials);
+  return response.data;
+};
+
+const getUserDetails = async () => {
+  const response = await apiClient.get('/me');
+  return response.data;
 };
 
 export default {
   login,
+  getUserDetails,
 };

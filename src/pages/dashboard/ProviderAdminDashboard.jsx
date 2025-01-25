@@ -1,5 +1,7 @@
+// File: src/pages/dashboard/ProviderAdminDashboard.jsx
 import React from 'react';
-import AdminDashboardNavbar from '@/components/AdminDashboardNavbar';
+//import AdminDashboardNavbar from '@/components/AdminDashboardNavbar';
+//import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/styles/ProviderAdminDashboard.css';
 
@@ -37,7 +39,8 @@ const ProviderAdminDashboard = () => {
 
   return (
     <>
-      <AdminDashboardNavbar />
+      {/*<AdminDashboardNavbar /> */}
+      {/*  <Navbar />  */}
       <div className="dashboard-container">
         <h1 className="dashboard-title">Provider Admin Dashboard</h1>
 
