@@ -1,6 +1,5 @@
 // src/pages/auth/RegisterPage.jsx
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar'; 
 import Footer from '@/components/Footer'; 
 import authService from '@/services/authService'; 
 
@@ -48,7 +47,6 @@ const RegisterPage = () => {
 
   return (
     <>
-      <Navbar />
       <div className="register-container">
         <h1>Register</h1>
         <p>Create a provider account to start using the platform:</p>

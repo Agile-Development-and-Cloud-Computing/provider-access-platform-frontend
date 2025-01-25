@@ -4,6 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import '@/styles/LoginPage.css';
 
+
 const LoginPage = () => {
   const { login } = useAuth(); // Access login function from AuthContext
   const [formData, setFormData] = useState({ username: '', password: '' });

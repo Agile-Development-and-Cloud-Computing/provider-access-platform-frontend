@@ -1,3 +1,4 @@
+// File: src/services/authService.js
 import apiClient from '@/services/apiClient';
 
 const login = async (credentials) => {
