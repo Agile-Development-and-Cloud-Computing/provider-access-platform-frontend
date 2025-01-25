@@ -1,11 +1,10 @@
 // File: src/components/AdminDashboardNavbar.jsx
-// File: src/components/AdminDashboardNavbar.jsx
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import logo from '/pam_logo.png';
 
-const ProviderAdminNavbar = () => {
+const AdminDashboardNavbar = () => {
   const { user, logout } = useAuth(); // Get user info and logout function from context
   const navigate = useNavigate();
 
@@ -18,12 +17,8 @@ const ProviderAdminNavbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/dashboard/admin">
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ width: '40px', height: 'auto', marginRight: '10px' }}
-          />
-          Access Provider Platform
+          <img src={logo} alt="Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
+          Admin Dashboard
         </a>
         <button
           className="navbar-toggler"
@@ -52,7 +47,6 @@ const ProviderAdminNavbar = () => {
             </li>
           </ul>
           <ul className="navbar-nav">
-            {/* Display Logged-In User */}
             {user && (
               <li className="nav-item">
                 <span className="nav-link text-light">
@@ -61,11 +55,7 @@ const ProviderAdminNavbar = () => {
               </li>
             )}
             <li className="nav-item">
-              {/* Replace <a> with a button for proper logout */}
-              <button
-                className="btn btn-link nav-link text-danger"
-                onClick={handleLogout}
-              >
+              <button className="btn btn-link nav-link text-danger" onClick={handleLogout}>
                 Logout
               </button>
             </li>
@@ -76,4 +66,4 @@ const ProviderAdminNavbar = () => {
   );
 };
 
-export default ProviderAdminNavbar;
+export default AdminDashboardNavbar;
