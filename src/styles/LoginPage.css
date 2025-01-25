@@ -1,10 +1,10 @@
 /* LoginPage.css */
 
-/* General body styling 
+/* General body styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, #ffffff, #a7aaaf);
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
   }
-  */
+  
   /* Login container styling */
   .login-container {
     background: #ffffff;
