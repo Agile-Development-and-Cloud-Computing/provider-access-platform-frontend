@@ -30,7 +30,6 @@ const AboutPage = () => {
           </ul>
         </section>
       </div>
-      <Footer />
     </>
   );
 };
