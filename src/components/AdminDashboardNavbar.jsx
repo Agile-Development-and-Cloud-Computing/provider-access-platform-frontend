@@ -1,20 +1,22 @@
-// src/pages/components/AdminDashboardNavbar.jsx
-import React, { useEffect, useState } from 'react';
-import logo from '/pam_logo.png'; 
+// File: src/components/AdminDashboardNavbar.jsx
+// File: src/components/AdminDashboardNavbar.jsx
+import React from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import logo from '/pam_logo.png';
 
 const ProviderAdminNavbar = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const { user, logout } = useAuth(); // Get user info and logout function from context
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Retrieve the logged-in user from localStorage
-    const user = localStorage.getItem('loggedInUser');
-    setLoggedInUser(user);
-  }, []);
+  const handleLogout = () => {
+    logout(); // Clear user state and localStorage
+    navigate('/login'); // Redirect to the login page
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        {/* Logo and Branding */}
         <a className="navbar-brand d-flex align-items-center" href="/dashboard/admin">
           <img
             src={logo}
@@ -23,8 +25,6 @@ const ProviderAdminNavbar = () => {
           />
           Access Provider Platform
         </a>
-
-        {/* Hamburger Button for Mobile View */}
         <button
           className="navbar-toggler"
           type="button"
@@ -36,8 +36,6 @@ const ProviderAdminNavbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
-        {/* Navbar Links */}
         <div className="collapse navbar-collapse" id="adminNavbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
@@ -55,13 +53,21 @@ const ProviderAdminNavbar = () => {
           </ul>
           <ul className="navbar-nav">
             {/* Display Logged-In User */}
-            {loggedInUser && (
+            {user && (
               <li className="nav-item">
-                <span className="nav-link text-light">Welcome, {loggedInUser}</span>
+                <span className="nav-link text-light">
+                  Welcome, {user.userName || 'Admin'}
+                </span>
               </li>
             )}
             <li className="nav-item">
-              <a className="nav-link text-danger" href="/logout">Logout</a>
+              {/* Replace <a> with a button for proper logout */}
+              <button
+                className="btn btn-link nav-link text-danger"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
