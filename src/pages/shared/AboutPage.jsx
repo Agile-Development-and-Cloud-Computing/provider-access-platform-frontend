@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
+//import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/styles/PublicPages.css';
 
 const AboutPage = () => {
   return (
     <>
-      <Navbar />
       <div className="about-container">
         <section className="about-header">
           <h1>About Us</h1>

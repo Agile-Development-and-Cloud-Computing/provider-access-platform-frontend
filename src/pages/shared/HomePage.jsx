@@ -1,12 +1,11 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
+//import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "@/styles/HomePage.css"; // Import the CSS for styling
 
 const HomePage = () => {
   return (
     <>
-      <Navbar />
       <div className="home-container">
         {/* Full-width image */}
         <div className="image-container">

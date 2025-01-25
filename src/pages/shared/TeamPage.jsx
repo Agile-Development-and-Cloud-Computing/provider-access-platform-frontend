@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '@/components/Navbar';
+//import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '@/styles/PublicPages.css';
 
 const TeamPage = () => {
   return (
     <>
-      <Navbar />
       <div className="team-container">
         <h1>Meet Our Team</h1>
         <p>
