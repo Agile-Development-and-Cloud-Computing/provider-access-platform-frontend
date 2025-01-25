@@ -1,19 +1,20 @@
-// src/App.jsx
-
+// File: src/App.jsx
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from '@/routes/AppRoutes'; 
-import '@/styles/App.css'; 
+import { AuthProvider } from '@/context/AuthContext';
+import Navbar from '@/components/Navbar';
+import AppRoutes from '@/routes/AppRoutes';
 
-function App() {
+const App = () => {
   return (
-    <div className="app-container">
+    <AuthProvider>
       <Router>
+        {/* <Navbar /> Navbar is always visible */}
+        <Navbar /> {/* Navbar will dynamically render based on authentication */}
         <AppRoutes />
       </Router>
-    </div>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
