@@ -7,18 +7,17 @@ import '@/styles/layout.css';
 const PublicLayout = ({ children }) => {
   return (
     <div className="app-container">
-      <header>
+      <header className="public-header">
         <PublicNavbar />
       </header>
-      <main>
+      <main className="public-main">
         {children}
       </main>
       <footer>
-        <Footer />
+        <Footer type="public" />
       </footer>
     </div>
   );
 };
 
 export default PublicLayout;
-

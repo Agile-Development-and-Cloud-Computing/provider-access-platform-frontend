@@ -7,18 +7,17 @@ import '@/styles/layout.css';
 const UserLayout = ({ children }) => {
   return (
     <div className="app-container">
-      <header>
+      <header className="user-header">
         <UserDashboardNavbar />
       </header>
-      <main>
+      <main className="user-main">
         {children}
       </main>
       <footer>
-        <Footer />
+        <Footer type="user" />
       </footer>
     </div>
   );
 };
 
 export default UserLayout;
-

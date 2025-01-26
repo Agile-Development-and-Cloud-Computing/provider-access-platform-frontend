@@ -1,24 +1,60 @@
+/* ===== Global Layout Styles ===== */
 .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Full viewport height */
   }
   
-  header {
+  /* Header Styles */
+  .admin-header,
+  .public-header,
+  .user-header {
     flex-shrink: 0;
+    background-color: #ffffff; /* Add a common background color */
+    border-bottom: 1px solid #e5e7eb; /* Optional: subtle border for separation */
   }
   
-  main {
+  /* Main Content Styles */
+  .admin-main {
+    flex: 1;
+    padding: 0;
+    background-color: #ffffff; /* Example for admin dashboard */
+  }
+  
+  .public-main {
     flex: 1;
     padding: 20px;
-    background-color: #f9f9f9; /* Optional background for content */
+    background-color: #f9f9f9; /* Example for public pages */
   }
   
+  .user-main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8fafc; /* Example for user pages */
+  }
+  
+  /* Footer Styles */
   footer {
     flex-shrink: 0;
-    background-color: #343a40; /* Footer background */
+    background-color: #343a40;
     color: white;
     text-align: center;
     padding: 10px 0;
+    border-top: 1px solid #4b5563; /* Optional: subtle border for separation */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .app-container {
+      padding: 0;
+    }
+  
+    main {
+      padding: 15px;
+    }
+  
+    footer {
+      font-size: 0.9rem;
+    }
   }
   

@@ -7,18 +7,17 @@ import '@/styles/layout.css';
 const AdminLayout = ({ children }) => {
   return (
     <div className="app-container">
-      <header>
+      <header className="admin-header">
         <AdminDashboardNavbar />
       </header>
-      <main>
+      <main className="admin-main">
         {children}
       </main>
       <footer>
-        <Footer />
+        <Footer type="admin" />
       </footer>
     </div>
   );
 };
 
 export default AdminLayout;
-
