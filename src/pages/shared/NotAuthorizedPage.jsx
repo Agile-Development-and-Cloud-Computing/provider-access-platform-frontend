@@ -10,5 +10,5 @@ const NotAuthorizedPage = () => {
   );
 };
 
-export default NotAuthorizedPage; // Ensure default export
+export default NotAuthorizedPage; 
 

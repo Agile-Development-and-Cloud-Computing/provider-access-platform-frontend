@@ -13,158 +13,66 @@
 html, body {
   height: 100%; /* Ensure the height of the body stretches fully */
   margin: 0; /* Remove default margin */
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  font-family: Arial, sans-serif; /* Set a consistent global font */
+  background-color: #f9fafb; /* Subtle background color */
+  color: #1e293b; /* Dark text color for consistency */
 }
 
 /* Navbar stays at the top */
 header {
   flex-shrink: 0; /* Prevent shrinking */
+  z-index: 1000; /* Ensure navbar stays above other elements */
 }
 
-/* Footer stays at the bottom */
-footer {
-  flex-shrink: 0; /* Prevent shrinking */
-}
-
-/* Main content fills the remaining space */
-main {
-  flex: 1; /* Allow main content to grow and fill space */
-  padding: 20px; /* Add some padding for aesthetics */
-  background-color: #f5f5f5; /* Optional background for content */
-}
-
-
+/* ===== Footer Styles ===== */
 .footer {
-  background-color: #1e293b; /* Matches Navbar for consistency */
-  color: #f8fafc;
+  background-color: #1e293b; /* Dark gray background */
+  color: #f8fafc; /* Light text */
   text-align: center;
   padding: 1rem 0;
-  font-size: 0.9rem;
-  /*margin-top: auto;  Ensures the footer sticks to the bottom */
-  flex-shrink: 0; /* Footer stays at the bottom */
+  margin: 0; /* Ensure no unexpected margin */
+  position: relative; /* Prevent overlapping background */
+  z-index: 1; /* Keep it above lower layers */
 }
 
-/* ===== Page-Specific Containers ===== */
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/* General Page Containers */
-.page-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
+body {
+  margin: 0; /* Remove any body-level margin that might affect layout */
+  padding: 0;
+}
+
+/* ===== Utility Classes ===== */
+.text-center {
   text-align: center;
-  background-color: #e5eaf3; /* Neutral light background */
-  color: #000000;
-  padding: 2rem;
 }
 
-.home-container {
-  /* Inherit styles from .page-container by reusing the class */
-  flex: 1; /* Maintain full page height */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  background-color: #e5eaf3;
-  color: #000000;
-  padding: 2rem;
 }
 
-/* ===== Form Containers (Login, Register, Contact) ===== */
-.login-container,
-.register-container {
+.flex-column {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center form content vertically */
-  align-items: center; /* Center form content horizontally */
-  background-color: #ffffff; /* Bright white background */
-  color: #1e293b; /* Dark text for readability */
-  padding: 1.5rem; /* Compact padding */
-  border-radius: 12px; /* Smooth corners for modern look */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Subtle shadow effect */
-  max-width: 500px; /* Adjust max width */
-  margin: 2rem auto;
-  box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
-/* ===== Input Fields (Uniform Sizes) ===== */
-.login-container input[type="text"],
-.login-container input[type="password"],
-.register-container input[type="text"],
-.register-container input[type="password"] {
-  width: 100%; /* Full container width */
-  padding: 1rem; /* Uniform padding for all fields */
-  margin: 0.5rem 0; /* Equal spacing between fields */
-  border: 2px solid #e5e7eb; /* Subtle border for consistency */
-  border-radius: 8px; /* Smooth rounded corners */
-  font-size: 1rem; /* Uniform font size */
-  background-color: #f8fafc; /* Light gray background for readability */
-  box-sizing: border-box; /* Include padding and border in size */
-  height: 48px; /* Fixed height for input fields */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus transition */
+.hidden {
+  display: none;
 }
 
-/* ===== Focus State for All Inputs ===== */
-.login-container input:focus,
-.register-container input:focus {
-  border-color: #2563eb; /* Bright blue border on focus */
-  box-shadow: 0px 0px 8px rgba(37, 99, 235, 0.4); /* Soft glow effect */
-  outline: none; /* Remove default browser outline */
-}
-
-/* ===== Buttons (Uniform Styles) ===== */
-.login-container button,
-.register-container button {
-  width: 100%; /* Full-width buttons */
-  padding: 1rem;
-  background-color: #2563eb; /* Bright blue background */
-  color: #ffffff; /* White text for contrast */
-  border: none;
-  border-radius: 8px; /* Rounded corners */
-  font-size: 1.1rem; /* Slightly larger font for buttons */
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
-}
-
-.login-container button:hover,
-.register-container button:hover {
-  background-color: #1e40af; /* Darker blue on hover */
-  transform: translateY(-2px); /* Subtle lift effect */
-}
-
-/* ===== Form Headings ===== */
-.login-container h1,
-.register-container h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #1e293b; /* Dark text for headings */
-  margin-bottom: 1rem;
-}
-
-.login-container p,
-.register-container p {
-  font-size: 1rem;
-  color: #4b5563; /* Muted text for descriptions */
-  margin-bottom: 1.5rem;
-}
-
-/* Special Pages (404/Not Found) */
-.notfound-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #5f7ea7;
-  color: #f8fafc;
-  padding: 2rem;
+.visible {
+  display: block;
 }
