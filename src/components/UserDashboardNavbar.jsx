@@ -1,3 +1,4 @@
+// File: src/components/cards/UserDashboardNavbar.jsx
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +15,7 @@ const UserDashboardNavbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-primary">
+    <nav className="navbar navbar-expand-lg user-navbar">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/dashboard/user">
           <img src={logo} alt="Logo" />

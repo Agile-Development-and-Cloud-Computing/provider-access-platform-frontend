@@ -1,3 +1,4 @@
+// File: src/components/cards/PublicNavbar.jsx
 import React from 'react';
 import logo from '/pam_logo.png';
 import '@/styles/navbar.css';

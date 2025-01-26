@@ -1,3 +1,4 @@
+// File: src/components/cards/AdminDashboardNavbar.jsx
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +15,7 @@ const AdminDashboardNavbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-dark">
+    <nav className="navbar navbar-expand-lg admin-navbar"> {/* bg-dark */}
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/dashboard/admin">
           <img src={logo} alt="Logo" />
