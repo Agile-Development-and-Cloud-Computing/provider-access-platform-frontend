@@ -1,13 +1,13 @@
-// File: src/components/PublicNavbar.jsx
 import React from 'react';
 import logo from '/pam_logo.png';
+import '@/styles/navbar.css';
 
 const PublicNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/">
-          <img src={logo} alt="Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
+          <img src={logo} alt="Logo" />
           Access Provider Platform
         </a>
         <button
@@ -27,10 +27,10 @@ const PublicNavbar = () => {
               <a className="nav-link" href="/about">About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">Contact</a>
+              <a className="nav-link" href="/team">Team</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/team">Team</a>
+              <a className="nav-link" href="/contact">Contact</a>
             </li>
           </ul>
           <ul className="navbar-nav">

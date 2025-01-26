@@ -1,23 +1,23 @@
-// File: src/components/UserDashboardNavbar.jsx
 import React from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import logo from '/pam_logo.png';
+import '@/styles/navbar.css';
 
 const UserDashboardNavbar = () => {
-  const { user, logout } = useAuth(); // Get user info and logout function from context
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // Clear user state and localStorage
-    navigate('/login'); // Redirect to the login page
+    logout();
+    navigate('/login');
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg bg-primary">
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="/dashboard/user">
-          <img src={logo} alt="Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
+          <img src={logo} alt="Logo" />
           User Dashboard
         </a>
         <button
@@ -49,13 +49,13 @@ const UserDashboardNavbar = () => {
           <ul className="navbar-nav">
             {user && (
               <li className="nav-item">
-                <span className="nav-link text-light">
-                  Welcome, {user.userName || 'User'}
+                <span className="nav-link welcome-text">
+                  Hi, {user.userName || 'User'}
                 </span>
               </li>
             )}
             <li className="nav-item">
-              <button className="btn btn-link nav-link text-danger" onClick={handleLogout}>
+              <button className="btn btn-link nav-link" onClick={handleLogout}>
                 Logout
               </button>
             </li>

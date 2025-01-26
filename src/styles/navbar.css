@@ -1,63 +1,91 @@
-/* Global Navbar Styles */
+/* General Navbar Styles */
 .navbar {
-    min-height: 80px;
-    padding: 10px 20px;
+    min-height: 80px; /* Consistent height for all navbars */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: relative;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    z-index: 1000; /* Ensure it stays on top */
   }
   
-  .navbar .navbar-brand {
+  .navbar-brand {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+    color: white; /* Default color for dark navbars */
   }
   
-  .navbar .navbar-brand img {
+  .navbar-brand img {
     width: 40px;
     height: auto;
     margin-right: 10px;
   }
   
-  .navbar .navbar-nav {
+  .navbar-nav {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    gap: 20px; /* Space between links */
   }
   
-  .navbar .nav-item .nav-link {
-    color: var(--link-color, #000);
-    font-size: 1rem;
+  .nav-item .nav-link {
+    color: white; /* Default link color */
     text-decoration: none;
+    font-size: 1rem;
     transition: color 0.3s ease;
   }
   
-  .navbar .nav-item .nav-link:hover {
-    color: var(--link-hover-color, #0056b3);
+  .nav-item .nav-link:hover {
+    color: #f8d7da; /* Highlight on hover */
+  }
+  
+  /* Logout Button */
+  .navbar .btn-link {
+    color: red;
+    text-decoration: none;
+  }
+  
+  .navbar .btn-link:hover {
+    color: #ff4d4f;
+  }
+  
+  /* Specific Navbar Background Colors */
+  .navbar.bg-dark {
+    background-color: #343a40;
+  }
+  
+  .navbar.bg-primary {
+    background-color: #007bff;
   }
   
   .navbar.bg-light {
     background-color: #f8f9fa;
   }
   
-  .navbar.bg-dark {
-    background-color: #343a40;
+  .navbar.bg-light .nav-link {
+    color: #343a40; /* Dark links for light navbar */
   }
   
-  .navbar.bg-dark .nav-link {
-    color: #ffffff;
-  }
-  
-  .navbar.bg-dark .nav-link:hover {
-    color: #adb5bd;
+  .navbar.bg-light .nav-link:hover {
+    color: #007bff;
   }
   
   .navbar-toggler {
     border: none;
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(1); /* Ensure icon is visible on dark backgrounds */
+  }
+  
+  /* Collapse Section for Mobile */
+  .collapse {
+    justify-content: flex-end;
+  }
+  
+  /* Specific Welcome Text */
+  .navbar .welcome-text {
+    color: #ffc107;
+    font-weight: normal;
   }
   
