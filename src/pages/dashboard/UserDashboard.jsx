@@ -1,8 +1,8 @@
+// File: src/pages/dashboard/UserDashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '@/styles/UserDashboard.css';
+import '@/styles/Dashboard.css'; // Shared dashboard styles
 
-// Import Actionable Link cards
 import ViewOffersCard from '@/components/cards/ViewOffersCard';
 import ServiceRequestsCard from '@/components/cards/ServiceRequestsCard';
 import EmployeeManagementCard from '@/components/cards/EmployeeManagementCard';
@@ -13,23 +13,19 @@ import OrdersCard from '@/components/cards/OrdersCard';
 const UserDashboard = () => {
   const navigate = useNavigate();
 
-  const navigateToServiceRequests = () => navigate('/user/service-requests'); 
-  const navigateToEmployeeManagement = () => navigate('/user/employee-management'); 
-  const navigateToMasterAgreements = () => navigate('/user/master-agreements'); 
-
   return (
-    <>
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">User Dashboard</h1>
-        <div className="dashboard-grid">
-          <ServiceRequestsCard navigateTo={navigateToServiceRequests} />
-          <EmployeeManagementCard navigateTo={navigateToEmployeeManagement} />
-          <MasterAgreementsCard navigateTo={navigateToMasterAgreements} />
-          <RoleOffersCard />
-          <OrdersCard />
-        </div>
+    <div className="dashboard-container user-dashboard">
+      <h1 className="dashboard-title" role="heading" aria-level="1">
+        Welcome to Your User Dashboard
+      </h1>
+      <div className="dashboard-grid">
+        <ServiceRequestsCard navigateTo={() => navigate('/user/service-requests')} />
+        <EmployeeManagementCard navigateTo={() => navigate('/user/employee-management')} />
+        <MasterAgreementsCard navigateTo={() => navigate('/user/master-agreements')} />
+        <RoleOffersCard />
+        <OrdersCard />
       </div>
-    </>
+    </div>
   );
 };
 

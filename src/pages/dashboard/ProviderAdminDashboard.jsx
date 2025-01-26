@@ -1,8 +1,8 @@
+// File: src/pages/dashboard/ProviderAdminDashboard.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '@/styles/ProviderAdminDashboard.css';
+import '@/styles/Dashboard.css'; // Shared dashboard styles
 
-// Import Actionable Link cards
 import MasterAgreementsCard from '@/components/cards/MasterAgreementsCard';
 import ManageProvidersCard from '@/components/cards/ManageProvidersCard';
 import UserManagementCard from '@/components/cards/UserManagementCard';
@@ -13,25 +13,20 @@ import OrdersCard from '@/components/cards/OrdersCard';
 const ProviderAdminDashboard = () => {
   const navigate = useNavigate();
 
-  const navigateToMasterAgreements = () => navigate('/admin/master-agreements');
-  const navigateToManageProviders = () => navigate('/admin/manage-providers');
-  const navigateToUserManagement = () => navigate('/admin/user-management');
-  const navigateToServiceRequests = () => navigate('/admin/service-requests'); 
-
   return (
-    <>
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">Provider Admin Dashboard</h1>
-        <div className="dashboard-grid">
-          <MasterAgreementsCard navigateTo={navigateToMasterAgreements} />
-          <ManageProvidersCard navigateTo={navigateToManageProviders} />
-          <UserManagementCard navigateTo={navigateToUserManagement} />
-          <ServiceRequestsCard navigateTo={navigateToServiceRequests} />
-          <RoleOffersCard />
-          <OrdersCard />
-        </div>
+    <div className="dashboard-container admin-dashboard">
+      <h1 className="dashboard-title" role="heading" aria-level="1">
+        Welcome to Your Admin Dashboard
+      </h1>
+      <div className="dashboard-grid">
+        <MasterAgreementsCard navigateTo={() => navigate('/admin/master-agreements')} />
+        <ManageProvidersCard navigateTo={() => navigate('/admin/manage-providers')} />
+        <UserManagementCard navigateTo={() => navigate('/admin/user-management')} />
+        <ServiceRequestsCard navigateTo={() => navigate('/admin/service-requests')} />
+        <RoleOffersCard />
+        <OrdersCard />
       </div>
-    </>
+    </div>
   );
 };
 
