@@ -1,187 +1,106 @@
-/* Main Wrapper for Dashboard */
-.dashboard-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
-}
-
-/* Content Area */
-.dashboard-container {
-  flex: 1; /* Allows the content to grow and push the footer to the bottom */
-  padding: 20px; /* Add some padding for layout styling */
-}
-
-/* Footer Styles */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px 20px;
-}
-
-/* General Data Container Styles */
-.data-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.data-summary-box {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.data-summary-box h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-.data-summary-box p {
-  margin: 5px 0;
-}
-
-.data-summary-box button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.data-summary-box button:hover {
-  background-color: #0056b3;
-}
-
-/* Details Section */
-.data-details {
-  margin-top: 10px;
-  background-color: #ffffff;
-  padding: 10px;
-  border-top: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-/* Domain and Role Styles */
-.domain-section {
-  margin-top: 24px;
-}
-
-.domain-heading {
-  font-size: 20px;
-  color: #0056b3;
-  margin-bottom: 8px;
-}
-
-.roles-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.role-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  width: 300px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.role-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.role-name {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 8px;
-}
-
-.bid-button {
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.bid-button:hover {
-  background-color: #0056b3;
-}
-
-/* Bid Form Modal */
-.bid-form-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.bid-form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  width: 400px;
-}
-
-.form-group {
-  margin-bottom: 16px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-.form-error {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-.submit-button,
-.cancel-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.submit-button {
-  background-color: #4caf50;
-  color: white;
-  margin-right: 10px;
-}
-
-.cancel-button {
-  background-color: #f44336;
-  color: white;
-}
-
-.submit-button:hover {
-  background-color: #45a049;
-}
-
-.cancel-button:hover {
-  background-color: #e53935;
-}
+/* ===== General Dashboard Card Styles ===== */
+.dashboard-card {
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #fefeff;
+  }
+  
+  .dashboard-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .dashboard-card button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  /* Hover Effects for All Cards */
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  }
+  
+  /* ===== Admin Dashboard Scoped Styles ===== */
+  .admin-dashboard .dashboard-card h2 {
+    color: #000000; /* Light gray for headings */
+  }
+  
+  .admin-dashboard .dashboard-card button {
+    background-color: #343a40; /* Match Navbar color */
+    color: white;
+  }
+  
+  .admin-dashboard .dashboard-card button:hover {
+    background-color: #212529; /* Darker gray on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  /* ===== User Dashboard Scoped Styles ===== */
+  .user-dashboard .dashboard-card h2 {
+    color: #191970; /* Light blue for headings */
+  }
+  
+  .user-dashboard .dashboard-card button {
+    background-color: #191970; /* Medium blue button */
+    color: white;
+  }
+  
+  .user-dashboard .dashboard-card button:hover {
+    background-color: #1e3a8a; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  /* ===== Dashboard Grid Styles ===== */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three equal columns */
+    gap: 20px; /* Space between the cards */
+    width: 100%; /* Ensures the grid spans the container's width */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media screen and (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr; /* Switch to one column layout on smaller screens */
+    }
+    .dashboard-card {
+      margin: 0 auto; /* Centers the card on small screens */
+    }
+  }
+  
+  /* ===== General Dashboard Container Styles ===== */
+  .dashboard-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content */
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333; /* Dark gray for the title */
+    font-weight: 600; /* Slightly bolder for better readability */
+  }
+  

@@ -1,22 +1,55 @@
-/* ===== About Page Styles ===== */
-.about-container {
-    padding: 2rem;
+/* ===== Global Variables ===== */
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #6d28d9;
+    --light-bg-color: #f9f9f9;
+    --white-bg-color: #ffffff;
+    --text-color: #1f2937;
+    --muted-text-color: #6c757d;
+    --button-hover-color: #1e40af;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-strong-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  /* ===== Reset and Global Styles ===== */
+  body {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f9fafb;
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* ===== About Page Styles ===== */
+  .about-container {
+    padding: 2rem;
     text-align: center;
-    color: #1f2937;
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
   }
   
   .about-header {
     margin-bottom: 1.5rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #4f46e5, #6d28d9);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white-bg-color);
     border-radius: 10px;
   }
   
   .about-header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem); /* Responsive font size */
     margin-bottom: 0.5rem;
   }
   
@@ -28,14 +61,14 @@
   .about-highlight {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: #ffffff;
+    background: var(--white-bg-color);
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px var(--shadow-color);
   }
   
   .about-highlight h2 {
     font-size: 1.8rem;
-    color: #4f46e5;
+    color: var(--primary-color);
     margin-bottom: 1rem;
   }
   
@@ -43,99 +76,62 @@
     font-size: 1.1rem;
   }
   
-  .about-features {
-    padding: 1.5rem;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .about-features h2 {
-    font-size: 1.8rem;
-    color: #4f46e5;
-    margin-bottom: 1rem;
-  }
-  
-  .about-features ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .about-features li {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-    position: relative;
-    padding-left: 1.5rem;
-  }
-  
-  .about-features li:before {
-    content: '✔';
-    color: #4f46e5;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-  }
-  
-  
-  
   /* ===== Team Page Styles ===== */
   .team-container {
     padding: 2rem;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa; /* Light gray background */
     text-align: center;
-    color: #333; /* Dark text */
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
   }
   
   .team-container h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4f46e5; /* Blue for the heading */
+    color: var(--primary-color);
   }
   
   .team-container p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #6c757d; /* Muted gray for description */
+    color: var(--muted-text-color);
   }
   
   .team-row {
     display: flex;
     justify-content: space-around;
     gap: 1rem;
-    flex-wrap: wrap; /* Ensures responsiveness */
+    flex-wrap: wrap; /* Responsive layout */
   }
   
   .team-card {
-    background: #ffffff; /* White background for cards */
+    background: var(--white-bg-color);
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0px 4px 8px var(--shadow-color);
     text-align: center;
-    width: 18%; /* Adjust width to fit all 5 cards */
+    width: 18%; /* Adjust width for desktop */
     min-width: 200px; /* Ensure minimum size on smaller screens */
   }
   
   .team-card h2 {
     font-size: 1.2rem;
-    color: #333; /* Dark text for names */
+    color: var(--text-color);
     margin-bottom: 0.5rem;
   }
   
   .team-card h3 {
     font-size: 1rem;
-    color: #4f46e5; /* Blue for roles */
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
   }
   
   .team-card p {
     font-size: 0.9rem;
-    color: #6c757d; /* Muted gray for email */
+    color: var(--muted-text-color);
   }
   
   .team-card a {
-    color: #4f46e5; /* Blue for email links */
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
   }
@@ -144,39 +140,36 @@
     text-decoration: underline;
   }
   
-  
-  
   /* ===== Contact Page Styles ===== */
   .contact-container {
     padding: 2rem;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9; /* Light gray background */
-    color: #333;
+    background-color: var(--light-bg-color);
+    color: var(--text-color);
     max-width: 800px;
     margin: 2rem auto;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
   }
   
   .contact-info {
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
   }
   
   .contact-info h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #4f46e5; /* Blue heading */
+    color: var(--primary-color);
   }
   
   .contact-info p {
     font-size: 1rem;
     margin-bottom: 1rem;
-    color: #555;
+    color: var(--muted-text-color);
   }
   
   .contact-info a {
-    color: #4f46e5;
+    color: var(--primary-color);
     text-decoration: none;
   }
   
@@ -185,16 +178,16 @@
   }
   
   .contact-form-section {
-    background-color: #ffffff; /* White background for the form */
+    background: var(--white-bg-color);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
   }
   
   .contact-form-section h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #4f46e5; /* Blue subheading */
+    color: var(--primary-color);
   }
   
   .contact-form {
@@ -203,15 +196,11 @@
     gap: 1rem;
   }
   
-  .form-group {
-    text-align: left;
-  }
-  
   .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-color);
   }
   
   .form-group input,
@@ -219,15 +208,15 @@
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: var(--white-bg-color);
     box-sizing: border-box;
   }
   
   .form-group input:focus,
   .form-group textarea:focus {
-    border-color: #4f46e5;
+    border-color: var(--primary-color);
     outline: none;
   }
   
@@ -235,7 +224,7 @@
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #4f46e5; /* Blue button */
+    background-color: var(--primary-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -243,6 +232,126 @@
   }
   
   .submit-btn:hover {
-    background-color: #3730a3; /* Darker blue on hover */
+    background-color: var(--button-hover-color);
+  }
+  
+  /* ===== Login/Register Page Styles ===== */
+  .login-container,
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-bg-color);
+    color: var(--text-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px var(--shadow-strong-color);
+    max-width: 500px;
+    margin: 2rem auto;
+    box-sizing: border-box;
+  }
+  
+  .login-container input[type="text"],
+  .login-container input[type="password"],
+  .register-container input[type="text"],
+  .register-container input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-bg-color);
+    box-sizing: border-box;
+    height: 48px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .login-container input:focus,
+  .register-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0px 0px 8px rgba(37, 99, 235, 0.4);
+    outline: none;
+  }
+  
+  .login-container button,
+  .register-container button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-container button:hover,
+  .register-container button:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+  }
+  
+  .login-container h1,
+  .register-container h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+  
+  .login-container p,
+  .register-container p {
+    font-size: 1rem;
+    color: var(--muted-text-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ===== Responsive Design ===== */
+  @media (max-width: 768px) {
+    .team-card {
+      width: 100%; /* Stack cards vertically on smaller screens */
+    }
+  
+    .about-highlight {
+      padding: 1rem;
+    }
+  
+    .submit-btn {
+      font-size: 0.9rem; /* Smaller font for buttons */
+    }
+  }
+  
+  /* NotFound Page*/
+  .not-found-container {
+    text-align: center;
+    margin: 100px auto;
+    padding: 20px;
+    max-width: 600px;
+  }
+  
+  .not-found-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ff4d4d;
+  }
+  
+  .not-found-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  .not-found-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .not-found-buttons .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
   

@@ -1,3 +1,4 @@
+// File: src/components/cards/MasterAgreementsCard.jsx
 import React from 'react';
 
 const MasterAgreementsCard = ({ navigateTo }) => {

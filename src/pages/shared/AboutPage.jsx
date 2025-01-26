@@ -1,6 +1,4 @@
 import React from 'react';
-//import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import '@/styles/PublicPages.css';
 
 const AboutPage = () => {
@@ -30,7 +28,6 @@ const AboutPage = () => {
           </ul>
         </section>
       </div>
-      <Footer />
     </>
   );
 };

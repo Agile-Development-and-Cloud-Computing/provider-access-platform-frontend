@@ -1,7 +1,6 @@
 // src/pages/management/MasterAgreementPage.jsx
 import React, { useState, useEffect } from 'react';
-import AdminDashboardNavbar from '@/components/AdminDashboardNavbar';
-import Footer from '@/components/Footer';
+// Removed AdminDashboardNavbar import
 import '@/styles/MasterAgreementPage.css';
 import masterAgreementService from '@/services/masterAgreementService';
 
@@ -28,8 +27,7 @@ const MasterAgreementPage = () => {
     try {
       const response = await masterAgreementService.getMasterAgreements();
       console.log("API Response:", response);
-  
-      // Check if the API response has the 'data' field
+
       if (response && response.success && Array.isArray(response.data)) {
         const transformedData = response.data.map((agreement) => ({
           masterAgreementTypeId: agreement.masterAgreementTypeId,
@@ -49,7 +47,7 @@ const MasterAgreementPage = () => {
             })),
           })),
         }));
-  
+
         setData(transformedData);
       } else {
         setError("Data format is incorrect. Expected a valid 'data' array.");
@@ -174,8 +172,6 @@ const MasterAgreementPage = () => {
 
   return (
     <div className="dashboard-wrapper">
-      <AdminDashboardNavbar onSelectSection={setSelectedSection} />
-
       <div className="dashboard-container">
         <h1>Master Agreements</h1>
         {renderContent()}
@@ -219,8 +215,6 @@ const MasterAgreementPage = () => {
           </form>
         </div>
       )}
-
-      <Footer />
     </div>
   );
 };

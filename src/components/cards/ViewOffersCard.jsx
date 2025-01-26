@@ -1,3 +1,4 @@
+// File: src/components/cards/ViewOffersCard.jsx
 import React from 'react';
 
 const ViewOffersCard = ({ navigateTo }) => {

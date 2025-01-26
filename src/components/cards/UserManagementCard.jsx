@@ -1,3 +1,4 @@
+// File: src/components/cards/UserManagementCard.jsx
 import React from 'react';
 
 const UserManagementCard = ({ navigateTo }) => {

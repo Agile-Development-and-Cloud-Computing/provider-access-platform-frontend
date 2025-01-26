@@ -1,6 +1,4 @@
 import React from "react";
-//import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import "@/styles/HomePage.css"; // Import the CSS for styling
 
 const HomePage = () => {
@@ -44,7 +42,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

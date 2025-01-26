@@ -1,63 +1,31 @@
 // File: src/pages/dashboard/UserDashboard.jsx
-import React from "react";
-//import UserDashboardNavbar from '@/components/UserDashboardNavbar';
-//import Navbar from '@/components/Navbar'; 
-import Footer from '@/components/Footer';
-import '@/styles/UserDashboard.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '@/styles/Dashboard.css'; // Shared dashboard styles
 
-// Import KPI Cards
-//import ActiveServiceRequestsCard from '@/components/cards/KPI/ActiveServiceRequestsCard';
-//import SubmittedBidsCard from '@/components/cards/KPI/SubmittedBidsCard';
-//import EmployeesAssignedCard from '@/components/cards/KPI/EmployeesAssignedCard';
-
-// Import Actionable Link Cards
 import ViewOffersCard from '@/components/cards/ViewOffersCard';
 import ServiceRequestsCard from '@/components/cards/ServiceRequestsCard';
 import EmployeeManagementCard from '@/components/cards/EmployeeManagementCard';
-
 import MasterAgreementsCard from '@/components/cards/MasterAgreementsCard';
 import RoleOffersCard from '@/components/cards/RoleOffersCard';
 import OrdersCard from '@/components/cards/OrdersCard';
 
 const UserDashboard = () => {
-
-  const navigateToServiceRequests = () => {
-    window.location.href = "/user/service-requests"; // Ensure the route matches your ServiceRequestsPage route
-  };
-
-  const navigateToEmployeeManagement = () => {
-    window.location.href = "/user/employee-management"; // Ensure the route matches your EmployeeManagementPage route
-  };
-
-  const navigateToMasterAgreements = () => {
-    window.location.href = '/admin/master-agreements';
-  };
+  const navigate = useNavigate();
 
   return (
-    <>
-      {/*<UserDashboardNavbar /> */} 
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">User Dashboard</h1>
-
-        {/* KPI Section 
-        <div className="kpi-container">
-          <ActiveServiceRequestsCard />
-          <SubmittedBidsCard />
-          <EmployeesAssignedCard />
-        </div>
-        */}
-
-        {/* Actionable Links Section */}
-        <div className="dashboard-grid">
-          <ServiceRequestsCard navigateTo={navigateToServiceRequests} />
-          <EmployeeManagementCard navigateTo={navigateToEmployeeManagement} />
-          <MasterAgreementsCard navigateTo={navigateToMasterAgreements} />
-          <RoleOffersCard /> 
-          <OrdersCard />
-        </div>
+    <div className="dashboard-container user-dashboard">
+      <h1 className="dashboard-title" role="heading" aria-level="1">
+        Welcome to Your User Dashboard
+      </h1>
+      <div className="dashboard-grid">
+        <ServiceRequestsCard navigateTo={() => navigate('/user/service-requests')} />
+        <EmployeeManagementCard navigateTo={() => navigate('/user/employee-management')} />
+        <MasterAgreementsCard navigateTo={() => navigate('/user/master-agreements')} />
+        <RoleOffersCard />
+        <OrdersCard />
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 

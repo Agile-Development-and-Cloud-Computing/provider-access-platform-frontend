@@ -1,3 +1,4 @@
+// File: src/components/cards/RoleOffersCard.jsx
 import React from 'react';
 
 const RoleOffersCard = () => {
