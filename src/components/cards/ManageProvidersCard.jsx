@@ -1,3 +1,4 @@
+// File: src/components/cards/ManageProvidersCard.jsx
 import React from 'react';
 
 const ManageProvidersCard = ({ navigateTo }) => {

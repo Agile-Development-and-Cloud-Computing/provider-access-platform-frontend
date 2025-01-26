@@ -1,3 +1,4 @@
+// File: src/components/cards/EmployeeManagementCard.jsx
 import React from 'react';
 
 const EmployeeManagementCard = ({ navigateTo }) => {
