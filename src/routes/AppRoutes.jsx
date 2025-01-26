@@ -40,9 +40,9 @@ function AppRoutes() {
       <Route path="/team" element={<PublicLayout><TeamPage /></PublicLayout>} />
       <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
       <Route path="/login" element={<PublicLayout><LoginPage /></PublicLayout>} />
-      
       <Route path="/register" element={<PublicLayout><RegisterPage /></PublicLayout>} />
-      <Route path="/logout" element={<PublicLayout><LogoutPage /></PublicLayout>} />
+      
+      <Route path="/logout" element={<LogoutPage />} />
 
       {/* Admin Routes */}
       <Route path="/dashboard/admin" element={<AdminLayout><ProviderAdminDashboard /></AdminLayout>} />
@@ -56,7 +56,7 @@ function AppRoutes() {
       <Route path="/user/service-requests" element={<UserLayout><ServiceRequestsPage /></UserLayout>} />
 
       {/* 404 Catch-All */}
-      <Route path="*" element={<PublicLayout><NotFoundPage /></PublicLayout>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
