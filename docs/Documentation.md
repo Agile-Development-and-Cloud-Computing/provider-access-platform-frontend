@@ -1,6 +1,6 @@
-# Provider Access Platform Frontend Setup
+## Provider Access Platform Frontend Setup
 
-## Project Setup
+### Project Setup
 
 To set up the frontend project "provider-access-platform-frontend" using Vite, React, and JavaScript, follow these steps:
 
