@@ -104,3 +104,12 @@
     font-weight: 600; /* Slightly bolder for better readability */
   }
   
+
+/* Blue-black line divider */
+.section-divider {
+  margin: 30px 0; /* Space above and below the divider */
+  width: 50%; /* Full width of the parent container */
+  height: 1px; /* Thickness of the line */
+  background: linear-gradient(to right, #00008b, #000); /* Blue to black gradient */
+  border: none; /* Remove border for a clean look */
+}

@@ -21,10 +21,13 @@ import UserDashboard from '@/pages/dashboard/UserDashboard';
 // Admin Pages
 import MasterAgreementPage from '@/pages/management/MasterAgreementPage';
 import OrdersPage from '@/pages/management/OrdersPage';
+import RoleOffersPage from '@/pages/management/RoleOffersPage';
 
 // User Pages
 import EmployeeManagementPage from '@/pages/management/EmployeeManagementPage';
 import ServiceRequestsPage from '@/pages/management/ServiceRequestsPage';
+import ProviderManagementPage from '@/pages/management/ProviderManagementPage';
+import UserManagementPage from '@/pages/management/UserManagementPage';
 
 // Layouts
 import PublicLayout from '@/layouts/PublicLayout';
@@ -48,12 +51,24 @@ function AppRoutes() {
       <Route path="/dashboard/admin" element={<AdminLayout><ProviderAdminDashboard /></AdminLayout>} />
       <Route path="/admin/master-agreements" element={<AdminLayout><MasterAgreementPage /></AdminLayout>} />
       <Route path="/admin/orders" element={<AdminLayout><OrdersPage /></AdminLayout>} />
+      <Route path="/admin/role-offers" element={<AdminLayout><RoleOffersPage /></AdminLayout>} />
       <Route path="/admin/service-requests" element={<AdminLayout><ServiceRequestsPage /></AdminLayout>} />
+      <Route path="/admin/employee-management" element={<AdminLayout><EmployeeManagementPage /></AdminLayout>} />
+
+      {/* Admin only Routes */}
+      <Route path="/admin/manage-providers" element={<AdminLayout><ProviderManagementPage /></AdminLayout>} />
+      <Route path="/admin/user-management" element={<AdminLayout><UserManagementPage /></AdminLayout>} />
+      
+
+
+      
 
       {/* User Routes */}
       <Route path="/dashboard/user" element={<UserLayout><UserDashboard /></UserLayout>} />
       <Route path="/user/employee-management" element={<UserLayout><EmployeeManagementPage /></UserLayout>} />
       <Route path="/user/service-requests" element={<UserLayout><ServiceRequestsPage /></UserLayout>} />
+      <Route path="/user/role-offers" element={<UserLayout><RoleOffersPage /></UserLayout>} />
+      <Route path="/user/orders" element={<UserLayout><OrdersPage /></UserLayout>} />
 
       {/* 404 Catch-All */}
       <Route path="*" element={<NotFoundPage />} />

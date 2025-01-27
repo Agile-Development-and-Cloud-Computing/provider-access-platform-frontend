@@ -20,12 +20,10 @@ const AboutPage = () => {
         </section>
 
         <section className="about-features">
-          <h2>Key Features</h2>
-          <ul>
-            <li>Streamlined management of Master Agreements.</li>
-            <li>Real-time bidding and tracking for Service Requests.</li>
-            <li>Secure handling of Employee Profiles and data.</li>
-          </ul>
+        <h2>Key Features</h2>
+        <p>Streamlined management of Master Agreements.</p>
+        <p>Real-time bidding and tracking for Service Requests.</p>
+        <p>Secure handling of Employee Profiles and data.</p>
         </section>
       </div>
     </>

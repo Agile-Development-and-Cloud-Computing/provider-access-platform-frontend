@@ -76,70 +76,111 @@
     font-size: 1.1rem;
   }
   
-  /* ===== Team Page Styles ===== */
-  .team-container {
-    padding: 2rem;
-    text-align: center;
-    background-color: var(--light-bg-color);
-    color: var(--text-color);
-  }
-  
-  .team-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-  }
-  
-  .team-container p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: var(--muted-text-color);
-  }
-  
-  .team-row {
-    display: flex;
-    justify-content: space-around;
-    gap: 1rem;
-    flex-wrap: wrap; /* Responsive layout */
-  }
-  
-  .team-card {
-    background: var(--white-bg-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px var(--shadow-color);
-    text-align: center;
-    width: 18%; /* Adjust width for desktop */
-    min-width: 200px; /* Ensure minimum size on smaller screens */
-  }
-  
-  .team-card h2 {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-  }
-  
-  .team-card h3 {
-    font-size: 1rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-  }
-  
-  .team-card p {
-    font-size: 0.9rem;
-    color: var(--muted-text-color);
-  }
-  
-  .team-card a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .team-card a:hover {
-    text-decoration: underline;
-  }
-  
+/* ===== Team Page Styles ===== */
+.team-container {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--light-bg-color);
+  color: var(--text-color);
+}
+
+.team-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.team-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--muted-text-color);
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap; /* Responsive layout */
+}
+
+.team-card {
+  background: var(--white-bg-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--shadow-color);
+  text-align: center;
+  width: 18%; /* Adjust width for desktop */
+  min-width: 200px; /* Ensure minimum size on smaller screens */
+}
+
+.team-card h2 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.team-card h3 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  color: var(--muted-text-color);
+}
+
+.team-card a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.team-card a:hover {
+  text-decoration: underline;
+}
+
+.team-image {
+  width: 100px; /* Set the desired width */
+  height: 100px; /* Match the height to the width for a square */
+  object-fit: contain; /* Ensures the image fits within the square dimensions without distortion */
+  margin-bottom: 15px;
+  border: 2px solid #ddd; /* Optional: Adds a subtle border for better appearance */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for a cleaner design */
+}
+
+/* Updated CSS for the contact icons */
+.contact-icons {
+  display: flex;
+  justify-content: center; /* Centers the icons horizontally */
+  gap: 10px; /* Small gap between icons */
+  margin-top: 10px; /* Space between the image and icons */
+}
+
+.contact-icon {
+  color: #333; /* Default color for the icons */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer; /* Change cursor to indicate it's clickable */
+}
+
+.contact-icon:hover {
+  color: #0073b1; /* LinkedIn color on hover */
+}
+
+.contact-icon.github-link:hover {
+  color: #333; /* GitHub color on hover */
+}
+
+.contact-icon.email-link:hover {
+  color: #d44638; /* Email color on hover */
+}
+
+.contact-icon svg {
+  width: 24px; /* Icon size */
+  height: 24px;
+}
+
+
   /* ===== Contact Page Styles ===== */
   .contact-container {
     padding: 2rem;
