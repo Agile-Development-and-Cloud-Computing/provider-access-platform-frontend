@@ -9,6 +9,9 @@ import EmployeeManagementCard from '@/components/cards/EmployeeManagementCard';
 import RoleOffersCard from '@/components/cards/RoleOffersCard';
 import OrdersCard from '@/components/cards/OrdersCard';
 
+
+import KpiSection from '@/components/kpiCards/KpiSection'; // KPI
+
 const UserDashboard = () => {
   const navigate = useNavigate();
 
@@ -17,6 +20,14 @@ const UserDashboard = () => {
       <h1 className="dashboard-title" role="heading" aria-level="1">
         Welcome to Your User Dashboard
       </h1>
+
+      {/* KPI Section */}
+      <KpiSection />
+            
+      {/* Divider */}
+      <div className="section-divider"></div>
+
+      {/* Dashboard Cards Section */}
       <div className="dashboard-grid">
         <MasterAgreementsCard navigateTo={() => navigate('/user/master-agreements')} />
         <ServiceRequestsCard navigateTo={() => navigate('/user/service-requests')} />
