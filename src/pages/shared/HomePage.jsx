@@ -16,7 +16,7 @@ const HomePage = () => {
 
         {/* Welcome message */}
         <div className="content">
-          <h1 className="display-6 fw-bold">Welcome to Provider Access Platform!</h1>
+          <h1 className="display-6 fw-bold">Welcome to Access Provider Platform!</h1>
           <p className="lead">Your gateway to seamless provider management</p>
           <p>
             Already part of the team?{' '}
