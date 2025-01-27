@@ -28,7 +28,7 @@ const ServiceRequestsPage = () => {
         setLoading(true);
         setError(null);
         const response = await axios.get(
-          `https://access-platform.azurewebsites.net/api/service-request/published/${providerId}`,
+          `http://localhost:8080/api/service-request/published/${providerId}`,
         );
         setServiceRequests(response.data || []);
         console.log("Request Data before submission:", response.data);
