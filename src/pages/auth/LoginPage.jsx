@@ -22,7 +22,6 @@ const LoginPage = () => {
 
     try {
       await login(formData);
-      const providerName = localStorage.getItem('providerName');
       const userRole = localStorage.getItem('userType');
       if (userRole === 'Admin') {
         navigate('/dashboard/admin');
