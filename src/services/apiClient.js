@@ -7,7 +7,7 @@ import axios from 'axios';
  * - During production build (`npm run build`), Vite uses `.env.production`.
  */
 
-const token = localStorage.getItem("authToken");
+const token = sessionStorage.getItem("authToken");
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL, // Dynamically set base URL from environment variables
   headers: {

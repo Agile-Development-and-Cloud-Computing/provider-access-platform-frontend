@@ -15,8 +15,8 @@ const ServiceRequestsPage = () => {
   const [loadingEmployees, setLoadingEmployees] = useState(false); // To prevent multiple fetches of employees
   const navigate = useNavigate();
 
-  const providerId = localStorage.getItem("providerId");
-  const token = localStorage.getItem("authToken");
+  const providerId = sessionStorage.getItem("providerId");
+  const token = sessionStorage.getItem("authToken");
   if (!token) {
     throw new Error("No authentication token found");
   }

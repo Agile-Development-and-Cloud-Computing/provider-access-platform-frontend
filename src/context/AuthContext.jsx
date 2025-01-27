@@ -10,23 +10,24 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null); // Error state for global errors
 
   useEffect(() => {
-    const loadUserFromLocalStorage = () => {
-      console.log('Loading user from localStorage...');
-      const token = localStorage.getItem('authToken');
-      const providerId = localStorage.getItem('providerId');
-      const userName = localStorage.getItem('userName');
-      const userType = localStorage.getItem('userType');
-
+    const loadUserFromSessionStorage = () => {
+      console.log('Loading user from sessionStorage...');
+      const token = sessionStorage.getItem('authToken');
+      const providerId = sessionStorage.getItem('providerId');
+      const userName = sessionStorage.getItem('userName');
+      const userType = sessionStorage.getItem('userType');
+    
       if (token && providerId && userName && userType) {
-        console.log('User data found in localStorage:', { token, providerId, userName, userType });
+        console.log('User data found in sessionStorage:', { token, providerId, userName, userType });
         setUser({ token, providerId, userName, role: userType });
       } else {
-        console.log('No user data found in localStorage.');
+        console.log('No user data found in sessionStorage.');
       }
-      setLoading(false); // Set loading to false after checking localStorage
+      setLoading(false);
     };
+    
 
-    loadUserFromLocalStorage();
+    loadUserFromSessionStorage();
   }, []);
 
   const login = async (credentials) => {
@@ -43,11 +44,12 @@ export const AuthProvider = ({ children }) => {
         throw new Error('Invalid role assigned to user.');
       }
 
-      // Save user data in localStorage
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('providerId', providerId);
-      localStorage.setItem('userName', providerName);
-      localStorage.setItem('userType', userType);
+      // Save user data in sessionStorage
+      sessionStorage.setItem('authToken', token);
+      sessionStorage.setItem('providerId', providerId);
+      sessionStorage.setItem('userName', providerName);
+      sessionStorage.setItem('userType', userType);
+
 
       // Update the user state
       setUser({ token, providerId, userName: providerName, role: userType });
@@ -61,9 +63,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     console.log('Logging out user...');
-    localStorage.clear();
+    sessionStorage.clear();
     setUser(null);
-    console.log('User logged out and localStorage cleared.');
+    console.log('User logged out and sessionStorage cleared.');
   };
 
   const isAuthenticated = () => {

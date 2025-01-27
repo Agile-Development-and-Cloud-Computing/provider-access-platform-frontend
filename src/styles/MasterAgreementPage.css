@@ -40,44 +40,54 @@ tbody td {
   border: 1px solid #ddd;
 }
 
-/* Data Container and Summary Boxes */
+/* Ensures the data container is a grid */
 .data-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Makes columns responsive */
+  gap: 20px; /* Space between grid items */
+  padding: 20px;
   margin-top: 20px;
+  width: 100%;
 }
 
+/* Styling for each master agreement summary box */
 .data-summary-box {
   background-color: #f5f5f5;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.data-summary-box h4 {
+.data-summary-box h2 {
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-.data-summary-box p {
-  margin: 5px 0;
+.data-summary-box .valid-until {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #666;
 }
 
 .data-summary-box button {
-  margin-top: 10px;
-  padding: 5px 10px;
+  align-self: flex-start; /* Ensures button stays on the left */
+  padding: 10px 15px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .data-summary-box button:hover {
   background-color: #0056b3;
 }
+
 
 .data-details {
   margin-top: 10px;
