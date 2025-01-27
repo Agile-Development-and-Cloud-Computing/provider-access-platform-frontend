@@ -6,13 +6,13 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': '/src', // Allows cleaner imports like `import Component from '@/components/Component';`
+      '@': '/src', // Allows cleaner imports 
     },
   },
   server: {
-    host: true, // Ensures the server is accessible from your network (useful for mobile testing)
-    port: 3000, // Customize the port
-    open: true, // Automatically opens the browser
+    host: true, // Ensures the server is accessible on the network
+    port: process.env.PORT || 3000, // Use Railway's dynamically assigned port in production or 3000 for local dev
+    open: process.env.NODE_ENV !== 'production', // Prevent browser opening in production
     watch: {
       usePolling: true, // Ensures file changes are detected in all environments
     },
