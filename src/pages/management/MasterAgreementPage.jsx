@@ -14,6 +14,13 @@ const MasterAgreementPage = () => {
   const [formData, setFormData] = useState({ providerName: '', bidPrice: '' });
   const [formError, setFormError] = useState('');
 
+  const providerId = localStorage.getItem("providerId");
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    throw new Error("No authentication token found");
+  }
+
+
   const fetchData = async () => {
     setLoading(true);
     setError(null);
@@ -98,6 +105,7 @@ const MasterAgreementPage = () => {
         masterAgreementTypeId: bidForm.agreement.masterAgreementTypeId,
         masterAgreementTypeName: bidForm.agreement.masterAgreementTypeName,
         provider: providerName,
+        providerId:providerId,
         bidPrice: parseFloat(bidPrice),
       });
 
