@@ -43,6 +43,7 @@ h1 {
 .service-card h3 {
     margin-top: 0;
     color: #007bff;
+    font-size: 25px;
 }
 
 .service-card p {

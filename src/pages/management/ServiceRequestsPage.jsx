@@ -51,30 +51,39 @@ const ServiceRequestsPage = () => {
     }));
   };
 
-  const handleAttachEmployee = (serviceRequestId, role, employeeId) => {
+  const handleAttachEmployee = (serviceRequestId, role, domainName, level, technology_level, employeeId) => {
     setAttachedEmployees((prev) => {
       const currentRequest = prev[serviceRequestId] || {};
-      const currentRoleEmployees = currentRequest[role] || [];
-
-      // Prevent duplicate entries
-      if (!currentRoleEmployees.includes(employeeId)) {
-        const updatedRoleEmployees = [...currentRoleEmployees, employeeId];
-
-        return {
-          ...prev,
-          [serviceRequestId]: {
-            ...currentRequest,
-            [role]: updatedRoleEmployees,
-          },
-        };
+  
+      // Initialize the structure if not already initialized
+      if (!currentRequest[role]) {
+        currentRequest[role] = {};
       }
-      return prev;
+  
+      if (!currentRequest[role][level]) {
+        currentRequest[role][level] = {};
+      }
+  
+      if (!currentRequest[role][level][technology_level]) {
+        currentRequest[role][level][technology_level] = [];
+      }
+  
+      // Prevent duplicate employees for the same combination
+      if (!currentRequest[role][level][technology_level].includes(employeeId)) {
+        currentRequest[role][level][technology_level].push(employeeId);
+      }
+  
+      return {
+        ...prev,
+        [serviceRequestId]: currentRequest,
+      };
     });
-
+  
     console.log(
-      `Employee ${employeeId} attached to role ${role} in request ${serviceRequestId}`,
+      `Employee ${employeeId} attached to ${role} (${level}, ${technology_level}) in request ${serviceRequestId}`
     );
   };
+  
 
   const fetchEmployees = async () => {
     if (loadingEmployees) return;
@@ -99,33 +108,42 @@ const ServiceRequestsPage = () => {
       setLoadingEmployees(false);
     }
   };
-  const removeEmployee = (serviceRequestId, role, employeeId) => {
+  const removeEmployee = (serviceRequestId, role, level, technology_level, employeeId) => {
     setAttachedEmployees((prev) => {
       const updatedRoleEmployees =
-        prev[serviceRequestId]?.[role]?.filter((id) => id !== employeeId) || [];
-
+        prev[serviceRequestId]?.[role]?.[level]?.[technology_level]?.filter((id) => id !== employeeId) || [];
+  
       return {
         ...prev,
         [serviceRequestId]: {
           ...prev[serviceRequestId],
-          [role]: updatedRoleEmployees,
+          [role]: {
+            ...prev[serviceRequestId][role],
+            [level]: {
+              ...prev[serviceRequestId][role][level],
+              [technology_level]: updatedRoleEmployees,
+            },
+          },
         },
       };
     });
-
+  
     console.log(
-      `Employee ${employeeId} removed from role ${role} in request ${serviceRequestId}`,
+      `Employee ${employeeId} removed from ${role} (${level}, ${technology_level}) in request ${serviceRequestId}`
     );
   };
+  
 
   // Fetch employees when clicking Attach Employee
-  const handleFetchEmployees = (serviceRequestId, role) => {
+  const handleFetchEmployees = (serviceRequestId, role, domainName, level, technology_level) => {
     fetchEmployees();
     setShowDropdown((prev) => ({
       ...prev,
-      [`${serviceRequestId}-${role}`]: true, // Use unique key per serviceRequest & role
+      [`${serviceRequestId}-${role}-${domainName}-${level}-${technology_level}`]: true, // Use the full key
     }));
   };
+  
+  
   const submitServiceRequest = async (request) => {
     try {
       // Log out the requestData to debug date fields
@@ -294,88 +312,87 @@ const ServiceRequestsPage = () => {
                           <strong>Employee needed:</strong> {member.numberOfEmployee}
                         </p>
                         <button
-                          className="attach-employee-btn"
-                          onClick={() =>
-                            handleFetchEmployees(
-                              request.ServiceRequestId,
-                              member.role,
-                            )
-                          }
-                        >
-                          Attach Employee
-                        </button>
+  className="attach-employee-btn"
+  onClick={() =>
+    handleFetchEmployees(
+      request.ServiceRequestId,
+      member.role,
+      member.domainName,
+      member.level,
+      member.technologyLevel
+    )
+  }
+>
+  Attach Employee
+</button>
 
-                        {showDropdown[
-                          `${request.ServiceRequestId}-${member.role}`
-                        ] && (
-                          <div className="employee-list">
-                            <select
-                              onChange={(e) =>
-                                handleAttachEmployee(
-                                  request.ServiceRequestId,
-                                  member.role,
-                                  e.target.value,
-                                )
-                              }
-                              value=""
-                            >
-                              <option value="">Select Employee</option>
-                              {employees.map((employee) => (
-                                <option
-                                  key={employee.employeeId}
-                                  value={employee.employeeId}
-                                >
-                                  {employee.employeeName} - {employee.level} - {employee.technology_level}
-                                </option>
-                              ))}
-                            </select>
 
-                            <div className="attached-employees">
-                              <strong>
-                                Attached Employees:{" "}
-                                <span className="employee-count-badge">
-                                  {attachedEmployees[
-                                    request.ServiceRequestId
-                                  ]?.[member.role]?.length || 0}{" "}
-                                  attached
-                                </span>
-                              </strong>
-                              <ul>
-                                {attachedEmployees[request.ServiceRequestId]?.[
-                                  member.role
-                                ]?.map((empId) => {
-                                  const employee = employees.find(
-                                    (emp) => emp.employeeId === parseInt(empId),
-                                  );
-                                  return employee ? (
-                                    <li key={empId}>
-                                      <strong>Name:</strong>{" "}
-                                      {employee.employeeName} <br />
-                                      <strong>Role:</strong> {employee.role}{" "}
-                                      <br />
-                                      <strong>Level:</strong> {employee.level}{" "}
-                                      <br />
-                                      <strong>Tech Skills:</strong>{" "}
-                                      {employee.technology_level} <br />
-                                      <button
-                                        className="remove-employee-btn"
-                                        onClick={() =>
-                                          removeEmployee(
-                                            request.ServiceRequestId,
-                                            member.role,
-                                            empId,
-                                          )
-                                        }
-                                      >
-                                        ✖ Remove
-                                      </button>
-                                    </li>
-                                  ) : null;
-                                })}
-                              </ul>
-                            </div>
-                          </div>
-                        )}
+{showDropdown[`${request.ServiceRequestId}-${member.role}-${member.domainName}-${member.level}-${member.technologyLevel}`] && (
+  <div className="employee-list">
+    <select
+      onChange={(e) =>
+        handleAttachEmployee(
+          request.ServiceRequestId,
+          member.role,
+          member.domainName,
+          member.level,
+          member.technologyLevel,
+          e.target.value // Attach the employee
+        )
+      }
+      value=""
+    >
+      <option value="">Select Employee</option>
+      {employees.map((employee) => (
+        <option
+          key={employee.employeeId}
+          value={employee.employeeId}
+        >
+          {employee.employeeName} - {employee.level} - {employee.technology_level}
+        </option>
+      ))}
+    </select>
+
+    <div className="attached-employees">
+      <strong>
+        Attached Employees:{" "}
+        <span className="employee-count-badge">
+          {attachedEmployees[request.ServiceRequestId]?.[member.role]?.[member.level]?.[member.technologyLevel]?.length || 0} attached
+        </span>
+      </strong>
+      <ul>
+        {attachedEmployees[request.ServiceRequestId]?.[member.role]?.[member.level]?.[member.technologyLevel]?.map((empId) => {
+          const employee = employees.find((emp) => emp.employeeId === parseInt(empId));
+          return employee ? (
+            <li key={empId}>
+              <strong>Name:</strong> {employee.employeeName} <br />
+              <strong>Role:</strong> {employee.role} <br />
+              <strong>Level:</strong> {employee.level} <br />
+              <strong>Tech Skills:</strong> {employee.technology_level} <br />
+              <button
+                className="remove-employee-btn"
+                onClick={() =>
+                  removeEmployee(
+                    request.ServiceRequestId,
+                    member.role,
+                    member.level,
+                    member.technologyLevel,
+                    empId
+                  )
+                }
+              >
+                ✖ Remove
+              </button>
+            </li>
+          ) : null;
+        })}
+      </ul>
+    </div>
+  </div>
+)}
+
+
+
                       </div>
                     ))}
                   </div>
