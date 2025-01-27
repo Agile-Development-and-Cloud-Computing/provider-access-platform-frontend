@@ -103,6 +103,7 @@ src
    npm run build
    ```
 
+For detailed instructions on setting up the project, refer to the [Project Setup Guide](./docs/Project-Setup.md).
 ---
 
 ## Technologies Used
