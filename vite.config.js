@@ -24,6 +24,9 @@ export default defineConfig({
       },
     },
   },
+  preview: {
+    allowedHosts: ['provider-access-platform-frontend.up.railway.app'], // Add your Railway host here
+  },
   build: {
     outDir: 'dist', // Output directory for production builds
     sourcemap: true, // Enable source maps for debugging in production (optional)
