@@ -21,7 +21,7 @@ const ProviderManagementPage = () => {
       try {
         setLoading(true);
         console.log('Fetching providers...');
-        const response = await fetch(`http://localhost:8080/api/provider/get-user`);
+        const response = await fetch(`https://access-platform.azurewebsites.net/api/provider/get-user`);
         const responseData = await response.json();
         
         console.log('Response from API:', responseData);
@@ -62,7 +62,7 @@ const ProviderManagementPage = () => {
   const handleSave = async () => {
     console.log('Saving provider data:', formData);
     try {
-      const response = await fetch(`http://localhost:8080/api/provider/edit-credentials`, {
+      const response = await fetch(`https://access-platform.azurewebsites.net/api/provider/edit-credentials`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
