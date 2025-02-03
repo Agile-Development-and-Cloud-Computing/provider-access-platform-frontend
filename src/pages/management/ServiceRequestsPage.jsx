@@ -28,7 +28,7 @@ const ServiceRequestsPage = () => {
         setLoading(true);
         setError(null);
         const response = await axios.get(
-          `https://access-platform-test.azurewebsites.net/api/service-request/published/${providerId}`,
+          `https://access-platform.azurewebsites.net/api/service-request/published/${providerId}`,
         );
         setServiceRequests(response.data || []);
         console.log("Request Data before submission:", response.data);
@@ -91,7 +91,7 @@ const ServiceRequestsPage = () => {
 
     try {
       const response = await axios.get(
-        `https://access-platform-test.azurewebsites.net/api/employees/${providerId}`,
+        `https://access-platform.azurewebsites.net/api/employees/${providerId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -211,7 +211,7 @@ const ServiceRequestsPage = () => {
       console.log("Request Payload:", JSON.stringify(requestData, null, 2));
   
       const response = await axios.post(
-        "https://access-platform-test.azurewebsites.net/api/service-request/submit",
+        "https://access-platform.azurewebsites.net/api/service-request/submit",
         requestData,
         {
           headers: {
