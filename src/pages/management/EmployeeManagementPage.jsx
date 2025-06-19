@@ -30,7 +30,7 @@ const EmployeeManagementPage = () => {
 
       try {
         const response = await axios.get(
-          `https://access-platform-test.azurewebsites.net/api/employees/${providerId}`
+          `http://localhost:8080/api/employees/${providerId}`
         );
 
         if (response.data.success && Array.isArray(response.data.data)) {
@@ -53,7 +53,7 @@ const EmployeeManagementPage = () => {
 
     try {
       const response = await axios.post(
-        `https://access-platform-test.azurewebsites.net/api/employees/add`,
+        `http://localhost:8080/api/employees/add`,
         employeeToAdd
       );
 
@@ -83,7 +83,7 @@ const EmployeeManagementPage = () => {
       console.log("Token Inside Try-->" + token);
   
       const response = await axios.put(
-        `https://access-platform-test.azurewebsites.net/api/employees/update/${editEmployee.employeeId}/${providerId}`,
+        `http://localhost:8080/api/employees/update/${editEmployee.employeeId}/${providerId}`,
         editEmployee,
         {
           headers: {
