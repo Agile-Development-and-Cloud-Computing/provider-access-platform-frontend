@@ -20,7 +20,7 @@ const TeamPage = () => {
           <p>Matriculation Number: 1324950</p>
           
           <div className="contact-icons">
-            <a href="https://www.linkedin.com/in/wubishet" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/damtie/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="contact-icon linkedin-link" />
             </a>
             <a href="https://github.com/wubishetD" target="_blank" rel="noopener noreferrer">
@@ -64,11 +64,11 @@ const TeamPage = () => {
             className="team-image"
           />
           <h2>Lavanya Suresh</h2>
-          <h3>Scrum Master</h3>
+          <h3>Backend Developer</h3>
           <p>Matriculation Number: 1516065</p>
 
           <div className="contact-icons">
-            <a href="https://www.linkedin.com/in/lavanya" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/lavanya-suresh-m/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="contact-icon linkedin-link" />
             </a>
             <a href="https://github.com/LavanyaSuresh23" target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@ const TeamPage = () => {
           <p>Matriculation Number: 1501517</p>
           
           <div className="contact-icons">
-            <a href="https://www.linkedin.com/in/mandar" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/mandarkale5/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="contact-icon linkedin-link" />
             </a>
             <a href="https://github.com/MandarGK" target="_blank" rel="noopener noreferrer">
@@ -112,11 +112,11 @@ const TeamPage = () => {
             className="team-image"
           />
           <h2>Aswini Thirumaran</h2>
-          <h3>Backend Developer</h3>
+          <h3>Scrum Master</h3>
           <p>Matriculation Number: 1510315</p>
     
           <div className="contact-icons">
-            <a href="https://www.linkedin.com/in/aswini" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/aswinithirumaran/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="contact-icon linkedin-link" />
             </a>
             <a href="https://github.com/AswiniThiru" target="_blank" rel="noopener noreferrer">

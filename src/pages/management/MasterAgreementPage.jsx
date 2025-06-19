@@ -14,8 +14,8 @@ const MasterAgreementPage = () => {
   const [formData, setFormData] = useState({ providerName: '', bidPrice: '' });
   const [formError, setFormError] = useState('');
 
-  const providerId = localStorage.getItem("providerId");
-  const token = localStorage.getItem("authToken");
+  const providerId = sessionStorage.getItem("providerId");
+  const token = sessionStorage.getItem("authToken");
   if (!token) {
     throw new Error("No authentication token found");
   }

@@ -70,7 +70,6 @@ function AppRoutes() {
       <Route path="/user/role-offers" element={<UserLayout><RoleOffersPage /></UserLayout>} />
       <Route path="/user/orders" element={<UserLayout><OrdersPage /></UserLayout>} />
       <Route path="/user/master-agreements" element={<UserLayout><MasterAgreementPage /></UserLayout>} />
-
       {/* 404 Catch-All */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

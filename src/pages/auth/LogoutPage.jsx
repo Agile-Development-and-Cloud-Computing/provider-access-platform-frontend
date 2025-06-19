@@ -6,8 +6,8 @@ const LogoutPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Clear user-related data from localStorage
-    localStorage.removeItem('loggedInUser');
+    // Clear user-related data from sessionStorage
+    sessionStorage.removeItem('loggedInUser');
 
     // Redirect to the login page after logout
     navigate('/login');
