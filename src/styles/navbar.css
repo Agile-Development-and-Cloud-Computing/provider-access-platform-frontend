@@ -1,0 +1,92 @@
+/* ===== Global Navbar Styles ===== */
+.navbar {
+    min-height: 80px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: relative;
+  }
+  
+  .navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .navbar .navbar-brand img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .navbar .nav-item .nav-link {
+    color: var(--link-color, #000);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .nav-item .nav-link:hover {
+    color: var(--link-hover-color, #0056b3);
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  /* ===== Public Navbar Styles ===== */
+  .navbar.bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .navbar.bg-light .nav-link {
+    color: #000;
+  }
+  
+  .navbar.bg-light .nav-link:hover {
+    color: #0056b3;
+  }
+
+  .navbar .welcome-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffff00; /* Yellow text for welcome message */
+  }
+  
+  /* ===== Admin Dashboard Navbar Styles ===== */
+  .navbar.admin-navbar {
+    background-color: #343a40; /* Dark gray */
+  }
+  
+  .navbar.admin-navbar .nav-link {
+    color: #ffffff;
+  }
+  
+  .navbar.admin-navbar .nav-link:hover {
+    color: #adb5bd; /* Light gray hover effect */
+  }
+  
+  /* ===== User Dashboard Navbar Styles ===== */
+  .navbar.user-navbar {
+    background-color: #191970; /* Midnight blue */
+  }
+  
+  .navbar.user-navbar .nav-link {
+    color: #ffffff;
+  }
+  
+  .navbar.user-navbar .nav-link:hover {
+    color: #87ceeb; /* Light sky blue hover effect */
+  }
+  

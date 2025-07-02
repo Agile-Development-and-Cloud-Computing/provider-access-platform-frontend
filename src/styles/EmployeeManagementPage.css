@@ -1,0 +1,391 @@
+/* General container styling */
+.employee-management-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Employee card grid layout */
+.employee-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual employee card styling */
+.employee-card {
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  border-left: 5px solid #007bff;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+}
+
+.employee-card h2 {
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+.employee-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .employee-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Background overlay for modal effect */
+.modal-overlay {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Styling for the modal form container */
+.employee-modal {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  animation: slideDown 0.3s ease-in-out;
+}
+
+/* Form title styling */
+.employee-modal h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input field styling */
+.employee-modal input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Add focus effect to input fields */
+.employee-modal input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styling */
+.employee-modal button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+/* Hover effect for button */
+.employee-modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Close button */
+.employee-modal .close-btn {
+  background-color: #dc3545;
+}
+
+.employee-modal .close-btn:hover {
+  background-color: #c82333;
+}
+
+/* Animation effect for modal */
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .employee-modal {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .employee-modal h2 {
+    font-size: 20px;
+  }
+
+  .employee-modal input {
+    font-size: 14px;
+  }
+
+  .employee-modal button {
+    font-size: 16px;
+  }
+}
+
+
+/* Background overlay for modal effect */
+.modal-overlay {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Styling for the modal form container */
+.employee-modal {
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  animation: slideDown 0.3s ease-in-out;
+}
+
+/* Form title styling */
+.employee-modal h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input field styling */
+.employee-modal input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Add focus effect to input fields */
+.employee-modal input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styling */
+.employee-modal button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+/* Hover effect for button */
+.employee-modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Close button */
+.employee-modal .close-btn {
+  background-color: #dc3545;
+}
+
+.employee-modal .close-btn:hover {
+  background-color: #c82333;
+}
+
+/* Animation effect for modal */
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .employee-modal {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .employee-modal h2 {
+    font-size: 20px;
+  }
+
+  .employee-modal input {
+    font-size: 14px;
+  }
+
+  .employee-modal button {
+    font-size: 16px;
+  }
+}
+
+/* Edit Button (for employee card and modal) */
+button.edit-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.edit-btn:hover {
+  background-color: #1976D2; /* Darker Blue */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+button.edit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.7); /* Blue focus shadow */
+}
+
+/* Add Button (for modal and general page) */
+button.add-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.add-btn:hover {
+  background-color: #388E3C; /* Darker Green */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+button.add-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.7); /* Green focus shadow */
+}
+
+/* Delete Button (for employee card and modal) */
+button.delete-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f; /* Darker Red */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+button.delete-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.7); /* Red focus shadow */
+}
+/* Edit Button (with spacing) */
+button.edit-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 10px; /* Adds space between Edit and Delete buttons */
+}
+
+button.edit-btn:hover {
+  background-color: #1976D2; /* Darker Blue */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+button.edit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.7); /* Blue focus shadow */
+}
+
+/* Delete Button (with spacing) */
+button.delete-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f; /* Darker Red */
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+button.delete-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.7); /* Red focus shadow */
+}

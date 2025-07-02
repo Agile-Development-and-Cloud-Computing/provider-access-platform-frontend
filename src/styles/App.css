@@ -1,0 +1,78 @@
+/* ===== Global Layout Styles ===== */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  flex: 1; /* Grows to fill the space between header and footer */
+}
+
+/* Global styles */
+html, body {
+  height: 100%; /* Ensure the height of the body stretches fully */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif; /* Set a consistent global font */
+  background-color: #f9fafb; /* Subtle background color */
+  color: #1e293b; /* Dark text color for consistency */
+}
+
+/* Navbar stays at the top */
+header {
+  flex-shrink: 0; /* Prevent shrinking */
+  z-index: 1000; /* Ensure navbar stays above other elements */
+}
+
+/* ===== Footer Styles ===== */
+.footer {
+  background-color: #1e293b; /* Dark gray background */
+  color: #f8fafc; /* Light text */
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0; /* Ensure no unexpected margin */
+  position: relative; /* Prevent overlapping background */
+  z-index: 1; /* Keep it above lower layers */
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0; /* Remove any body-level margin that might affect layout */
+  padding: 0;
+}
+
+/* ===== Utility Classes ===== */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

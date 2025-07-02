@@ -1,0 +1,115 @@
+/* ===== General Dashboard Card Styles ===== */
+.dashboard-card {
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #fefeff;
+  }
+  
+  .dashboard-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .dashboard-card button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  /* Hover Effects for All Cards */
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  }
+  
+  /* ===== Admin Dashboard Scoped Styles ===== */
+  .admin-dashboard .dashboard-card h2 {
+    color: #000000; /* Light gray for headings */
+  }
+  
+  .admin-dashboard .dashboard-card button {
+    background-color: #343a40; /* Match Navbar color */
+    color: white;
+  }
+  
+  .admin-dashboard .dashboard-card button:hover {
+    background-color: #212529; /* Darker gray on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  /* ===== User Dashboard Scoped Styles ===== */
+  .user-dashboard .dashboard-card h2 {
+    color: #191970; /* Light blue for headings */
+  }
+  
+  .user-dashboard .dashboard-card button {
+    background-color: #191970; /* Medium blue button */
+    color: white;
+  }
+  
+  .user-dashboard .dashboard-card button:hover {
+    background-color: #1e3a8a; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  /* ===== Dashboard Grid Styles ===== */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three equal columns */
+    gap: 20px; /* Space between the cards */
+    width: 100%; /* Ensures the grid spans the container's width */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media screen and (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr; /* Switch to one column layout on smaller screens */
+    }
+    .dashboard-card {
+      margin: 0 auto; /* Centers the card on small screens */
+    }
+  }
+  
+  /* ===== General Dashboard Container Styles ===== */
+  .dashboard-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content */
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333; /* Dark gray for the title */
+    font-weight: 600; /* Slightly bolder for better readability */
+  }
+  
+
+/* Blue-black line divider */
+.section-divider {
+  margin: 30px 0; /* Space above and below the divider */
+  width: 50%; /* Full width of the parent container */
+  height: 1px; /* Thickness of the line */
+  background: linear-gradient(to right, #00008b, #000); /* Blue to black gradient */
+  border: none; /* Remove border for a clean look */
+}

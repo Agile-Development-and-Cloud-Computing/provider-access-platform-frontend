@@ -1,0 +1,22 @@
+.role-offers-page {
+    padding: 20px;
+  }
+  
+  .role-offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .role-offers-table th,
+  .role-offers-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .role-offers-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
