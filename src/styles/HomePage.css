@@ -1,0 +1,101 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem; /* Add some padding for smaller screens */
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Full-width image container */
+.image-container {
+  width: 100%;
+  height: auto; /* Automatically resize based on image aspect ratio */
+  overflow: hidden;
+  position: relative;
+}
+
+.full-width-image {
+  width: 100%; /* Ensure the image fills the container width */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+/* Content styling */
+.content {
+  margin-top: 1rem; /* Avoid negative margin for better responsiveness */
+  padding: 1rem; /* Add padding for spacing */
+  background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow for better contrast */
+  position: relative; /* Ensure it stays in the correct layer */
+  z-index: 1;
+}
+
+/* Features container styling */
+.features-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center features horizontally */
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  gap: 1rem;
+}
+
+.feature {
+  flex: 1 1 calc(33.333% - 1rem); /* Adjust size for three columns */
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 300px; /* Prevent oversized features on larger screens */
+  box-sizing: border-box;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+  color: #1c0bb6;
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content {
+      margin-top: 1rem; /* Adjust spacing for smaller screens */
+      padding: 1rem;
+  }
+
+  .features-container {
+      flex-direction: column; /* Stack features vertically */
+      align-items: center; /* Center them on smaller screens */
+  }
+
+  .feature {
+      flex: 1 1 100%; /* Full-width for each feature */
+      max-width: none; /* Remove max-width for stacking */
+  }
+}
+
+@media (max-width: 576px) {
+  .content {
+      padding: 1rem;
+      font-size: 0.9rem; /* Adjust font size for extra small screens */
+  }
+
+  .feature h3 {
+      font-size: 1rem;
+  }
+
+  .feature p {
+      font-size: 0.8rem;
+  }
+}
